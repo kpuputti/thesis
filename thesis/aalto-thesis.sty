@@ -1,7 +1,7 @@
 % ==================================================================
 % This template has been used and modified by
 % Sanna Suoranta, Pekka Kanerva, Lauri Karppinen, Linda Staffans,
-% Laura Takkinen, Jukka Larja, Samuli Sorvakko, 
+% Laura Takkinen, Jukka Larja, Samuli Sorvakko,
 % and numerous unknown authors.
 % ------------------------------------------------------------------
 % 9.2.2011 Tuukka Haapasalo made a near-complete rewrite of the
@@ -20,41 +20,41 @@
 \RequirePackage{url}
 % Multirow allows table cells to span multiple rows
 \RequirePackage{multirow}
-% The tabularx environment is an extension of tabular that allows 
-% paragraph-type column widths to be calculated automatically 
+% The tabularx environment is an extension of tabular that allows
+% paragraph-type column widths to be calculated automatically
 \RequirePackage{tabularx}
 
 % Improvements for mathematical formatting
 \RequirePackage{amsmath}
 
-% The lastpage package provides a label that can be used to get the 
+% The lastpage package provides a label that can be used to get the
 % page number of the last page
 \RequirePackage{lastpage}
 
-% The etoolbox command provides some advanced commands 
+% The etoolbox command provides some advanced commands
 \RequirePackage{etoolbox}
 
-% The array package fixes some things in the default LaTeX arrays and 
-% tabulars. This package is required by many other packages. 
+% The array package fixes some things in the default LaTeX arrays and
+% tabulars. This package is required by many other packages.
 \RequirePackage{array}
 % The ifthen package provides conditional evaluation of statements
 \RequirePackage{ifthen}
-% Textpos can be used to position text absolutely (at an absolute 
+% Textpos can be used to position text absolutely (at an absolute
 % position in the page, instead of a relative position)
 \RequirePackage[absolute]{textpos}
 
 \newcommand{\startcoverpage}{\pagenumbering{arabic}}
 \newcommand{\startfirstchapter}{}
 % The number of pages is counted based on the labels.
-% The lastpage package calculates the position of the LastPage label. 
-% A plain label may not work if last pages contain floats that are placed 
+% The lastpage package calculates the position of the LastPage label.
+% A plain label may not work if last pages contain floats that are placed
 % after text.
 \newcommand{\PAGES}{\pageref{LastPage}}
 
 
-% From Samwise, edited by JLarja. Fixme can be used to wrote something that should be fixed later. 
-% It is better than just writing something to comments, since it is shown in the output file. If 
-% mydraft is declared (in documentclass), text will be shown bold between two FIXMEs. If not, text 
+% From Samwise, edited by JLarja. Fixme can be used to wrote something that should be fixed later.
+% It is better than just writing something to comments, since it is shown in the output file. If
+% mydraft is declared (in documentclass), text will be shown bold between two FIXMEs. If not, text
 % will be shown normally.
 \newcommand{\fixme}[1]{#1}
 % Draft command is used in the cover page to show the date of the
@@ -62,7 +62,7 @@
 \newcommand{\DRAFT}{}
 \DeclareOption{mydraft}{
 \renewcommand{\fixme}[1]{\textsc{\small !Fixme} \textbf{#1}
-\textsc{\small Fixme!}} 
+\textsc{\small Fixme!}}
 \renewcommand{\DRAFT}{
 \begin{center}
 \textbf{DRAFT! --- \today\ --- DRAFT!}
@@ -95,17 +95,17 @@
 
 % By default, only up to 3rd level headers are numbered (e.g. 1.2.2.)
 % Specify which headers are numbered
-\setcounter{secnumdepth}{4} 
+\setcounter{secnumdepth}{4}
 % Specify which headers are put in the TOC
-\setcounter{tocdepth}{3} 
+\setcounter{tocdepth}{3}
 
-% These set the units of the textpos positioning parameters. 
+% These set the units of the textpos positioning parameters.
 % Now they are set to be multiples of centimeters.
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 
 % This command can be used in tables to allow linebreaks within a table
-% cell. Takes two parameters: the width of the text area, and the text 
+% cell. Takes two parameters: the width of the text area, and the text
 % to print. Unfortunately the width seems to be required; although at
 % some situations you can use \textwidth (but probably not inside tables).
 \newcommand{\allowlinebreaks}[2]{
@@ -118,7 +118,7 @@
 }
 
 
-% Text options for rendering the cover page 
+% Text options for rendering the cover page
 % ------------------------------------------------------------------
 % These get overwritten when a language is specified
 \newcommand{\ATUNIV}{}
@@ -169,7 +169,7 @@
   \renewcommand{\ATCITY}{Espoo}
   \renewcommand{\ATUNIV}{Aalto University}
   \renewcommand{\ATSCHOOL}{School of Science}
-  \renewcommand{\ATDEGREEPROG}{Degree Programme of Computer Science and Engineering} 
+  \renewcommand{\ATDEGREEPROG}{Degree Programme of Computer Science and Engineering}
   \renewcommand{\ATABSTRACTNAME}{ABSTRACT OF MASTER'S THESIS}
   \renewcommand{\ATLOGO}{images/aalto-logo-en}
   \renewcommand{\ATAUTHORNAME}{Author}
@@ -203,13 +203,13 @@
   \renewcommand{\ATCITY}{Espoo}
   \renewcommand{\ATUNIV}{Aalto-yliopisto}
   \renewcommand{\ATSCHOOL}{Perustieteiden korkeakoulu}
-  \renewcommand{\ATDEGREEPROG}{Tietotekniikan tutkinto-ohjelma} 
+  \renewcommand{\ATDEGREEPROG}{Tietotekniikan tutkinto-ohjelma}
   \renewcommand{\ATABSTRACTNAME}{DIPLOMITYÖN TIIVISTELMÄ}
   \renewcommand{\ATLOGO}{images/aalto-logo-fi}
   \renewcommand{\ATAUTHORNAME}{Tekijä}
   \renewcommand{\ATKEYWORDSNAME}{Asiasanat}
   \renewcommand{\ATKEYWORDS}{\FKEYWORDS}
-  \renewcommand{\ATPAGESNAME}{Sivumäärä}  
+  \renewcommand{\ATPAGESNAME}{Sivumäärä}
   \renewcommand{\ATLANGUAGE}{\FLANGUAGE}
   \renewcommand{\ATLANGUAGENAME}{Kieli}
   \renewcommand{\ATPROFSHIPNAME}{Professuuri}
@@ -237,13 +237,13 @@
   \renewcommand{\ATCITY}{Esbo}
   \renewcommand{\ATUNIV}{Aalto-universitetet}
   \renewcommand{\ATSCHOOL}{Högskolan för teknikvetenskaper}
-  \renewcommand{\ATDEGREEPROG}{Examensprogram för datateknik} 
+  \renewcommand{\ATDEGREEPROG}{Examensprogram för datateknik}
   \renewcommand{\ATABSTRACTNAME}{SAMMANDRAG AV DIPLOMARBETET}
   \renewcommand{\ATLOGO}{images/aalto-logo-se}
   \renewcommand{\ATAUTHORNAME}{Utfört av}
   \renewcommand{\ATKEYWORDSNAME}{Nyckelord}
   \renewcommand{\ATKEYWORDS}{\SKEYWORDS}
-  \renewcommand{\ATPAGESNAME}{Sidantal}  
+  \renewcommand{\ATPAGESNAME}{Sidantal}
   \renewcommand{\ATLANGUAGENAME}{Språk}
   \renewcommand{\ATLANGUAGE}{\SLANGUAGE}
   \renewcommand{\ATPROFSHIPNAME}{Professur}
@@ -253,7 +253,7 @@
 }
 
 
-% Command to render the cover page 
+% Command to render the cover page
 % ------------------------------------------------------------------
 % Takes one parameter, options: finnish, swedish, and (default): english
 % These control in which language the cover-page information is shown
@@ -269,19 +269,19 @@
 \noindent{\small \AUTHOR}
 \vskip 10mm
 
-% The title is printed here. Change the formatting if you like! 
+% The title is printed here. Change the formatting if you like!
 \noindent{\LARGE\textbf{\ATTITLE}}
 \vskip 2ex
 
-% The subtitle is printed here. Change the formatting if you like! 
+% The subtitle is printed here. Change the formatting if you like!
 \noindent{\Large\textbf{\ATSUBTITLE}}
 
 \vfill
 {\noindent
-\small 
+\small
 \ATTHESIS \\
 \ATCITY, \ATDATE
-\vskip 2em 
+\vskip 2em
 
 \DRAFT
 
@@ -315,7 +315,7 @@
 \raggedleft\noindent\includegraphics[height=2.7cm]{\ATLOGO}
 \end{textblock}
 % Before the main abstract table there is the school name
-% and abstract title (ABSTRACT OF THE MASTER'S THESIS etc.) 
+% and abstract title (ABSTRACT OF THE MASTER'S THESIS etc.)
 \begin{textblock}{15}(3.2,3)
 \setlength{\extrarowheight}{0.5ex}
 \noindent
@@ -324,7 +324,7 @@
 \ATUNIV\\
 \ATSCHOOL\\
 \ATDEGREEPROG
-\end{minipage} & 
+\end{minipage} &
 \begin{minipage}[b]{4cm}
 \raggedleft
 \noindent\ATABSTRACTNAME
@@ -340,12 +340,12 @@
 \hline
 \textbf{\ATDATENAME:} & \ATDATE & \textbf{\ATPAGESNAME:} & \PAGES\\
 \hline
-\textbf{\ATPROFSHIPNAME:} & \ATPROFSHIP & 
+\textbf{\ATPROFSHIPNAME:} & \ATPROFSHIP &
 \textbf{\ATPROFCODENAME:} & \PROFCODE\\
 \hline
 \textbf{\ATSUPERVISORNAME:} &
 \multicolumn{3}{l|}{\allowlinebreaks{11cm}{\ATSUPERVISOR}}\\
-\textbf{\ATINSTRUCTORNAME:} & 
+\textbf{\ATINSTRUCTORNAME:} &
 \multicolumn{3}{l|}{\allowlinebreaks{11cm}{\ATINSTRUCTOR}}\\
 \hline
 \multicolumn{4}{|l|}{\allowlinebreaks{14.5cm}{%
@@ -368,16 +368,16 @@
 % ------------------------------------------------------------------
 
 
-% The following command we instruct LaTeX to not 
+% The following command we instruct LaTeX to not
 % complain about underfull hboxes in the bibliography:
 \apptocmd{\thebibliography}{\hbadness 10000\relax}{}{}
-% Alternatively, we can force the bibliography to be raggedright 
+% Alternatively, we can force the bibliography to be raggedright
 % (not justified), this often works as well:
 % \apptocmd{\thebibliography}{\raggedright}{}{}
 
 
 % The standard teletype font makes URLs look a bit too big. These commands
-% here make the URLs a bit smaller, so that they look better in text. 
+% here make the URLs a bit smaller, so that they look better in text.
 \makeatletter
 \def\url@smallurlstyle{%
   \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
