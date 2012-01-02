@@ -47,7 +47,9 @@ def gen_amounts():
     fig = pylab.figure(1, figsize=(6, 6))
     amounts = [avg([d[1], d[2]]) for d in coffee_data]
     pylab.pie(amounts, labels=[str(n) for n in amounts], autopct='%1.1f%%')
-    pylab.title(u'Amount of cups drank in a day by coffee drinkers (n={0})'.format(len(RAW_DATA)))
+    avg_amount = '{0:.2}'.format(avg(amounts))
+    pylab.title((u'Amount of cups drank in a day by coffee drinkers\n(n={0}, '
+                 u'avg={1})').format(len(RAW_DATA), avg_amount))
     fig.savefig('amounts.png')
     pylab.clf()
 
