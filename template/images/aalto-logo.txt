@@ -1,0 +1,34 @@
+If you wish to change the Aalto logo for your thesis 
+(get different colors or different punctuation marks)...
+----------------------------------------------------------------------
+Load the correct logo from
+http://media.digtator.fi/digtator/clients/aalto/logo.php
+
+Instructions:
+
+- Kieli: Select the correct language
+
+- Yksikkö: Select "Perustieteiden korkeakoulu"
+
+- Tunnuksen kokoversio: Select "Pieni versio (13)"
+
+- Käyttö: Select "Paino"
+
+- Väriarvot: 
+  - Select "CMYK, päällystetylle paperille" if you use coated paper
+  - Select "CMYK, päällystämättömälle paperille" if you use uncoated paper
+  - Always select "Black" if you print this page in black and white
+    (you can render another version of your thesis with coloured logos for
+     electronic printing, but please use the black and white PDF when 
+     printing if you're going to print the thesis in black and white!)
+
+- Click "Hae logo"
+
+- Click "Lataa logo" to load the created PDF file and store it to disk
+
+- Copy the PDF file you loaded to the images directory, and overwrite 
+  the file "aalto-logo-LANG.pdf" with it, where LANG is the code of
+  your language (fi=Finnish, en=English, or se=Swedish).
+
+- You're done! Render your thesis using pdflatex as usual
+

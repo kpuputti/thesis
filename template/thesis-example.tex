@@ -1,0 +1,594 @@
+% Lines starting with a percent sign (%) are comments. LaTeX will 
+% not process those lines. Similarly, everything after a percent 
+% sign in a line is considered a comment. To produce a percent sign
+% in the output, write \% (backslash followed by the percent sign). 
+% ==================================================================
+% Usage instructions:
+% ------------------------------------------------------------------
+% The file is heavily commented so that you know what the various
+% commands do. Feel free to remove any comments you don't need from
+% your own copy. When redistributing the example thesis file, please
+% retain all the comments for the benefit of other thesis writers! 
+% ==================================================================
+% Compilation instructions: 
+% ------------------------------------------------------------------
+% Use pdflatex to compile! Input images are expected as PDF files.
+% Example compilation:
+% ------------------------------------------------------------------
+% > pdflatex thesis-example.tex
+% > bibtex thesis-example
+% > pdflatex thesis-example.tex
+% > pdflatex thesis-example.tex
+% ------------------------------------------------------------------
+% You need to run pdflatex multiple times so that all the cross-references
+% are fixed. pdflatex will tell you if you need to re-run it (a warning
+% will be issued)  
+% ------------------------------------------------------------------
+% Compilation has been tested to work in ukk.cs.hut.fi and kosh.hut.fi
+% - if you have problems of missing .sty -files, then the local LaTeX
+% environment does not have all the required packages installed.
+% For example, when compiling in vipunen.hut.fi, you get an error that
+% tikz.sty is missing - in this case you must either compile somewhere
+% else, or you cannot use TikZ graphics in your thesis and must therefore
+% remove or comment out the tikz package and all the tikz definitions. 
+% ------------------------------------------------------------------
+
+% General information
+% ==================================================================
+% Package documentation:
+% 
+% The comments often refer to package documentation. (Almost) all LaTeX
+% packages have documentation accompanying them, so you can read the
+% package documentation for further information. When a package 'xxx' is
+% installed to your local LaTeX environment (the document compiles
+% when you have \usepackage{xxx} and LaTeX does not complain), you can 
+% find the documentation somewhere in the local LaTeX texmf directory
+% hierarchy. In ukk.cs.hut.fi, this is /usr/texlive/2008/texmf-dist,
+% and the documentation for the titlesec package (for example) can be 
+% found at /usr/texlive/2008/texmf-dist/doc/latex/titlesec/titlesec.pdf.
+% Most often the documentation is located as a PDF file in 
+% /usr/texlive/2008/texmf-dist/doc/latex/xxx, where xxx is the package name; 
+% however, documentation for TikZ is in
+% /usr/texlive/2008/texmf-dist/doc/latex/generic/pgf/pgfmanual.pdf
+% (this is because TikZ is a front-end for PGF, which is meant to be a 
+% generic portable graphics format for LaTeX).
+% You can try to look for the package manual using the ``find'' shell
+% command in Linux machines; the find databases are up-to-date at least
+% in ukk.cs.hut.fi. Just type ``find xxx'', where xxx is the package
+% name, and you should find a documentation file.
+% Note that in some packages, the documentation is in the DVI file
+% format. In this case, you can copy the DVI file to your home directory,
+% and convert it to PDF with the dvipdfm command (or you can read the
+% DVI file directly with a DVI viewer).
+% 
+% If you can't find the documentation for a package, just try Googling
+% for ``latex packagename''; most often you can get a direct link to the
+% package manual in PDF format.
+% ------------------------------------------------------------------
+
+
+% Document class for the thesis is report
+% ------------------------------------------------------------------
+% You can change this but do so at your own risk - it may break other things.
+% Note that the option pdftext is used for pdflatex; there is no
+% pdflatex option. 
+% ------------------------------------------------------------------
+\documentclass[12pt,a4paper,oneside,pdftex]{report}
+
+% The input files (tex files) are encoded with the latin-1 encoding 
+% (ISO-8859-1 works). Change the latin1-option if you use UTF8 
+% (at some point LaTeX did not work with UTF8, but I'm not sure
+% what the current situation is) 
+\usepackage[latin1]{inputenc}
+% OT1 font encoding seems to work better than T1. Check the rendered
+% PDF file to see if the fonts are encoded properly as vectors (instead
+% of rendered bitmaps). You can do this by zooming very close to any letter 
+% - if the letter is shown pixelated, you should change this setting 
+% (try commenting out the entire line, for example).  
+\usepackage[OT1]{fontenc}
+% The babel package provides hyphenating instructions for LaTeX. Give
+% the languages you wish to use in your thesis as options to the babel
+% package (as shown below). You can remove any language you are not
+% going to use.
+% Examples of valid language codes: english (or USenglish), british, 
+% finnish, swedish; and so on.
+\usepackage[finnish,swedish,english]{babel}
+
+
+% Font selection
+% ------------------------------------------------------------------
+% The default LaTeX font is a very good font for rendering your 
+% thesis. It is a very professional font, which will always be 
+% accepted. 
+% If you, however, wish to spicen up your thesis, you can try out
+% these font variants by uncommenting one of the following lines
+% (or by finding another font package). The fonts shown here are 
+% all fonts that you could use in your thesis (not too silly). 
+% Changing the font causes the layouts to shift a bit; you many
+% need to manually adjust some layouts. Check the warning messages
+% LaTeX gives you.
+% ------------------------------------------------------------------
+% To find another font, check out the font catalogue from
+% http://www.tug.dk/FontCatalogue/mathfonts.html
+% This link points to the list of fonts that support maths, but
+% that's a fairly important point for master's theses.
+% ------------------------------------------------------------------
+% <rant>
+% Remember, there is no excuse to use Comic Sans, ever, in any
+% situation! (Well, maybe in speech bubbles in comics, but there 
+% are better options for those too)
+% </rant>
+
+% \usepackage{palatino}
+% \usepackage{tgpagella}
+
+
+
+% Optional packages
+% ------------------------------------------------------------------
+% Select those packages that you need for your thesis. You may delete
+% or comment the rest.
+
+% Natbib allows you to select the format of the bibliography references.
+% The first example uses numbered citations: 
+\usepackage[square,sort&compress,numbers]{natbib}
+% The second example uses author-year citations.
+% If you use author-year citations, change the bibliography style (below); 
+% acm style does not work with author-year citations.
+% Also, you should use \citet (cite in text) when you wish to refer
+% to the author directly (\citet{blaablaa} said blaa blaa), and 
+% \citep when you wish to refer similarly than with numbered citations
+% (It has been said that blaa blaa~\citep{blaablaa}).
+% \usepackage[square]{natbib}
+
+% The alltt package provides an all-teletype environment that acts
+% like verbatim but you can use LaTeX commands in it. Uncomment if 
+% you want to use this environment. 
+% \usepackage{alltt}
+
+% The eurosym package provides a euro symbol. Use with \euro{}
+\usepackage{eurosym} 
+
+% Verbatim provides a standard teletype environment that renderes
+% the text exactly as written in the tex file. Useful for code
+% snippets (although you can also use the listings package to get
+% automatic code formatting). 
+\usepackage{verbatim}
+
+% The listing package provides automatic code formatting utilities
+% so that you can copy-paste code examples and have them rendered
+% nicely. See the package documentation for details.
+% \usepackage{listings}
+
+% The fancuvrb package provides fancier verbatim environments 
+% (you can, for example, put borders around the verbatim text area
+% and so on). See package for details.
+% \usepackage{fancyvrb}
+
+% Supertabular provides a tabular environment that can span multiple 
+% pages. 
+%\usepackage{supertabular}
+% Longtable provides a tabular environment that can span multiple 
+% pages. This is used in the example acronyms file. 
+\usepackage{longtable}
+
+% The fancyhdr package allows you to set your the page headers 
+% manually, and allows you to add separator lines and so on. 
+% Check the package documentation. 
+% \usepackage{fancyhdr}
+
+% Subfigure package allows you to use subfigures (i.e. many subfigures
+% within one figure environment). These can have different labels and
+% they are numbered automatically. Check the package documentation. 
+\usepackage{subfigure}
+
+% The titlesec package can be used to alter the look of the titles 
+% of sections, chapters, and so on. This example uses the ``medium'' 
+% package option which sets the titles to a medium size, making them
+% a bit smaller than what is the default. You can fine-tune the 
+% title fonts and sizes by using the package options. See the package
+% documentation.
+\usepackage[medium]{titlesec}
+
+% The TikZ package allows you to create professional technical figures.
+% The learning curve is quite steep, but it is definitely worth it if 
+% you wish to have really good-looking technical figures. 
+\usepackage{tikz}
+% You also need to specify which TikZ libraries you use
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.pathmorphing,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{patterns}
+
+
+% The aalto-thesis package provides typesetting instructions for the
+% standard master's thesis parts (abstracts, front page, and so on)
+% Load this package second-to-last, just before the hyperref package.
+% Options that you can use: 
+%   mydraft - renders the thesis in draft mode. 
+%             Do not use for the final version. 
+%   doublenumbering - [optional] number the first pages of the thesis
+%                     with roman numerals (i, ii, iii, ...); and start
+%                     arabic numbering (1, 2, 3, ...) only on the 
+%                     first page of the first chapter
+%   twoinstructors  - changes the title of instructors to plural form
+%   twosupervisors  - changes the title of supervisors to plural form
+\usepackage[mydraft,twosupervisors]{aalto-thesis}
+%\usepackage[mydraft,doublenumbering]{aalto-thesis}
+%\usepackage{aalto-thesis}
+
+
+% Hyperref
+% ------------------------------------------------------------------
+% Hyperref creates links from URLs, for references, and creates a
+% TOC in the PDF file.
+% This package must be the last one you include, because it has
+% compatibility issues with many other packages and it fixes
+% those issues when it is loaded.   
+\RequirePackage[pdftex]{hyperref}
+% Setup hyperref so that links are clickable but do not look 
+% different
+\hypersetup{colorlinks=false,raiselinks=false,breaklinks=true}
+\hypersetup{pdfborder={0 0 0}}
+\hypersetup{bookmarksnumbered=true}
+% The following line suggests the PDF reader that it should show the 
+% first level of bookmarks opened in the hierarchical bookmark view. 
+\hypersetup{bookmarksopen=true,bookmarksopenlevel=1}
+% Hyperref can also set up the PDF metadata fields. These are
+% set a bit later on, after the thesis setup.   
+
+
+% Thesis setup
+% ==================================================================
+% Change these to fit your own thesis.
+% \COMMAND always refers to the English version;
+% \FCOMMAND refers to the Finnish version; and
+% \SCOMMAND refers to the Swedish version.
+% You may comment/remove those language variants that you do not use
+% (but then you must not include the abstracts for that language)
+% ------------------------------------------------------------------
+% If you do not find the command for a text that is shown in the cover page or
+% in the abstract texts, check the aalto-thesis.sty file and locate the text
+% from there. 
+% All the texts are configured in language-specific blocks (lots of commands
+% that look like this: \renewcommand{\ATCITY}{Espoo}.
+% You can just fix the texts there. Just remember to check all the language
+% variants you use (they are all there in the same place). 
+% ------------------------------------------------------------------
+\newcommand{\TITLE}{Software Processes for Dummies:}
+\newcommand{\FTITLE}{Ohjelmistoprosessit mänteille:}
+\newcommand{\STITLE}{Den stora stygga vargen:}
+\newcommand{\SUBTITLE}{Re-inventing the Wheel}
+\newcommand{\FSUBTITLE}{Uusi organisaatio, uudet pyörät}
+\newcommand{\SSUBTITLE}{Lilla Vargens universum}
+\newcommand{\DATE}{June 18, 2011}
+\newcommand{\FDATE}{18. kesäkuuta 2011}
+\newcommand{\SDATE}{Den 18 Juni 2011}
+
+% Supervisors and instructors
+% ------------------------------------------------------------------
+% If you have two supervisors, write both names here, separate them with a 
+% double-backslash (see below for an example)
+% Also remember to add the package option ``twosupervisors'' or
+% ``twoinstructors'' to the aalto-thesis package so that the titles are in
+% plural.
+% Example of one supervisor:
+%\newcommand{\SUPERVISOR}{Professor Antti Ylä-Jääski}
+%\newcommand{\FSUPERVISOR}{Professori Antti Ylä-Jääski}
+%\newcommand{\SSUPERVISOR}{Professor Antti Ylä-Jääski}
+% Example of twosupervisors:
+\newcommand{\SUPERVISOR}{Professor Antti Ylä-Jääski\\
+  Professor Pekka Perustieteilijä}
+\newcommand{\FSUPERVISOR}{Professori Antti Ylä-Jääski\\
+  Professori Pekka Perustieteilijä}
+\newcommand{\SSUPERVISOR}{Professor Antti Ylä-Jääski\\
+  Professor Pekka Perustieteilijä}
+
+% If you have only one instructor, just write one name here
+\newcommand{\INSTRUCTOR}{Olli Ohjaaja M.Sc. (Tech.)}
+\newcommand{\FINSTRUCTOR}{Diplomi-insinööri Olli Ohjaaja}
+\newcommand{\SINSTRUCTOR}{Diplomingenjör Olli Ohjaaja}
+% If you have two instructors, separate them with \\ to create linefeeds
+% \newcommand{\INSTRUCTOR}{Olli Ohjaaja M.Sc. (Tech.)\\
+%  Elli Opas M.Sc. (Tech)}
+%\newcommand{\FINSTRUCTOR}{Diplomi-insinööri Olli Ohjaaja\\
+%  Diplomi-insinööri Elli Opas}
+%\newcommand{\SINSTRUCTOR}{Diplomingenjör Olli Ohjaaja\\
+%  Diplomingenjör Elli Opas}
+
+% If you have two supervisors, it is common to write the schools
+% of the supervisors in the cover page. If the following command is defined,
+% then the supervisor names shown here are printed in the cover page. Otherwise,
+% the supervisor names defined above are used.
+\newcommand{\COVERSUPERVISOR}{Professor Antti Ylä-Jääski, Aalto University\\
+  Professor Pekka Perustieteilijä, University of Helsinki}
+
+% The same option is for the instructors, if you have multiple instructors.
+% \newcommand{\COVERINSTRUCTOR}{Olli Ohjaaja M.Sc. (Tech.), Aalto University\\
+%  Elli Opas M.Sc. (Tech), Aalto SCI}
+
+
+% Other stuff
+% ------------------------------------------------------------------
+\newcommand{\PROFESSORSHIP}{Data Communication Software}
+\newcommand{\FPROFESSORSHIP}{Tietoliikenneohjelmistot}
+\newcommand{\SPROFESSORSHIP}{Datakommunikationsprogram}
+% Professorship code is the same in all languages
+\newcommand{\PROFCODE}{T-110}
+\newcommand{\KEYWORDS}{ocean, sea, marine, ocean mammal, marine mammal, whales,
+cetaceans, dolphins, porpoises}
+\newcommand{\FKEYWORDS}{AEL, aineistot, aitta, akustiikka, Alankomaat,
+aluerakentaminen, Anttolanhovi, Arcada, ArchiCad, arkki}
+\newcommand{\SKEYWORDS}{omsättning, kassaflöde, värdepappersmarknadslagen,
+yrkesutövare, intresseföretag, verifieringskedja}
+\newcommand{\LANGUAGE}{English}
+\newcommand{\FLANGUAGE}{Englanti}
+\newcommand{\SLANGUAGE}{Engelska}
+
+% Author is the same for all languages
+\newcommand{\AUTHOR}{Stella Student}
+
+
+% Currently the English versions are used for the PDF file metadata
+% Set the PDF title
+\hypersetup{pdftitle={\TITLE\ \SUBTITLE}}
+% Set the PDF author
+\hypersetup{pdfauthor={\AUTHOR}}
+% Set the PDF keywords
+\hypersetup{pdfkeywords={\KEYWORDS}}
+% Set the PDF subject
+\hypersetup{pdfsubject={Master's Thesis}}
+
+
+% Layout settings
+% ------------------------------------------------------------------
+
+% When you write in English, you should use the standard LaTeX 
+% paragraph formatting: paragraphs are indented, and there is no 
+% space between paragraphs.
+% When writing in Finnish, we often use no indentation in the
+% beginning of the paragraph, and there is some space between the 
+% paragraphs. 
+
+% If you write your thesis Finnish, uncomment these lines; if 
+% you write in English, leave these lines commented! 
+% \setlength{\parindent}{0pt}
+% \setlength{\parskip}{1ex}
+
+% Use this to control how much space there is between each line of text.
+% 1 is normal (no extra space), 1.3 is about one-half more space, and
+% 1.6 is about double line spacing.  
+% \linespread{1} % This is the default
+% \linespread{1.3}
+
+% Bibliography style
+% acm style gives you a basic reference style. It works only with numbered
+% references.
+\bibliographystyle{acm}
+% Plainnat is a plain style that works with both numbered and name citations.
+% \bibliographystyle{plainnat}
+
+
+% Extra hyphenation settings
+% ------------------------------------------------------------------
+% You can list here all the files that are not hyphenated correctly.
+% You can provide many \hyphenation commands and/or separate each word
+% with a space inside a single command. Put hyphens in the places where
+% a word can be hyphenated.
+% Note that (by default) LaTeX will not hyphenate words that already
+% have a hyphen in them (for example, if you write ``structure-modification 
+% operation'', the word structure-modification will never be hyphenated).
+% You need a special package to hyphenate those words.
+\hyphenation{di-gi-taa-li-sta yksi-suun-tai-sta}
+
+
+
+% The preamble ends here, and the document begins. 
+% Place all formatting commands and such before this line.
+% ------------------------------------------------------------------
+\begin{document}
+% This command adds a PDF bookmark to the cover page. You may leave
+% it out if you don't like it...
+\pdfbookmark[0]{Cover page}{bookmark.0.cover}
+% This command is defined in aalto-thesis.sty. It controls the page 
+% numbering based on whether the doublenumbering option is specified
+\startcoverpage
+
+% Cover page
+% ------------------------------------------------------------------
+% Options: finnish, english, and swedish
+% These control in which language the cover-page information is shown
+\coverpage{english}
+
+
+% Abstracts
+% ------------------------------------------------------------------
+% Include an abstract in the language that the thesis is written in,
+% and if your native language is Finnish or Swedish, one in that language.
+
+% Abstract in English
+% ------------------------------------------------------------------
+\thesisabstract{english}{
+A dissertation or thesis is a document submitted in support of candidature
+for a degree or professional qualification presenting the author's research and
+findings. In some countries/universities, the word thesis or a cognate is used
+as part of a bachelor's or master's course, while dissertation is normally
+applied to a doctorate, whilst, in others, the reverse is true.
+
+\fixme{Abstract text goes here (and this is an example how to use fixme).} 
+Fixme is a command that helps you identify parts of your thesis that still
+require some work. When compiled in the custom \texttt{mydraft} mode, text
+parts tagged with fixmes are shown in bold and with fixme tags around them. When
+compiled in normal mode, the fixme-tagged text is shown normally (without
+special formatting). The draft mode also causes the ``Draft'' text to appear on
+the front page, alongside with the document compilation date. The custom
+\texttt{mydraft} mode is selected by the \texttt{mydraft} option given for the
+package \texttt{aalto-thesis}, near the top of the \texttt{thesis-example.tex}
+file.
+
+The thesis example file (\texttt{thesis-example.tex}), all the chapter content
+files (\texttt{1introduction.tex} and so on), and the Aalto style file
+(\texttt{aalto-thesis.sty}) are commented with explanations on how the Aalto
+thesis works. The files also contain some examples on how to customize various
+details of the thesis layout, and of course the example text works as an
+example in itself. Please read the comments and the example text; that should
+get you well on your way!}
+
+% Abstract in Finnish
+% ------------------------------------------------------------------
+\thesisabstract{finnish}{
+Kivi on materiaali, joka muodostuu mineraaleista ja luokitellaan
+mineraalisisältönsä mukaan. Kivet luokitellaan yleensä ne muodostaneiden
+prosessien mukaan magmakiviin, sedimenttikiviin ja metamorfisiin kiviin.
+Magmakivet ovat muodostuneet kiteytyneestä magmasta, sedimenttikivet vanhempien
+kivilajien rapautuessa ja muodostaessa iskostuneita yhdisteitä, metamorfiset
+kivet taas kun magma- ja sedimenttikivet joutuvat syvällä maan kuoressa
+lämpötilan ja kovan paineen alaiseksi.
+
+Kivi on epäorgaaninen eli elottoman luonnon aine, mikä tarkoittaa ettei se
+sisällä hiiltä tai muita elollisen orgaanisen luonnon aineita. Niinpä kivestä
+tehdyt esineet säilyvät maaperässä tuhansien vuosien ajan mätänemättä. Kun
+orgaaninen materiaali jättää jälkensä kiveen, tulos tunnetaan nimellä fossiili.
+
+Suomen peruskallio on suurimmaksi osaksi graniittia, gneissiä ja
+Kaakkois-Suomessa rapakiveä.
+
+Kiveä käytetään teollisuudessa moniin eri tarkoituksiin, kuten keittiötasoihin.
+Kivi on materiaalina kalliimpaa mutta kestävämpää kuin esimerkiksi puu.}
+
+% Abstract in Swedish
+% ------------------------------------------------------------------
+\thesisabstract{swedish}{
+Lilla Vargens universum är det tredje fiktiva universumet inom huvudfåran av de
+tecknade disneyserierna - de övriga två är Kalle Ankas och Musse Piggs
+universum. Figurerna runt Lilla Vargen kommer huvudsakligen från tre källor ---
+dels persongalleriet i kortfilmen Tre små grisar från 1933 och dess uppföljare,
+dels långfilmen Sången om Södern från 1946, och dels från episoden ``Bongo'' i
+långfilmen Pank och fågelfri från 1947. Framför allt de två första har
+sedermera även kommit att leva vidare, utvidgas och införlivas i varandra genom
+tecknade serier, främst sådana producerade av Western Publishing för
+amerikanska Disneytidningar under åren 1945--1984. 
+
+Världen runt Lilla Vargen är, i jämförelse med den runt Kalle Anka eller Musse
+Pigg, inte helt enhetlig, vilket bland annat märks i Bror Björns skiftande
+personlighet. Den har även varit betydligt mer öppen för influenser från andra
+Disneyvärldar, inte minst de tecknade långfilmerna. Ytterligare en skillnad är
+att varelserna i vargserierna förefaller stå närmare sina förebilder inom den
+verkliga djurvärlden. Att vargen Zeke vill äta upp grisen Bror Duktig är till
+exempel ett ständigt återkommande tema, men om katten Svarte Petter skulle få
+för sig att äta upp musen Musse Pigg skulle detta antagligen höja ett och annat
+ögonbryn bland läsarna.}
+
+
+% Acknowledgements
+% ------------------------------------------------------------------
+% Select the language you use in your acknowledgements
+\selectlanguage{english}
+
+% Uncomment this line if you wish acknoledgements to appear in the 
+% table of contents
+%\addcontentsline{toc}{chapter}{Acknowledgements}
+
+% The star means that the chapter isn't numbered and does not 
+% show up in the TOC
+\chapter*{Acknowledgements}
+
+I wish to thank all students who use \LaTeX\ for formatting their theses,
+because theses formatted with \LaTeX\ are just so nice.
+
+Thank you, and keep up the good work!
+\vskip 10mm
+
+\noindent Espoo, \DATE
+\vskip 5mm
+\noindent\AUTHOR
+
+% Acronyms
+% ------------------------------------------------------------------
+% Use \cleardoublepage so that IF two-sided printing is used 
+% (which is not often for masters theses), then the pages will still
+% start correctly on the right-hand side.
+\cleardoublepage
+% Example acronyms are placed in a separate file, acronyms.tex
+\input{acronyms}
+
+% Table of contents
+% ------------------------------------------------------------------
+\cleardoublepage
+% This command adds a PDF bookmark that links to the contents.
+% You can use \addcontentsline{} as well, but that also adds contents
+% entry to the table of contents, which is kind of redundant.
+% The text ``Contents'' is shown in the PDF bookmark. 
+\pdfbookmark[0]{Contents}{bookmark.0.contents}
+\tableofcontents
+
+% List of tables
+% ------------------------------------------------------------------
+% You only need a list of tables for your thesis if you have very 
+% many tables. If you do, uncomment the following two lines.
+% \cleardoublepage
+% \listoftables
+
+% Table of figures
+% ------------------------------------------------------------------
+% You only need a list of figures for your thesis if you have very 
+% many figures. If you do, uncomment the following two lines.
+% \cleardoublepage
+% \listoffigures
+
+% The following label is used for counting the prelude pages
+\label{pages-prelude}
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%% The main content starts here %%%%%%%%%%%%%%%%%%%%%
+% ------------------------------------------------------------------
+% This command is defined in aalto-thesis.sty. It controls the page 
+% numbering based on whether the doublenumbering option is specified
+\startfirstchapter
+
+% Add headings to pages (the chapter title is shown)
+\pagestyle{headings}
+
+% The contents of the thesis are separated to their own files.
+% Edit the content in these files, rename them as necessary.
+% ------------------------------------------------------------------
+\input{1introduction.tex}
+
+\input{2background.tex}
+
+\input{3environment.tex}
+
+\input{4methods.tex}
+ 
+\input{5implementation.tex}
+
+\input{6evaluation.tex}
+ 
+\input{7discussion.tex}
+ 
+\input{8conclusions.tex}
+
+
+% Load the bibliographic references
+% ------------------------------------------------------------------
+% You can use several .bib files:
+% \bibliography{thesis_sources,ietf_sources}
+\bibliography{sources}
+
+
+% Appendices go here
+% ------------------------------------------------------------------
+% If you do not have appendices, comment out the following lines
+\appendix
+\input{appendices.tex}
+
+% End of document!
+% ------------------------------------------------------------------
+% The LastPage package automatically places a label on the last page.
+% That works better than placing a label here manually, because the
+% label might not go to the actual last page, if LaTeX needs to place
+% floats (that is, figures, tables, and such) to the end of the 
+% document.
+\end{document}
