@@ -5,4 +5,4 @@ all:
 	$(COMMAND) $(DOC)
 
 clean:
-	rm -rf *~ *.log *.aux *.toc *.out *.pdf
+	rm -rf *~ *.log *.aux *.toc *.out
