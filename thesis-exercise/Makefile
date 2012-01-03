@@ -1,7 +1,8 @@
 COMMAND=pdflatex
 DOC=exercise.tex
+OUTPUT=exercise.pdf
 
-all:
+$(OUTPUT): $(DOC)
 	$(COMMAND) $(DOC)
 
 clean:
