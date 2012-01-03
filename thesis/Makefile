@@ -4,8 +4,9 @@ DOC=thesis.tex
 DOC_FILES=aalto-thesis.sty
 SOURCES=sources.bib
 BIBDOC=thesis
+OUTPUT=thesis.pdf
 
-thesis.pdf: $(DOC) $(DOC_FILES) $(SOURCES)
+$(OUTPUT): $(DOC) $(DOC_FILES) $(SOURCES)
 	$(TEX) $(DOC)
 	$(BIBTEX) $(BIBDOC)
 	$(TEX) $(DOC)
