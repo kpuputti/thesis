@@ -4,7 +4,7 @@ DOC=thesis.tex
 SOURCES=sources.bib
 BIBDOC=thesis
 
-all: $(DOC) $(SOURCES)
+thesis.pdf: $(DOC) $(SOURCES)
 	$(TEX) $(DOC)
 	$(BIBTEX) $(BIBDOC)
 	$(TEX) $(DOC)
