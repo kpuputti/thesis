@@ -1,10 +1,11 @@
 TEX=pdflatex
 BIBTEX=bibtex
 DOC=thesis.tex
+DOC_FILES=aalto-thesis.sty
 SOURCES=sources.bib
 BIBDOC=thesis
 
-thesis.pdf: $(DOC) $(SOURCES)
+thesis.pdf: $(DOC) $(DOC_FILES) $(SOURCES)
 	$(TEX) $(DOC)
 	$(BIBTEX) $(BIBDOC)
 	$(TEX) $(DOC)
