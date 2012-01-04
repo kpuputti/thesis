@@ -1,7 +1,7 @@
 TEX=pdflatex
 BIBTEX=bibtex
 DOC=thesis.tex
-DOC_FILES=aalto-thesis.sty
+DOC_FILES=aalto-thesis.sty introduction.tex research-question.tex methods.tex results.tex discussion.tex test.tex
 SOURCES=sources.bib
 BIBDOC=thesis
 OUTPUT=thesis.pdf
