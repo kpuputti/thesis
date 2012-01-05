@@ -5,4 +5,4 @@ all:
 	$(LATEX) toc.tex
 
 clean:
-	rm -f *~ *.log *.aux *.toc *.out *.pdf
+	rm -f *~ *.log *.aux *.toc *.out
