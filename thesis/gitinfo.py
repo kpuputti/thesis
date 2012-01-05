@@ -4,7 +4,9 @@ import sys
 
 TMPL='''\\section{{Thesis Git repository info}}
 
-\\textbf{{Git HEAD:}}
+\\noindent Build time: \\textbf{{\\today \\, \\currenttime}}\\\\
+
+\\noindent \\textbf{{Git HEAD:}}
 
 \\begin{{verbatim}}
 {head}\\end{{verbatim}}
