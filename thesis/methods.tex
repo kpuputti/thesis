@@ -4,6 +4,46 @@
 \section{Qt Developer Days 2011 Conference Schedule Application}
 \label{section:devdays}
 
+The Qt Developer
+Days\footnote{\url{http://qt.nokia.com/qtdevdays2011/}} is a
+conference for developers using the Qt cross-platform application and
+\abbr{UI} framework\footnote{\url{http://qt.nokia.com/}}. We created a
+mobile web application for conference with contextual and personalized
+session information and per-day schedule.
+
+\subsection{Application Architecture}
+
+The conference
+schedule\footnote{\url{http://m.qtdevdays2011.qt.nokia.com/}} is a
+single-page application \citationneeded with a lightweight backend
+written in Python using the Django Web
+Framework\footnote{\url{https://www.djangoproject.com/}}.
+
+The backend provides the static assets (JavaScript, \abbr{CSS},
+images, etc.) and an \abbr{API} for persisting session feedback to a
+MySQL\footnote{\url{http://www.mysql.com/}} relational database. It
+also generates the HTML5 AppCache \citationneeded offline cache
+manifest file based on the device type.
+
+The frontend is a JavaScript application written using the
+Backbone\footnote{\url{http://backbonejs.org/}} \abbr{MVC}
+framework. Other used JavaScript libraries include
+Underscore\footnote{\url{http://underscorejs.org/}},
+jQuery\footnote{\url{http://jquery.com/}},
+Handlebars\footnote{\url{http://handlebarsjs.com/}}, and
+Modernizr\footnote{\url{http://www.modernizr.com/}}. The HTML5 Mobile
+Boilerplate\footnote{\url{http://html5boilerplate.com/mobile}} was
+used as an initial markup structure for the application.
+
+Wireless networks can be unreliable in conference settings, so offline
+support was also added using several different JavaScript techniques
+and HTML5 APIs.
+
+The application was designed for touch screens on various platforms
+and screen sizes. The layout adjusts to the available space and
+provides rich interactive components. Integration to social networking
+services was also added to the application.
+
 \section{JSONCache JavaScript Library}
 \label{section:jsoncache}
 
