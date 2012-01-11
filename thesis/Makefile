@@ -1,12 +1,11 @@
 TEX=pdflatex
 BIBTEX=bibtex
 DOC=thesis.tex
-DOC_FILES=aalto-thesis.sty introduction.tex research-question.tex methods.tex results.tex discussion.tex test.tex gitinfo.py gitinfo.tex
-SOURCES=sources.bib
+DOC_FILES=*.sty *.tex *.bib gitinfo.py images/*
 BIBDOC=thesis
 OUTPUT=thesis.pdf
 
-$(OUTPUT): $(DOC) $(DOC_FILES) $(SOURCES)
+$(OUTPUT): $(DOC) $(DOC_FILES)
 	python gitinfo.py > gitinfo.tex
 	$(TEX) $(DOC)
 	$(BIBTEX) $(BIBDOC)
