@@ -8,8 +8,8 @@ The Qt Developer
 Days\footnote{\url{http://qt.nokia.com/qtdevdays2011/}} is a
 conference for developers using the Qt cross-platform application and
 \abbr{UI} framework\footnote{\url{http://qt.nokia.com/}}. We created a
-mobile web application for conference with contextual and personalized
-session information and per-day schedule.
+mobile web application with contextual and personalized session
+information and per-day schedule for the conference.
 
 \subsection{Application Architecture}
 
@@ -31,17 +31,22 @@ The backend provides the static assets (JavaScript, \abbr{CSS},
 images, etc.) and an \abbr{API} for persisting session feedback to a
 MySQL\footnote{\url{http://www.mysql.com/}} relational database. It
 also generates the HTML5 AppCache \citationneeded offline cache
-manifest file based on the device type.
+manifest file based on the categorized device type.
 
 The frontend is a JavaScript application written using the
 Backbone\footnote{\url{http://backbonejs.org/}} \abbr{MVC}
 framework. Other used JavaScript libraries include
-Underscore\footnote{\url{http://underscorejs.org/}},
-jQuery\footnote{\url{http://jquery.com/}},
-Handlebars\footnote{\url{http://handlebarsjs.com/}}, and
-Modernizr\footnote{\url{http://www.modernizr.com/}}. The HTML5 Mobile
+Underscore\footnote{\url{http://underscorejs.org/}} for data
+manipulation, jQuery\footnote{\url{http://jquery.com/}} for \abbr{DOM}
+API abstraction, Handlebars\footnote{\url{http://handlebarsjs.com/}}
+for templating, and
+Modernizr\footnote{\url{http://www.modernizr.com/}} for feature
+detection. The HTML5 Mobile
 Boilerplate\footnote{\url{http://html5boilerplate.com/mobile}} was
-used as an initial markup structure for the application.
+used as an initial markup structure for the application. The
+architecture of is depicted in Figure~\ref{figure:devdays.png}.
+
+\fixme{add app request flow description?}
 
 Wireless networks can be unreliable in conference settings, so offline
 support was also added using several different JavaScript techniques
@@ -50,7 +55,9 @@ and HTML5 APIs.
 The application was designed for touch screens on various platforms
 and screen sizes. The layout adjusts to the available space and
 provides rich interactive components. Integration to social networking
-services was also added to the application.
+services was also added as an additional functionality.
+
+\fixme{add screenshots on different devices (at least phone and tablet}
 
 \section{JSONCache JavaScript Library}
 \label{section:jsoncache}
