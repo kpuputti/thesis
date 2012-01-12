@@ -9,7 +9,7 @@ Days\footnote{\url{http://qt.nokia.com/qtdevdays2011/}} is a
 conference for developers using the Qt cross-platform application and
 \abbr{UI} framework\footnote{\url{http://qt.nokia.com/}}. We created a
 mobile web application with contextual and personalized session
-information and per-day schedule for the conference.
+information and daily schedule for the conference.
 
 \subsection{Application Architecture}
 
@@ -46,8 +46,6 @@ Boilerplate\footnote{\url{http://html5boilerplate.com/mobile}} was
 used as an initial markup structure for the application. The
 architecture of is depicted in Figure~\ref{figure:devdays.png}.
 
-\fixme{add app request flow description?}
-
 Wireless networks can be unreliable in conference settings, so offline
 support was also added using several different JavaScript techniques
 and HTML5 APIs.
@@ -63,10 +61,10 @@ services was also added as an additional functionality.
 \label{section:jsoncache}
 
 JSONCache is a lightweight JavaScript library for fetching \abbr{JSON}
-data in flaky networks. The library was designed especially to handle
-flaky mobile networks with connection problems and short
+data in unreliable networks. The library was designed especially to
+handle unreliable mobile networks with connection problems and short
 interruptions. The goal is to avoid networking as long as possible and
-failing gracefully if network connections are not stable.
+failing gracefully if the network connections are not stable.
 
 JSONCache provides two main functionalities: data caching and
 attempting to fetch the data multiple times.
@@ -78,21 +76,21 @@ any network connections. If the data is already in the cache, the
 cached data is checked for validity and if the data has not been
 expired, it is returned immediately. If the data is not in the cache
 or it has been expired, a new network request is made and the received
-data is cached and returned to the requestor. The expiration time of a
-data item can be configured in the library settings.
+data is cached and returned. The expiration time of a data item can be
+configured in the library settings.
 
 JSONCache also tries to fetch the data multiple times to handle small
-interruptions in network connection. \fixme{add example and explain
+interruptions in network connections. \fixme{add example and explain
   that it is very common}. If a data fetch fails, a new fetch is
 issued after a timeout (defined in the configuration). On subsequent
 attempts the timeout is increased, and after a defined number of
-attempts the fetch error is issued to the requestor.
+attempts the fetch error is issued.
 
 Figure~\ref{figure:jsoncache-demo.png} shows an interactive demo of
 the JSONCache library. The
 demo\footnote{\url{http://kpuputti.github.com/JSONCache/demo/index.html}}
 simulates the caching and fetching functionality of the library by
-simulating a flaky network according to the configuration.
+simulating a unreliable network based on the configuration.
 
 \begin{figure}[ht]
   \begin{center}
