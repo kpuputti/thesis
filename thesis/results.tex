@@ -85,12 +85,118 @@ generally the recommended option whenever possible.
 
 \subsection{Feature Detection}
 
+Feature detection is an important concept in Progressive Enhancement
+design (See Section~\ref{subsection:progressive-enhancement}). A lot
+of the HTML5 related JavaScript APIs are still unsupported in several
+platforms, but browser developers are constantly filling the
+gaps. Therefore, it is important to check whether a certain feature is
+supported and provide graceful fallback mechanisms for browsers
+lacking the functionality.
 
+Doing runtime feature detection provides the possibility to give
+additional functionality to modern browsers and instant support for
+devices that add the feature support in the lifetime of the
+application. In the conference application (\fixme{ref needed?}), we
+used the Modernizr feature detection library (\fixme{already ref
+  earlier, add bib entry?}) to check for HTML5 features.
 
-\section{Targeting Different Screens And Orientations}
+For example, the user could add sessions to his or her favorites by
+clicking the star in the agenda or on the session details view
+(\fixme{add screenshot?}). The favorites were then listed on the home
+view together with information about the time left for them to begin.
+
+We used HTML5 localStorage for storing the favorites in the user's web
+browser. By using Modernizr, we detected localStorage support and
+showed the favorite stars only in browsers that supported the
+functionality. For all other browsers, the stars were simply hidden
+and users could not add favorites. We could have also provided a
+fallback mechanism for persisting the favorites to the backend, but
+for simplicity and because we targeted mostly modern platforms, this
+approach was considered as reasonable.
+
+\section{Targeting Different Screens}
 \label{section:targeting-screens}
 
+Probably the biggest difference in various devices and form factors is
+the screen size, resolution, and dimensions. Web applications should
+adjust to the available space and flexible handle screen orientation
+and window size changes.
 
+First, to target mobile and tablet platforms, the viewport meta
+information should be indicated in the document. The following tag was
+used in the conference application:
+
+\begin{verbatim}
+<meta name="viewport" content="width=device-width,
+                               initial-scale=1.0">
+\end{verbatim}
+
+The viewport meta tag was first introduced in Apple's iPhone and
+afterwards ported to other platforms, such as Android. The possible
+configuration options and default values might vary between
+platforms. Values accepted by Android are shown in
+Table~\ref{table:viewport-meta} (\fixme{Check table ref number})
+\citationneeded. iOS devices also support these same properties.
+
+\begin{table}
+  \begin{tabular}{ l | l | p{5cm} }
+    \textbf{Property} & \textbf{Description} & \textbf{Value} \\ \hline
+    height & Height of the viewport. & pixel value or 'device-height' \\
+    width & Width of the viewport. & pixel value or 'device-width' \\
+    initial-scale & Initial zoom level. & float value (0.01--10) \\
+    minimum-scale & Minimum zoom level. & float value (0.01--10) \\
+    maximum-scale & Maximum zoom level. & float value (0.01--10) \\
+    user-scalable & Enables/disables zoom. & 'yes' or 'no' \\
+    target-densitydpi & Visual pixel density. & dpi value, 'device-dpi', 'high-dpi', 'medium-dpi', or 'low-dpi' \\
+  \end{tabular}
+  \label{table:viewport-meta}
+  \caption{Viewport meta tag configuration for Android.}
+\end{table}
+
+If we do not set the viewport configuration tag, the device uses its
+own default values for the properties. For example, the default value
+for the width property is 980 pixels in iOS \citationneeded, which is
+clearly defined for web sites targeting desktop browsers. Without
+setting this value to something smaller and more appropriate in a
+mobile context, the whole application is very wide and has small and
+unreadable text in the initial zoom level.
+
+In the viewport configuration we used for the conference application
+(as defined above), we set the viewport width to 'device\_width'. This
+makes the application width to adjust to the visual pixels of the
+device screen and works well with screens of different sizes and
+dimensions. The only other viewport property we set is the initial
+scaling. This is set to 1.0 to force the browser to render the
+application without any initial zooming.
+
+In addition to the viewport configuration, we used media queries
+\citationneeded to use better background images for high resolution
+screens. We also dynamically set the map view (\fixme{Add
+  screenshot?}) images based on the screen dimensions so that we could
+provide smaller images for smaller screens and high resolution images
+for tablets and other devices with larger screen estate.
+
+\section{Handling Different Orientations}
+
+As shown in the previous section, screen sizes and dimensions vary
+between devices. In addition to handling different resolutions and
+dimensions, we must also handle screen orientation changes. The width
+and height of the touch screens are usually different, and the user
+can hold the device either in portrait or in landscape mode and in any
+point switch between these two.
+
+In the conference application, we wanted to have different header and
+footer background images for different orientations. We also needed to
+redraw the agenda view when the screen width changes since the items
+on the schedule needed to be dynamically positioned to the available
+space.
+
+Mobile browsers trigger an 'orientationchange' event whenever the
+device orientation changes. We listened to this event, inferred the
+orientation from the screen dimensions, and executed the wanted
+functionality for the event. We also had to do a fallback for Mobile
+\abbr{IE} browser to listen to the window resize event because the
+browser does not support the orientation change event.
 
 \section{Handling Mobile Networks}
 \label{section:handling-networks}
