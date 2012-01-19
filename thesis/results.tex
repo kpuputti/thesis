@@ -4,11 +4,77 @@
 \section{Targeting Different Platforms}
 \label{section:targeting-platforms}
 
+Despite the web browser being the unified environment for different
+platforms, there are lot of differences between different devices. The
+form factors vary from tiny mobile screens to touch screen tablets and
+desktop monitors and each device and platform has its own feature
+set. There are also known bugs in the browsers that have to handled.
+
+Therefore, means to detect the user's device are needed. Here we
+present two such means: device detection and feature detection. Both
+of these were used in our conference application.
+
 \subsection{Device Detection}
+
+The User-Agent (\abbr{UA}) \abbr{HTTP} header contains detailed
+information of the web browser and platform where the request
+originates. As we can see from Table~\ref{table:user-agents}, we can
+extract platform and browser specific information from the UA header.
+
+\fixme{Check table reference numbering}
+
+\begin{table}
+  \begin{tabular}{ l | l | p{7cm} }
+    \textbf{Device} & \textbf{Platform} & \textbf{User-Agent} \\ \hline
+    Samsung Nexus S & Android 2.3.4 & Mozilla/5.0 (Linux; U; Android 2.3.4; en-us; Nexus S Build/GRJ22) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 \\ \hline
+    Apple iPhone & iOS 3.1.3 & Mozilla/5.0 (iPhone; U; CPU iPhone OS 3\_1\_3 like Mac OS X; de-de) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 Safari/528.16 \\ \hline
+    Apple iPad & iOS 5.0 & Mozilla/5.0 (iPad; CPU OS 5\_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9A334 \\ \hline
+    ? & Android & Opera/9.80 (Android; Opera Mini/6.5.26571/26.1023; U; de) Presto/2.8.119 Version/10.54 \\ \hline
+  \end{tabular}
+  \label{table:user-agents}
+  \caption{Example User-Agent strings.}
+\end{table}
+
+In the conference application, device detection was used in the
+backend to provide a different offline AppCache manifest to different
+device groups.
+
+
+\begin{table}
+  \begin{tabular}{ l | l }
+    \textbf{Rule} & \textbf{Device Type} \\ \hline
+    'iPad' in UA & highres \\
+    'iPhone' in UA & iphone \\
+    'Android 3' in UA & highres \\
+    'mobile' (case insensitive) in UA & mobile \\
+    'MIDP' in UA & mobile \\
+    'Opera Mobi' in UA & mobile \\
+    'Opera Mini' in UA & mobile \\
+    otherwise (desktop computer) & highres
+  \end{tabular}
+  \label{table:device-detection-rules}
+  \caption{Device type detection rules.}
+\end{table}
+
+
+However, despite getting detailed information from the UA header, it
+is considered a bad practice to detect a device from it and provide
+device specific bug fixes or additional features. The header can
+easily be changed and some browsers or browser plugins even provide
+preconfigured values for certain browsers or devices for
+spoofing. Also, the device specific bug fixes might become obsolete
+with platform updates, and the application might break due to invalid
+expectations. This is why feature detection is generally the
+recommended option whenever possible.
+
 \subsection{Feature Detection}
 
-\section{Targeting Different Screens}
+
+
+\section{Targeting Different Screens And Orientations}
 \label{section:targeting-screens}
+
+
 
 \section{Handling Mobile Networks}
 \label{section:handling-networks}
@@ -21,6 +87,14 @@
 
 \section{Graphics and Animations}
 \label{section:graphics}
+
+\section{Following JavaScript Best Practices}
+\label{section:js-best-practices}
+
+\subsection{JSLint}
+\subsection{Lazy initialization}
+\subsection{Efficient DOM Manipulation}
+\subsection{Efficient Event Handling}
 
 \section{Performance Analysis}
 \label{section:performance-analysis}
