@@ -201,11 +201,34 @@ browser does not support the orientation change event.
 \section{Handling Mobile Networks}
 \label{section:handling-networks}
 
+
+
 \subsection{Minimizing Data Transfer}
+
+
+
 \subsection{Caching}
+
+
+
 \subsection{Preloading}
+
+One way to prevent \abbr{UI} slowness due to flaky networks is to
+preload resources and data that is expected to be used later on. In
+the conference application we predownloaded background images and
+other graphics in the application initialization.
+
+For example, downloading the header and footer background images for
+both orientations made the device orientation change more responsive
+because otherwise the browser would have started to download the
+images after the orientation had already changed. With preloaded
+images the browser just had to switch the image and render it
+instantly without any networking.
+
 \subsection{Offline Support}
 \subsection{Handling Interruptions}
+
+
 
 \section{Graphics and Animations}
 \label{section:graphics}
@@ -223,3 +246,11 @@ browser does not support the orientation change event.
 
 \subsection{YSlow}
 \subsection{PageSpeed}
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/devdays-pagespeed.png}
+    \caption{Page Speed results for the conference application.}
+    \label{figure:devdays-pagespeed.png}
+  \end{center}
+\end{figure}
