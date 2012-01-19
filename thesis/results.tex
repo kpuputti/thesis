@@ -245,7 +245,13 @@ instantly without any networking.
 \label{section:performance-analysis}
 
 \subsection{YSlow}
-\subsection{PageSpeed}
+\subsection{Page Speed}
+
+Page Speed \citationneeded is an open-source project by Google for
+analyzing and optimizing web site performance best practices. We used
+the Google Chrome browser extension to analyze the conference
+application against the performance rules defined in Page Speed. The
+results are pictured in Figure~\ref{figure:devdays-pagespeed.png}.
 
 \begin{figure}[ht]
   \begin{center}
@@ -254,3 +260,40 @@ instantly without any networking.
     \label{figure:devdays-pagespeed.png}
   \end{center}
 \end{figure}
+
+We were very happy with the Page Speed score of 92 out of 100. A lot
+of the performance rules analyzed by Page Speed are similar to the
+guidelines listed in Section~\ref{section:performance-guidelines}, but
+there are also additional rules.
+
+The only real problem in the score was the 'Optimize Images' rule. We
+had not optimized the images used in the application, but instead used
+the images provided by the designers. Going further, we could have
+saved a lot or bandwidth by optimizing the images with tools such as
+Pngcrush\footnote{\url{http://pmt.sourceforge.net/pngcrush/}}.
+
+Of the other notes in the results, 'Defer parsing of JavaScript' could
+have been avoided by adding a 'defer' attribute to all the script tags
+in the document. The reason for this rule is that scripts block page
+rendering as defined in
+Section~\ref{section:performance-guidelines}. However, since we
+followed the guideline 'Put Scripts at the Bottom', this rendering
+issue is avoided. The only script in the document head was Modernizr,
+which must be included before the page is parsed because it creates
+the essential HTML5 tag support for older browsers and must do so
+before the tags are parsed.
+
+The 'Minify JavaScript' note was probably due to the Handlebars
+templating library not being minified. All the JavaScript libraries
+were included in their minified form, but Handlebars library was only
+available unminified. We also did not want to minify it ourselves to
+avoid breaking any functionality. All other JavaScript files were
+minified and concatenated to avoid extra HTTP requests.
+
+The 'Minify CSS' note was not seen as important since CSS compression
+does not yield big improvements and because the CSS files were already
+Gzipped delivered. The 'Remove query strings from static resources'
+note means that query parameters like '?123' should be removed from
+the end of the \abbr{URLs} because they might not be cached in some
+proxies. We did not change this because the query strings in the
+static assets were an essential part of our caching strategy.
