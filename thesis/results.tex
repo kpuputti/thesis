@@ -298,7 +298,21 @@ network connection is open again.
 
 \subsection{Handling Interruptions}
 
+Small interruptions are common in mobile networks \citationneeded. For
+example, the user might have a stable network connection, but after
+walking into an elevator the connection drops for a moment. Then after
+exiting the elevator the device reconnects to the
+network. Applications should expect these interruptions and should not
+fail immediately with brief interruptions in flaky networks.
 
+JSONCache library introduced in Section~\ref{section:jsoncache} had a
+functionality to overcome these issues. The library tries to download
+the requested data multiple times, and fails only when the configured
+maximum attempt count is reached. With every iteration, a timeout is
+set for a new request, and the timeout is increased after each failed
+attempt. This approach works very well, and together with localStorage
+caching lets data updates circumvent small network interruptions
+failing only when the network connection seems to be completely down.
 
 \section{Graphics and Animations}
 \label{section:graphics}
