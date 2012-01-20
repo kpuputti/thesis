@@ -16,6 +16,7 @@ present two such means: device detection and feature detection. Both
 of these were used in our conference application.
 
 \subsection{Device Detection}
+\label{subsection:device-detection}
 
 The User-Agent (\abbr{UA}) \abbr{HTTP} header contains detailed
 information of the web browser and platform where the request
@@ -273,6 +274,28 @@ images the browser just had to switch the image and render it
 instantly without any networking.
 
 \subsection{Offline Support}
+
+Using HTML5 AppCache offline manifest file and storing application
+state to localStorage, we provided full offline compatibility for the
+conference application. With the offline manifest, we specified the
+needed resources for all device types as categorized by the rules
+defined in Section~\ref{subsection:device-detection}. The offline
+cache also made subsequent application startups faster since the cache
+is more persistent than the HTTP cache in browsers.
+
+The offline support was especially critical for the conference
+application since the conference had indeed very bad wireless network.
+Without the offline support, users would not have been able to check
+the session schedule during the conference.
+
+However, the only thing needing the network was the session feedback
+functionality. The application had a feedback form for all sessions,
+and the submitted data was persisted in the backend. In offline mode,
+this functionality was not available. Going further, we could extend
+the offline support by saving the given feedback, for example, to
+localStorage and sending it later to the backend server when the
+network connection is open again.
+
 \subsection{Handling Interruptions}
 
 
