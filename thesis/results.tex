@@ -227,7 +227,36 @@ browser avoiding the network completely.
 
 \subsection{Caching}
 
+Caching on different levels of the application stack is one of the
+most important optimizations that should be done. Caching can be done
+in the client side using HTML5 APIs, on the HTTP level letting the
+browser handle it complying to the HTTP caching header semantics, or
+in various levels of the backend application stack.
 
+In the conference application, we put the most focus on the HTTP
+caching. Following the performance guidelines specified in
+Section~\ref{section:performance-guidelines}, we created unique
+\abbr{URLs} for all different versions of all static resources
+(images, CSS, JavaScript, and AppCache manifest files) and set a far
+future expires header for them. This way we could tell the browser to
+cache all resources as far as possible and updating the resources was
+handled by changing the version number in their corresponding URLs.
+
+In addition to the HTTP-level caching, using the AppCache manifest
+file told the browser to cache all needed resources to a more
+persistent offline cache, which minimized needed downloads on
+application startup if the resources were already in the cache.
+
+Client side caching was used in saving the user specific state in the
+conference application and experimented with the JSONCache library
+specified in Section~\ref{section:jsoncache}. Using localStorage, we
+can persist data in the browser and avoid networking if the cached
+data is still relevant.
+
+JSONCache handles the localStorage caching automatically, with only
+user configuration needed for setting the data lifetime. Every time
+the data is rerequested, the local cache is checked first, and
+networking can be avoided altogether.
 
 \subsection{Preloading}
 
