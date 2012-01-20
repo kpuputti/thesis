@@ -127,8 +127,8 @@ information should be indicated in the document. The following tag was
 used in the conference application:
 
 \begin{verbatim}
-<meta name="viewport" content="width=device-width,
-                               initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
 \end{verbatim}
 
 The viewport meta tag was first introduced in Apple's iPhone and
@@ -201,11 +201,29 @@ browser does not support the orientation change event.
 \section{Handling Mobile Networks}
 \label{section:handling-networks}
 
-
+One of the biggest problems in mobile web applications is the often
+slow and unreliable network. Our conference application was designed
+for a context where the application cannot trust on the networking but
+should still manage to handle interactions and persist application
+state. Also being a conference where people come from around the
+world, the network data transfer cost might be surprisingly high, and
+thus bandwidth should be saved whenever possible.
 
 \subsection{Minimizing Data Transfer}
 
+The best approach to minimize data that needs to be transferred is to
+avoid the transfer whenever possible, for example, with proper
+caching. However, with initial download or with dynamic data, the
+second best option is to minimize the size of the data needed to be
+transferred.
 
+First, we made sure the data was minimized and compressed with
+Gzip. Second, using \abbr{JSON} instead of \abbr{XML} in \abbr{Ajax}
+requests saves bandwidth and needed effort of the browser to process
+the data. Third, using the offline manifest ensured that the
+application assets and data needed to be downloaded only once, and
+using localStorage we could store the application state locally to the
+browser avoiding the network completely.
 
 \subsection{Caching}
 
