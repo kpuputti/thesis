@@ -338,7 +338,16 @@ code cleaner.
 
 \subsection{Lazy initialization}
 
+Postponing work as long as possible is a valuable optimization
+technique. In lazy initialization we minimize initialization work in
+application startup to render the initial view fast. We then
+initialize additional views only when they are requested.
 
+Implementing lazy initialization needs more work than simply doing all
+initialization work in the application startup, but the received
+benefits are worth the extra effort. In the conference application we
+tried to postpone all work to be done as late as possible and doing as
+little work as possible for faster execution.
 
 \subsection{Efficient DOM Manipulation}
 
@@ -361,7 +370,11 @@ Section~\ref{section:performance-guidelines}.
 
 \subsection{YSlow}
 
+YSlow is a website analyzer originally developed by Steve Souders. It
+checks the website against the rules defined in
+Section~\ref{section:performance-guidelines}.
 
+\fixme{Add YSlow results screenshot}
 
 \subsection{Page Speed}
 
