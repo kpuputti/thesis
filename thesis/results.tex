@@ -338,6 +338,13 @@ did not use any animations.
 \section{Following JavaScript Best Practices}
 \label{section:js-best-practices}
 
+There are lots of best practices and conventions that have been
+developed by the web developer community. A lot of these tried and
+tested techniques are outlined in the HTML5 Boilerplate
+\citationneeded that we used as our base for the conference
+application. Here we present some techniques and tools that help to
+improve application performance and reduce bugs.
+
 \subsection{JSLint}
 
 JSLint\footnote{\url{http://jslint.com/}} is a code quality tool for
@@ -367,19 +374,56 @@ little work as possible for faster execution.
 
 \subsection{Efficient DOM Manipulation}
 
-\begin{itemize}
-\item DOM manipulation is slow
-\item Using document fragments
-\item Minimizing reflows
-\item \cite{zakas2010high}
-\end{itemize}
+After mobile network issues and data transfers, DOM manipulation is
+one of the first things to optimize for performance. There are several
+known performance issues, but the biggest and most common issue is
+updating a number of elements at once. \cite{zakas2010high}
+
+The application might, for example, refresh the contents of a list,
+and with an overly simplistic (but still common) implementation would
+create the list items and add them to the list container one by
+one. This causes the browser to reflow the page after each insertion
+and might add up to \abbr{UI} artifacts and slowness.
+
+One approach to handle updating several elements at once is to use
+document fragments. With document fragments, several elements can be
+added to one fragment, which can then be added to the element
+container. This has no effect on the \abbr{DOM} tree itself, but it
+requires only one reflow from the browser. One other solution is
+hiding the container while its contents is modified, and showing after
+the modification are done. \cite{zakas2010high}
+
+We used these techniques in the conference application to minimize
+\abbr{UI} reflows to improve the perceived performance.
 
 \subsection{Efficient Event Handling}
 
-\begin{itemize}
-\item Event delegation
-\item \cite{zakas2010high}
-\end{itemize}
+In an interactive web application, there is lots of event listeners
+and handler functions. For example, a list of dozens or hundreds of
+items might have one or even several event handlers for each item in
+the list. This obviously becomes a burden especially in mobile devices
+with limited processing power and memory.
+
+One way to minimize event listeners is to use event delegation
+\cite{zakas2010high}. In event delegation we attach only one event
+listener to a parent element of the elements that we want to listen
+for events. Then in the parent event handler we check the target
+element of the event and handle the wanted functionality based on the
+target.
+
+One other optimization for touch screen is to use native touch events
+instead of traditional mouse events such as click. Mobile browsers
+typically have a delay or 300 milliseconds after a touchstart event
+until the the click event is fired \citationneeded. This is because
+the browser waits if the user is doing a double tap instead of a
+single tap and a delay is needed before a double tap can be
+excluded. If we bind our event handlers to the touch events instead of
+click events, we can immediately dismiss this delay altogether and
+make the \abbr{UI} components a lot more responsive.
+
+We used event delegation and touch events, for example, in the main
+navigation of the conference application to get the best performance
+and responsiveness in changing the page views.
 
 \section{Performance Analysis}
 \label{section:performance-analysis}
