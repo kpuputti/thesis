@@ -314,10 +314,26 @@ attempt. This approach works very well, and together with localStorage
 caching lets data updates circumvent small network interruptions
 failing only when the network connection seems to be completely down.
 
-\section{Graphics and Animations}
-\label{section:graphics}
+\section{Animations}
+\label{section:animations}
 
+Animation and transitions, if not overused, can be a valuable addition
+to the \abbr{UX} of an application. For example, having a simple
+sliding animation between different views makes the application more
+uniform and pleasing to the eye.
 
+There are several ways to animate elements in a web application. The
+simplest is to use \abbr{CSS3} animations. However, the performance of
+the animations is not yet good enough for a cross-platform mobile
+application. We tried to animate the view changes in our conference
+application, but even a simple cross-fade did not have good enough
+performance in all target platforms.
+
+Using progressive enhancement techniques (see
+Section~\ref{subsection:progressive-enhancement}) we could have
+provided enhanced experience for the platforms that support animations
+well, but only iOS devices performed well enough, so for simplicity we
+did not use any animations.
 
 \section{Following JavaScript Best Practices}
 \label{section:js-best-practices}
