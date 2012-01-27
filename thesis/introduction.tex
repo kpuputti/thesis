@@ -1,7 +1,7 @@
 \chapter{Introduction}
 \label{chapter:introduction}
 
-20 years after its birth, the Web has become one of the defining
+Twenty years after its birth, the Web has become one of the defining
 technological innovations that knows no geographical, political, or
 ideological boundaries. The world wide platform built on top of the
 physical Internet is deeply integrated into our daily lives. This
@@ -24,10 +24,11 @@ digital medium. \cite{fling2009mobile}
 
 Universal accessibility and openness are the keys to being the
 ubiquitous information platform of the digital age
-\cite{berners2010long}. Now the Web truly accomplishes its original
-principles in equality and universality; anyone can access this vast
-source of open information from anywhere, with any device. All you
-need is a web browser that supports the open standards of the Web.
+\cite{berners2010long}. Now the Web is closer in accomplishing its
+original principles in equality and universality; anyone can access
+this vast source of open information from anywhere, with any
+device. All you need is a web browser that supports the open standards
+of the Web.
 
 \begin{quotation}
   \noindent \textit{The goal of the Web is to serve humanity.}
@@ -36,24 +37,25 @@ need is a web browser that supports the open standards of the Web.
   \end{flushright}
 \end{quotation}
 
-Being the universal digital medium, mobile has some unique
-characteristics that other mass media lack. Mobile is personal,
-always-on, always-carried medium with a built-in payment
-channel. Mobile is in your pocket at the moment you have your creative
-impulse. \cite{fling2009mobile}
+Being the universal digital medium, mobile devices (\fixme{medium
+  vs. device?}) has some unique characteristics that other mass media
+lack. Mobile is personal, always-on, always-carried medium with a
+built-in payment channel. Mobile is in your pocket at the moment you
+have your creative impulse. \cite{fling2009mobile}
 
-These characteristics have made mobile applications a
-multibillion-dollar business. 5 years after Apple published its
+These characteristics have made mobile device applications a
+multibillion-dollar business. Five years after Apple published its
 game-changing iPhone and the App Store, touch screen mobile phones and
 tablets from different device manufacturers have spread all over the
 world. \cite{cortimiglia2011mobile, charland2011mobile,
   fling2009mobile}
 
 However, this proliferation of mobile devices and platforms has raised
-a serious issue for application developers: fragmentation. Not only is
-there multiple target platforms, but even within the platforms there
-are different versions with different feature sets, not to mention
-different devices with varying capabilities. \cite{charland2011mobile}
+a serious issue for application developers: fragmentation. Not only
+are there multiple target platforms, but even within the platforms
+there are different versions with different feature sets, not to
+mention different devices with varying
+capabilities. \cite{charland2011mobile}
 
 \begin{table}
   \begin{tabular}{ l | l }
@@ -70,23 +72,25 @@ different devices with varying capabilities. \cite{charland2011mobile}
     Samsung bada & C++
   \end{tabular}
   \label{table:native-skills}
-  \caption{Required skill sets for different mobile platforms. \cite{charland2011mobile}}
+  \caption{Required developer skill sets for different mobile
+    platforms according to \cite{charland2011mobile}}
 \end{table}
 
 Table~\ref{table:native-skills} (\fixme{check table ref number}) shows
-the required skill sets for different platforms. As we see, each
-platform has its own programming language and \abbr{SDK}. A lot of
-knowledge and resources is needed to providing cross-platform
+the required developer skill sets for different platforms. As we see,
+each platform has its own programming language and \abbr{SDK}. A lot
+of knowledge and resources are needed to provide cross-platform
 applications for these platforms. Making several independent
 applications with the native tools is also very expensive, and adding
 features or just maintaining all these different applications becomes
 costly. \cite{charland2011mobile}
 
-Some developers take the easy way out, and build their applications
-only for one platform. This might be fine for independent developers,
-but a lot of potential customers or users are left out of these walled
-gardens. Big corporations or public organizations cannot afford
-leaving out large shares of the mobile market. \cite{berners2010long}
+Some developers are forced to make compromises due to resourcing or
+budgeting, and build their applications only for one platform. This
+might be fine for independent developers, but a lot of potential
+customers or users are left out of these walled gardens. Big
+corporations or public organizations cannot afford leaving out large
+shares of the mobile market. \cite{berners2010long}
 
 \fixme{add platform market share figure}
 
@@ -99,10 +103,9 @@ platform. \cite{taivalsaari2011web, mikkonen2011apps}
 In the 20 years of its lifetime, the Web has evolved from a simple
 system for sharing documents into a massively popular, world wide
 application and information distribution environment
-\cite{taivalsaari2011web}. During the Web 2.0 revolution
-\citationneeded, the Web grew into a serious platform for interactive
-applications with the help of technologies like \abbr{Ajax}
-\cite{garrett2005ajax}.
+\cite{taivalsaari2011web}. During the so-called Web 2.0 revolution,
+the Web grew into a platform for interactive applications with the
+help of technologies like \abbr{Ajax} \cite{garrett2005ajax}.
 
 The Web is not without its problems, however. The viral spreading of
 mobile phones has raised the need for a feature-rich technology stack
@@ -111,26 +114,36 @@ of devices, screen sizes, and form factors that are used to access the
 Internet. This is the need that \abbr{HTML5} with all the related
 tools and \abbr{APIs} have promised to solve.
 
-Performance is the foundation of a great user experience. Native tools
-have been carefully optimized to provide the best possible performance
-and responsiveness, and web applications are often unfavorably
-compared to them. In the end, however, the received savings in
-development time, deployment, cost-efficiency, and cross-platform
-support can often outweigh the possible
-compromises. \cite{charland2011mobile, fling2009mobile}
+Performance is the foundation of a great user
+experience. (\fixme{define performance}) Native tools have been
+carefully optimized to provide the best possible performance and
+responsiveness, and web applications are often unfavorably compared to
+them. In the end, however, the received savings in development time,
+deployment, cost-efficiency, and cross-platform support can often
+outweigh the possible compromises. \cite{charland2011mobile,
+  fling2009mobile}
 
 In this work we look at the performance of \abbr{HTML5} as a
 cross-platform application platform for different device
-form-factors. We built an real world HTML5 application and a
-JavaScript library and fine-tuned the performance to get the best
-possible user experience. We then asses these optimizations and the
-compromises that had to be made.
+form-factors. To study the performance, we built a real world HTML5
+application and a JavaScript library and fine-tuned the performance to
+get the best possible user experience. We then asses these
+optimizations and the compromises that had to be made.
 
 \section{HTML5}
 \label{section:html5}
 
-\subsection{Semantic Markup}
+\begin{itemize}
+\item define what meant with HTML5
+\item explain the standardization process (done with browser vendors)
+\item explain standardized parsing algorithm
+\item tell something about browser support today
+\item consider mobile as well
+\end{itemize}
 
+\subsection{Semantic Markup and Form Enhancements}
+
+\cite{pilgrim2010html5}
 
 \subsection{Graphics and Typography}
 
