@@ -37,11 +37,11 @@ of the Web.
   \end{flushright}
 \end{quotation}
 
-Being the universal digital medium, mobile devices (\fixme{medium
-  vs. device?}) has some unique characteristics that other mass media
-lack. Mobile is personal, always-on, always-carried medium with a
-built-in payment channel. Mobile is in your pocket at the moment you
-have your creative impulse. \cite{fling2009mobile}
+Being the universal digital medium, mobile devices has some unique
+characteristics that other mass media lack. Mobile is personal,
+always-on, always-carried medium with a built-in payment
+channel. Mobile is in your pocket at the moment you have your creative
+impulse. \cite{fling2009mobile}
 
 These characteristics have made mobile device applications a
 multibillion-dollar business. Five years after Apple published its
@@ -114,14 +114,18 @@ of devices, screen sizes, and form factors that are used to access the
 Internet. This is the need that \abbr{HTML5} with all the related
 tools and \abbr{APIs} have promised to solve.
 
-Performance is the foundation of a great user
-experience. (\fixme{define performance}) Native tools have been
-carefully optimized to provide the best possible performance and
-responsiveness, and web applications are often unfavorably compared to
-them. In the end, however, the received savings in development time,
-deployment, cost-efficiency, and cross-platform support can often
-outweigh the possible compromises. \cite{charland2011mobile,
-  fling2009mobile}
+Performance is the foundation of a great user experience
+\cite{charland2011mobile}. By performance we mean the speed of
+downloading, initializing and using an application as perceived by the
+user as well as the responsiveness and smoothness of the user
+interface influencing the overall user experience.
+
+Native tools have been carefully optimized to provide the best
+possible performance and responsiveness, and web applications are
+often unfavorably compared to them. In the end, however, the received
+savings in development time, deployment, cost-efficiency, and
+cross-platform support can often outweigh the possible
+compromises. \cite{charland2011mobile, fling2009mobile}
 
 In this work we look at the performance of \abbr{HTML5} as a
 cross-platform application platform for different device
@@ -130,24 +134,109 @@ application and a JavaScript library and fine-tuned the performance to
 get the best possible user experience. We then asses these
 optimizations and the compromises that had to be made.
 
+\fixme{Add more about background and objectives of this work}
+
 \section{HTML5}
 \label{section:html5}
 
 \begin{itemize}
-\item define what meant with HTML5
+\item define what meant with HTML5 \cite{HTML5draft}
+\item explain background research on common classes and ids that
+  influenced the new elements
 \item explain the standardization process (done with browser vendors)
 \item explain standardized parsing algorithm
 \item tell something about browser support today
 \item consider mobile as well
+\item explain DOCTYPE and standards mode triggering
 \end{itemize}
 
-\subsection{Semantic Markup and Form Enhancements}
+\subsection{Semantic Markup, Form Enhancements, and Extensibility}
 
-\cite{pilgrim2010html5}
+HTML5 defines several new elements and attributes. The objective is to
+make the markup more semantic for developers and for content
+processors such as search engines and screen readers.
+
+The specification aims for more semantic structure of HTML by dropping
+many presentational features. The rationale behind this is explained
+with the following reasons \cite{HTML5draft}:
+
+\begin{itemize}
+\item Media-independent markup works for more users and yields better
+  accessibility
+\item Having style-independent markup separates document structure
+  from its layout and makes maintenance easier
+\item Separating styling results in smaller document sizes.
+\end{itemize}
+
+Each element in HTML5 is in zero or more content categories that group
+elements with similar characteristics \cite{HTML5draft}:
+
+\begin{itemize}
+\item \textbf{Metadata content:} Content that sets the behavior of the
+  document, sets relationships to other documents, or conveys other
+  information of the document.
+
+  \textit{Examples:} \texttt{link}, \texttt{meta}, \texttt{script},
+  \texttt{title}
+
+\item \textbf{Flow content:} Most content that are used in the body of
+  a document.
+
+  \textit{Examples:} \texttt{a}, \texttt{article}, \texttt{audio},
+  \texttt{div}, \texttt{header}, \texttt{form}, \texttt{nav},
+  \texttt{p}
+
+\item \textbf{Sectioning content:} Content that defines the scope of
+  headings and footers.
+
+  \textit{Examples:} \texttt{article}, \texttt{aside}, \texttt{nav},
+  \texttt{section}
+
+\item \textbf{Heading content:} Content that defines a header of a
+  section.
+
+  \textit{Examples:} \texttt{h1}, \texttt{h2}, \texttt{hgroup}
+
+\item \textbf{Phrasing content:} Content that holds or marks up the
+  text of the document.
+
+  \textit{Examples:} \texttt{abbr}, \texttt{audio}, \texttt{canvas},
+  \texttt{img}, \texttt{em}
+
+\item \textbf{Embedded content:} Content that imports another resource
+  or inserts content from another vocabulary into the document.
+
+  \textit{Examples:} \texttt{audio}, \texttt{embed}, \texttt{iframe},
+  \texttt{img}
+
+\item \textbf{Interactive content:} Content that is intended for user
+  interaction.
+
+  \textit{Examples:} \texttt{a}, \texttt{button}, \texttt{menu},
+  \texttt{select}
+
+\end{itemize}
+
+\fixme{Add ARIA semantics 3.2.7 \cite{HTML5draft}}
+
+\noindent \textbf{Extensibility (2.3.2 in \cite{HTML5draft}):}
+\begin{itemize}
+\item class attr
+\item data-*='''' attrs
+\item meta tags (and name extensions)
+\item rel attr (and link type extensions)
+\item script tags with custom type attr
+\item embed element and plugins
+\item extending JavaScript using the prototyping mechanism
+\item vendor-specific features
+\item elements and attrs that are not understood should be kept
+  neutral
+\end{itemize}
 
 \subsection{Graphics and Typography}
 
 \subsubsection{CSS3}
+\subsubsection{Media Queries}
 \subsubsection{SVG}
 \subsubsection{Canvas}
 \subsubsection{WebGL}
