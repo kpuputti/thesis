@@ -150,7 +150,7 @@ optimizations and the compromises that had to be made.
 \item explain DOCTYPE and standards mode triggering
 \end{itemize}
 
-\subsection{Semantic Markup, Form Enhancements, and Extensibility}
+\subsection{Semantic Markup}
 
 HTML5 defines several new elements and attributes. The objective is to
 make the markup more semantic for developers and for content
@@ -217,7 +217,13 @@ elements with similar characteristics \cite{HTML5draft}:
 
 \end{itemize}
 
+\subsection{Accessibility}
+
 \fixme{Add ARIA semantics 3.2.7 \cite{HTML5draft}}
+
+\fixme{iframe sandbox attr}
+
+\subsection{Extensibility}
 
 \noindent \textbf{Extensibility (2.3.2 in \cite{HTML5draft}):}
 \begin{itemize}
@@ -233,21 +239,64 @@ elements with similar characteristics \cite{HTML5draft}:
   neutral
 \end{itemize}
 
-\subsection{Graphics and Typography}
-
-\subsubsection{CSS3}
-\subsubsection{Media Queries}
-\subsubsection{SVG}
-\subsubsection{Canvas}
-\subsubsection{WebGL}
-\subsubsection{Web Fonts}
-\subsubsection{MathML}
-
 \subsection{Media}
 
-\subsubsection{Audio}
-\subsubsection{Video}
-\subsubsection{Subtitles}
+
+
+\subsection{Canvas 2D Context}
+
+\url{http://dev.w3.org/html5/2dcontext/}
+
+
+
+\subsection{Form Enhancements}
+
+new input types, new attributes (required, ranges)
+
+(Overlapping) categories (4.10.12):
+\begin{itemize}
+\item Listed elements
+\item Submittable elements
+\item Resettable elements
+\end{itemize}
+
+\subsection{Session History Manipulation}
+
+5.4.2
+
+\subsection{Offline Web Applications}
+
+5.6.1
+
+\subsubsection{Application Cache}
+
+
+
+\subsubsection{Detecting Network State}
+
+5.6.10
+
+- navigator.onLine, online and offline events, inherently unreliable
+
+\subsection{Notes}
+
+\begin{itemize}
+\item browsing context,
+\item postMessage()
+\item sandboxing
+\item content/protocol handlers 6.5.1.3
+\end{itemize}
+
+\section{Other related APIs}
+
+\subsection{Graphics and Typography}
+
+\subsection{MathML}
+\subsection{SVG}
+\subsubsection{CSS3}
+\subsubsection{Media Queries}
+\subsubsection{WebGL}
+\subsubsection{Web Fonts}
 
 \subsection{Interaction and Messaging}
 
@@ -262,7 +311,6 @@ elements with similar characteristics \cite{HTML5draft}:
 
 \subsubsection{Web Storage}
 \subsubsection{Indexed Database}
-\subsubsection{Application Cache}
 \subsubsection{Network State}
 
 \subsection{Files}
