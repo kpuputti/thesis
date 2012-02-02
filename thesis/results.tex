@@ -443,9 +443,42 @@ Section~\ref{section:performance-guidelines}.
 
 YSlow is a website analyzer originally developed by Steve Souders. It
 checks the website against the rules defined in
-Section~\ref{section:performance-guidelines}.
+Section~\ref{section:performance-guidelines}. We analyzed the
+conference application performance using YSlow. The results of the
+analysis are seen in Figure~\ref{figure:yslow-v2-grade.png} and
+Figure~\ref{figure:yslow-v2-statistics.png}.
 
-\fixme{Add YSlow results screenshot}
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/yslow-v2-grade.png}
+    \caption{YSlow results grade.}
+    \label{figure:yslow-v2-grade.png}
+  \end{center}
+\end{figure}
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/yslow-v2-statistics.png}
+    \caption{YSlow results statistics.}
+    \label{figure:yslow-v2-statistics.png}
+  \end{center}
+\end{figure}
+
+The only sections where an A grade (best grade) was not achieved, were
+in ``Use a Content Delivery Network'' and in ``Minify JavaScript and
+CSS''. The \abbr{CDN} notice was not seen as important because the
+application was not designed for world-wide intensive use with lots of
+users, but rather for a single conference use with some hundreds
+users.
+
+The minification section notice explained in the details that inline
+script tag contents should be minified. This was somewhat a limitation
+in the tool itself, since the inline script tags were the JavaScript
+templates for the single-page application. The \texttt{type} attribute
+of the tags was \texttt{text/x-handlebars-template}, which complies
+with the generic extending mechanism as specified in the HTML5
+specification draft \cite{HTML5draft}. Thus this was not seen as a
+problem.
 
 \subsection{Page Speed}
 
