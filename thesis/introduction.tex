@@ -139,18 +139,61 @@ optimizations and the compromises that had to be made.
 \section{HTML5}
 \label{section:html5}
 
-\begin{itemize}
-\item define what meant with HTML5 \cite{HTML5draft}
-\item explain background research on common classes and ids that
-  influenced the new elements
-\item explain the standardization process (done with browser vendors)
-\item explain standardized parsing algorithm
-\item tell something about browser support today
-\item consider mobile as well
-\item explain DOCTYPE and standards mode triggering
-\end{itemize}
+HTML5 is a cross-platform and device form-factor agnostic markup
+language for defining structured documents. It is a backward
+compatible revision of older HTML standards bringing lots of new
+functionality, removing unneeded features, and officially documenting
+some ``de facto'' standards already supported by some or several web
+browsers. \cite{pilgrim2010html5}
+
+In the early 2000s, \abbr{W3C} was developing \abbr{XHTML} and
+\abbr{XForms} standards to be the future of the Web. Many parts of
+these standards were backward incompatible and required very strict
+and error-free authoring. Being frustrated with this vision that was
+seen as impractical for the real world, a group of web browser vendors
+and other interested parties had a competing vision of the future of
+the Web: evolving HTML4 to include additional features maintaining
+backward compatibility. W3C members did not agree with this vision,
+and as a result, the WHAT Working Group was
+born. \cite{pilgrim2010html5}
+
+\abbr{WHATWG} is a ``loose, unofficial, and open collaboration of Web
+browser manufacturers and interested
+parties''\footnote{\url{http://www.whatwg.org/news/start}}. According
+to a
+study\footnote{\url{http://dev.opera.com/articles/view/mama-key-findings/}}
+made by Opera in 2008, more than 95\% of web sites do not pass markup
+validation. Therefore, to maintain backward compatibility and
+practicality, it is crucial to have a well defined error handling
+mechanism.
+
+Having the browser vendor and web development community support behind
+them, after several years the WHATWG work was finally accepted by W3C
+and a joint effort was started to standardize HTML5. There are still
+differences in the W3C and WHATWG specifications in what features they
+include in the main standard and what are separated in other
+specifications or leaved out, but the main goal is to develop the
+standards together with browser vendors to get usage feedback while
+the specifications are being made. This results in many features being
+available in modern web browsers while the HTML5 and related standards
+are not yet finished. As a drawback, however, the implementations
+might change between browser versions, and developers must take extra
+effort in detecting the supported features. \cite{pilgrim2010html5}
+
+In this work, we look at HTML5 beyond the main specifications, and
+take into account also related standards that affect modern web
+application development. Also, the differences between the W3C and the
+WHATWG specifications are not separated since they are not
+clear-cut. This is the practical view that, in our opinion, the web
+development community has on HTML5.
 
 \subsection{Semantic Markup}
+
+Google did a study\footnote{\url{http://code.google.com/webstats/}} in
+2005 of a sample of over a billion HTML documents about the popular
+class names, elements, attributes and related metadata. This analysis
+had a large impact on which elements and attributes were considered in
+the upcoming HTML5 standard.
 
 HTML5 defines several new elements and attributes. The objective is to
 make the markup more semantic for developers and for content
@@ -168,8 +211,8 @@ with the following reasons \cite{HTML5draft}:
 \item Separating styling results in smaller document sizes.
 \end{itemize}
 
-Each element in HTML5 is in zero or more content categories that group
-elements with similar characteristics \cite{HTML5draft}:
+\noindent Each element in HTML5 is in zero or more content categories
+that group elements with similar characteristics \cite{HTML5draft}:
 
 \begin{itemize}
 \item \textbf{Metadata content:} Content that sets the behavior of the
@@ -217,37 +260,50 @@ elements with similar characteristics \cite{HTML5draft}:
 
 \end{itemize}
 
-\subsection{Accessibility}
-
-\fixme{Add ARIA semantics 3.2.7 \cite{HTML5draft}}
-
-\fixme{iframe sandbox attr}
-
 \subsection{Extensibility}
 
-\noindent \textbf{Extensibility (2.3.2 in \cite{HTML5draft}):}
-\begin{itemize}
-\item class attr
-\item data-*='''' attrs
-\item meta tags (and name extensions)
-\item rel attr (and link type extensions)
-\item script tags with custom type attr
-\item embed element and plugins
-\item extending JavaScript using the prototyping mechanism
-\item vendor-specific features
-\item elements and attrs that are not understood should be kept
-  neutral
-\end{itemize}
+HTML5 defines the main constructs of a semantic and accessible
+document. However, some specific use cases require a more precise and
+context-dependent and fine-grained semantics. Also, web browsers might
+introduce new features that must conform to the standards. This is why
+HTML5 is made extensible for adding more semantics or additional
+features on top of the existing standard.
+
+There are several ways to extend HTML5. The simplest approaches
+include using the defined general attributes with certain
+vocabularies. For example,
+microformats\footnote{\url{http://microformats.org/}} and
+Schema.org\footnote{\url{http://schema.org/}} define common elements
+and class names with certain semantics for defining document metadata.
+
+HTML5 also defines explicit mechanisms for extending the markup
+structure. Using \texttt{data-*=""} and \texttt{rel} attributes,
+\texttt{meta} tags, or a generic microdata mechanism, the semantics of
+the content can be enhanced for automatic reasoning and machine
+readability. \cite{HTML5draft}
 
 \subsection{Media}
 
+Multimedia support is crucial for modern applications. HTML5 defines
+elements and APIs for audio, video, subtitles, and embedded content.
 
+Previously to use these rich content types, developers have had to
+rely on third party plugins and browser extensions. Not having to rely
+on plugins and extensions has been one of the main goals of the HTML5
+standard for improving the openness and accessibility of web content.
 
 \subsection{Canvas 2D Context}
 
-\url{http://dev.w3.org/html5/2dcontext/}
+HTML5 defines the \texttt{canvas} element. It is a
+resolution-dependent bitmap canvas for dynamically rendering
+graphics. It can be used, for example, for graphs, games, or other
+visuals. \cite{HTML5draft}
 
-
+The Canvas 2D Context specification draft \cite{canvas2Ddraft} defines
+a JavaScript API for programmatically drawing on the 2D canvas
+surface. The API defines functions for drawing shapes, paths, text,
+gradients, and images on the canvas and other functions for handling
+the bitmap data.
 
 \subsection{Form Enhancements}
 
@@ -282,6 +338,10 @@ new input types, new attributes (required, ranges)
 
 7.6
 
+\subsubsection{SVG and MathML}
+
+
+
 \subsection{Notes}
 
 \begin{itemize}
@@ -289,14 +349,15 @@ new input types, new attributes (required, ranges)
 \item postMessage()
 \item sandboxing
 \item content/protocol handlers 6.5.1.3
+\item getElementsbyClassName()
+\item classList
+\item microdata (WHATWG)
 \end{itemize}
 
 \section{Other related APIs}
 
 \subsection{Graphics and Typography}
 
-\subsection{MathML}
-\subsection{SVG}
 \subsubsection{CSS3}
 \subsubsection{Media Queries}
 \subsubsection{WebGL}
@@ -304,7 +365,6 @@ new input types, new attributes (required, ranges)
 
 \subsection{Interaction and Messaging}
 
-\subsubsection{Drag and Drop}
 \subsubsection{Touch Events}
 \subsubsection{Web Notifications}
 \subsubsection{Web Messaging}
@@ -326,7 +386,6 @@ new input types, new attributes (required, ranges)
 \subsubsection{Web Real-time Communication}
 \subsubsection{Web Sockets}
 \subsubsection{Server-Sent Events}
-\subsubsection{Web Sockets}
 
 \subsection{History}
 
