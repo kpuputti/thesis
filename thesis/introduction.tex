@@ -438,21 +438,39 @@ to be flaky.
 
 \subsubsection{Drag and Drop}
 
-7.6
+Drag and Drop is a common interaction technique where elements can be
+moved within the user interface from one place to another. Older
+browsers have had proprietary solutions for this interaction pattern,
+but HTML5 standardizes the API.
+
+The specification defines the element attributes and \abbr{DOM} events
+for easily enabling and controlling draggable elements and drop
+targets. Custom cross-browser JavaScript solutions have enabled this
+interaction before, but little JavaScript code is needed with the new
+API. The browser handles the interaction and the dynamic rendering,
+reducing the interface lagging and the need for extra processing.
 
 \subsubsection{SVG and MathML}
 
 While not part of the HTML5 standard, the specification allows for
-embedding \abbr{SVG} and \abbr{MathML} markup within HTML.
+embedding \abbr{SVG} \cite{SVGTiny12} and \abbr{MathML} \cite{MathML}
+markup within HTML.
 
-\subsection{Notes}
+SVG is a markup language for describing two-dimensional vector
+graphics in \abbr{XML}. The markup can be accessed with the \abbr{DOM}
+API for creating dynamic and interactive functionality. Within an
+HTML5 document, SVG markup can be embedded within the \texttt{svg}
+element.
 
-\begin{itemize}
-\item browsing context,
-\item postMessage()
-\item sandboxing
-\item content/protocol handlers 6.5.1.3
-\end{itemize}
+MathML is an \abbr{XML} markup language for describing the structure
+and content of mathematical notation. It can be embedded within an
+HTML5 document with the \texttt{math} element.
+
+Both of these languages reduce the need of custom images, making the
+content more accessible, dynamic, and enabling dynamic interaction
+with it. Also, vector graphics can be scaled and fit the available
+space no matter the screen size, which improves the cross-platform
+usefulness for different device form factors.
 
 \section{Other related APIs}
 
