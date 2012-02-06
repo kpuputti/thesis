@@ -436,7 +436,7 @@ Therefore, applications should be designed to expect the network to
 work, but to degrade gracefully when the connection is lost or seems
 to be flaky.
 
-\subsubsection{Drag and Drop}
+\subsection{Drag and Drop}
 
 Drag and Drop is a common interaction technique where elements can be
 moved within the user interface from one place to another. Older
@@ -450,7 +450,7 @@ interaction before, but little JavaScript code is needed with the new
 API. The browser handles the interaction and the dynamic rendering,
 reducing the interface lagging and the need for extra processing.
 
-\subsubsection{SVG and MathML}
+\subsection{SVG and MathML}
 
 While not part of the HTML5 standard, the specification allows for
 embedding \abbr{SVG} \cite{SVGTiny12} and \abbr{MathML} \cite{MathML}
@@ -472,64 +472,136 @@ with it. Also, vector graphics can be scaled and fit the available
 space no matter the screen size, which improves the cross-platform
 usefulness for different device form factors.
 
-\section{Other related APIs}
+\section{Other related Specifications}
+
+--
 
 \subsection{Graphics and Typography}
 
+--
+
 \subsubsection{CSS3}
+
+--
+
 \subsubsection{Media Queries}
+
+--
+
 \subsubsection{WebGL}
+
+--
+
 \subsubsection{Web Fonts}
+
+--
 
 \subsection{Interaction and Messaging}
 
+--
+
 \subsubsection{Touch Events}
+
+--
+
 \subsubsection{Web Notifications}
+
+--
+
 \subsubsection{Web Messaging}
+
+--
+
 \subsubsection{Fullscreen and Mouse Lock}
+
+--
+
 \subsubsection{Clipboard}
 
-\subsection{Storage and Offline}
-
-\subsubsection{Web Storage}
-\subsubsection{Indexed Database}
-\subsubsection{Network State}
+--
 
 \subsection{Files}
 
-
+--
 
 \subsection{Real-time Communication}
 
+--
+
 \subsubsection{Web Real-time Communication}
+
+--
+
 \subsubsection{Web Sockets}
+
+--
+
 \subsubsection{Server-Sent Events}
 
-\subsection{History}
-
-\subsubsection{History manipulation}
-\subsubsection{Hashchange Event}
+--
 
 \subsection{Performance}
 
+--
+
 \subsubsection{Web Workers}
+
+--
+
 \subsubsection{Timing}
+
+--
+
 \subsubsection{Page Visibility}
+
+--
 
 \subsection{Security and Privacy}
 
+--
+
 \subsubsection{Cross-Origin Resource Sharing}
+
+--
 
 \subsection{Device APIs}
 
+--
+
 \subsubsection{Geolocation}
+
+Context is one of the main components or a personalized application
+\cite{fling2009mobile}. Probably the most important aspect affecting
+the context is the physical location of the user. However, only very
+crude and error-prone \abbr{IP} based detection techniques have been
+available for web sites.
+
+The Geolocation API defines a standardized JavaScript API for web
+applications to query the location of the user. The API is agnostic of
+the underlying location information sources; the source might usually
+be the \abbr{GPS} chip on a mobile device or a \abbr{WiFi} network
+with a known location. The coordinates and the accuracy of them is
+then provided by the API. \cite{geolocationAPI}
+
+The implementations usually provide some sort of privacy protection by
+asking the user whether they want to grant the application access to
+the physical location of the user.
+
 \subsubsection{Device Orientation}
+
+--
+
 \subsubsection{Gamepad}
+
+--
+
 \subsubsection{User Media}
+
+--
 
 \subsection{Other}
 
-
+--
 
 \section{Modern Mobile Web Application Architecture}
 \label{section:modern-mobile-web}
@@ -541,19 +613,45 @@ usefulness for different device form factors.
 \end{figure}
 
 \subsection{Single-Page applications}
+
+--
+
 \subsubsection{JavaScript MVC Libraries}
 
+--
+
 \subsection{Responsive Design}
+
+--
+
 \subsection{Progressive Enhancement}
 \label{subsection:progressive-enhancement}
 
+--
+
 \subsection{UI Libraries}
+
+--
+
 \subsubsection{jQuery Mobile}
+
+--
+
 \subsubsection{jQTouch}
+
+--
+
 \subsubsection{Sencha Touch}
 
+--
+
 \subsection{Hybrid Applications}
+
+--
+
 \subsection{Wrapping Web Applications Application Stores}
+
+--
 
 \clearpage
 \section{Performance Guidelines}
