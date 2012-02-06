@@ -307,14 +307,26 @@ the bitmap data.
 
 \subsection{Form Enhancements}
 
-new input types, new attributes (required, ranges)
+Forms are an essential construction in interactive HTML
+documents. However, due to their relative simplicity in terms of
+expressiveness and the lack of proper accessibility features,
+developers have been forced to build lots of JavaScript solutions to
+enhance and fix some of these problems.
 
-(Overlapping) categories (4.10.12):
-\begin{itemize}
-\item Listed elements
-\item Submittable elements
-\item Resettable elements
-\end{itemize}
+HTML5 brings several enhancements to forms. New input types for
+numbers, dates, email addresses, etc. obsolete the need of scripted
+widgets by using native platform controls. New form attributes like
+placeholder and autofocus bring easy-to-use accessibility and
+usability improvements and also diminish the need for
+scripting. \cite{HTML5draft}
+
+These additions and enhancements work especially well in mobile
+context where user input is slow and cumbersome. For example, by
+having a numeric input field lets the mobile platform open the numeric
+keyboard by default, which greatly improves the usability of
+forms. Automatic form validation in the client side also reduces the
+need for unneeded page refreshes since the browser can show error
+messages in invalid fields without any JavaScript validation.
 
 \subsection{Session History Manipulation}
 
@@ -332,21 +344,97 @@ with a lot of extra work.
 HTML5 addresses these issues by allowing the developers dynamically
 manipulate the session history. The history stack can be changed and
 used for navigation and even the browser address bar can be changed
-without extra page refreshes.
+without extra page refreshes. \cite{HTML5draft}
 
 \subsection{Offline Web Applications}
 
-5.6.1
+By design, web sites have always needed a working network
+connection. Applications, however, should be able to work offline or
+in unreliable and flaky networks. Especially mobile networks are
+unreliable \citationneeded, which has brought the need for offline
+support in HTML5.
+
+There are several ways to enable offline support in HTML5
+applications. We present these approaches in the following sections.
 
 \subsubsection{Application Cache}
 
+\abbr{AppCache} is a relatively simple way to indicate all resources
+needed for offline functionality. A manifest file is defined in the
+HTML document, and within the file there are sections for resources
+that should always or never be cached and fallback \abbr{URLs} for
+resources that are not cached but the fetching fails. In addition to
+the simple manifest file listing offline resources, JavaScript events
+are defined for cache events.\cite{HTML5draft} \\
 
+\noindent \textbf{Example manifest file:}
+\begin{verbatim}
+CACHE MANIFEST
+
+# Example manifest version 1.
+
+# The resources in this section are cached for offline use.
+CACHE:
+js/scripts.js
+css/styles.css
+img/sprite.png
+http://example.org/external-image.jpg
+
+# The resources in this section require the user to be online.
+NETWORK:
+/login
+
+# This section defines resources and their fallback
+# URLs if they are inaccessible.
+FALLBACK:
+/ /offline.html
+\end{verbatim}
+
+\subsubsection{Data Storage}
+
+Storing data in the client side has traditionally been constrained
+into using cookies, but HTML5 specifies new options for data
+persistence.
+
+Two different key/value storages are defined: \texttt{localStorage}
+and \texttt{sessionStorage}. The \abbr{API} is same with both of
+these, but with \texttt{sessionStorage}, the data is persisted only
+for the current browser session. These interfaces are very simple and
+easy to use, but are constrained into storing only textual
+data. \cite{webstoragedraft}
+
+Two more expressive storage \abbr{APIs} have been specified: client
+side \abbr{SQL} database \cite{webstoragedraft} and the Indexed
+Database \cite{indexedDBdraft}. The client side SQL database defines
+an asynchronous and transactional SQL database JavaScript
+API. Although being very expressive, due to the relative complexity
+compared to simple and scalable key/value storage options, it is yet
+to be seen if the client side SQL storage will be accepted by the
+browser vendors and developers.
+
+Indexed Database provides synchronous and asynchronous APIs for
+storing and searching large amounts of structured data. The
+transactional API can be used for more complex persistency needs than
+with the simple key/value storages, and it provides a native
+JavaScript API that does not involve the complexities of SQL.
 
 \subsubsection{Detecting Network State}
 
-5.6.10
+Knowing whether the user is online or offline can affect the user
+interface or the response to user interactions. HTML5 defines
+functionality to detect the current network status and events that are
+fired when the status changes. \cite{HTML5draft}
 
-- navigator.onLine, online and offline events, inherently unreliable
+Although providing important information, these network status
+indicators are inherently unreliable \cite{HTML5draft}. Due to the
+distributed ad-hoc architecture of the network and possible local or
+external proxies or middleware, the application can never be sure if
+the network is connected or not. The only option is just to attempt to
+make requests and wait for the response or possible failure.
+
+Therefore, applications should be designed to expect the network to
+work, but to degrade gracefully when the connection is lost or seems
+to be flaky.
 
 \subsubsection{Drag and Drop}
 
