@@ -531,7 +531,19 @@ font files in all the formats that they want to support.
 
 \subsubsection{Touch Events}
 
---
+User interface events have traditionally relied on the input device
+being a pointer or a keyboard. Modern mobile devices and tablets,
+however, usually have a touch screen. Pointer and keyboard events have
+been mapped into the touch interaction, but proper touch events are
+needed to support the rich interaction of touch input.
+
+The Touch Events specification \cite{touchevents} defines a set of
+events for one or more points of contact on a touch surface. The
+specification defines \texttt{touchstart}, \texttt{touchmove},
+\texttt{touchend}, and \texttt{touchcancel} events and several new
+attributes for the event object. These enable developers to add
+functionality for rich interaction such as swipes and multi-touch
+gestures.
 
 \subsubsection{Web Notifications}
 
