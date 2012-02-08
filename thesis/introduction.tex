@@ -510,9 +510,30 @@ of the layout might be stacked vertically to avoid horizontal
 scrolling. Also background images might be swapped into smaller ones
 with smaller screens.
 
-\subsubsection{WebGL}
+\subsubsection{WebGL and Typed Arrays}
 
---
+WebGL is a low-level 3D rendering API derived from the OpenGL® ES 2.0
+\cite{OpenGL} and it is designed as a rendering context for the
+\texttt{canvas} element introduced in HTML5. An interactive 3D
+graphics API in the browser is essential for game development and
+creates global platform for cross-platform games. WebGL was originally
+developed by the Khronos Group\footnote{\url{http://www.khronos.org/}}
+and later participated by browser vendors and 3D
+developers. \cite{WebGL}
+
+Being based on the OpenGL ES API, WebGL can run on many different
+devices, such as desktop computers, mobile phones, tablets, and
+TVs. The use is not constrained into games only; WebGl can also be
+used in 3D modeling and design tools, simulations, data visualization,
+or in interactive art.
+
+Originated from the WebGL specification, typed arrays have been
+separated into a separate specification
+\cite{TypedArrays}. Traditional JavaScript arrays are not typed, but
+due to performance reasons, WebGL API needed more efficient data
+structures for 3D graphics. These typed arrays can also be used in
+non-graphics related contexts, for example, where efficient processing
+is needed for large amounts of binary data.
 
 \subsubsection{Web Fonts}
 
