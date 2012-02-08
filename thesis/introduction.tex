@@ -596,7 +596,29 @@ gestures.
 
 \subsubsection{Web Sockets}
 
---
+Web Sockets API \cite{WebSockets, WebSocketProtocol} defines a two-way
+communication protocol for real-time applications between a client,
+such as web browser, and a remote server. Because HTTP is a stateless
+protocol, highly interactive applications have introduced many
+problems when attempting to keep response times and latency
+low. Real-time applications such as chat clients have been forced to
+rely on complex workarounds to overcome latency issues.
+
+The Web Socket connection can be open or secure, like \abbr{HTTP} and
+\abbr{HTTPS}. The API uses a single \abbr{TCP} connection that is kept
+open and allows for traffic in both ways. \cite{WebSockets,
+  WebSocketProtocol}
+
+The communication protocol specification defines a layer on top of
+\abbr{TCP} that defines the connection handshaking with HTTP, an
+``origin''-based security model, addressing and protocol naming
+mechanism for multiple services on one port and multiple host names on
+a single \abbr{IP} address, mechanism to overcome TCP packet length
+limits, and a closing handshake to help deal with proxies and other
+intermediaries. The intent of Web Sockets is to provide a simple
+protocol that works well with HTTP and the existing HTTP
+infrastructure, and that is as close to TCP as possible taking
+possible security issues into account. \cite{WebSocketProtocol}
 
 \subsubsection{Server-Sent Events}
 
