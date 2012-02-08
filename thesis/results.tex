@@ -192,8 +192,8 @@ redraw the agenda view when the screen width changes since the items
 on the schedule needed to be dynamically positioned to the available
 space.
 
-Mobile browsers trigger an 'orientationchange' event whenever the
-device orientation changes. We listened to this event, inferred the
+Mobile browsers fire an 'orientationchange' event whenever the device
+orientation changes. We listened to this event, inferred the
 orientation from the screen dimensions, and executed the wanted
 functionality for the event. We also had to do a fallback for Mobile
 \abbr{IE} browser to listen to the window resize event because the
