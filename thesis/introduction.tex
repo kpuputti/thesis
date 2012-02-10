@@ -606,15 +606,28 @@ Section~\ref{section:dragdrop}) and Web Workers (See
 Section~\ref{section:webworkers}), HTML5 forms can be greatly enhanced
 and optimized with richer interactivity and better performance.
 
-\subsection{Real-time Communication}
+\subsection{Web Real-time Communication}
 
---
+Support for different multimedia such as audio and video playing is a
+crucial first step into rich and interactive web
+applications. However, simply being able to play a video or an audio
+file within an HTML document is not enough for multimedia rich
+applications.
 
-\subsubsection{Web Real-time Communication}
+Real-time media streaming and playing has been traditionally
+implemented with Adobe Flash \citationneeded and \abbr{RTMP}
+\citationneeded, but the Web RTC API \cite{WebRTC} brings the ability
+to do native media streaming within HTML documents. Also a direct
+peer-to-peer streaming communication channel between two user agents
+is defined.
 
---
+Combined with the getusermedia API \cite{getusermedia}, streams can be
+shown or recorded also from a local media source, such as a web
+camera. These specifications have lots of security and privacy issues
+to handle, but they promise very strong multimedia capabilities for
+web applications.
 
-\subsubsection{Web Sockets}
+\subsection{Web Sockets}
 
 Web Sockets API \cite{WebSockets, WebSocketProtocol} defines a two-way
 communication protocol for real-time applications between a client,
@@ -640,7 +653,7 @@ protocol that works well with HTTP and the existing HTTP
 infrastructure, and that is as close to TCP as possible taking
 possible security issues into account. \cite{WebSocketProtocol}
 
-\subsubsection{Server-Sent Events}
+\subsection{Server-Sent Events}
 
 --
 
