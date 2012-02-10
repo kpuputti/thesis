@@ -630,9 +630,39 @@ possible security issues into account. \cite{WebSocketProtocol}
 
 \subsubsection{Web Workers}
 
+The whole \abbr{IT} industry has had a dramatic shift into parallel
+computing in recent years. Multicore processors have appeared even in
+mobile devices, and the number of cores is increasing in modern
+\abbr{CPUs}. This parallellization of processing poses challenges and
+opportunities also for application developers. \cite{asanovic2009view}
 
+Following the trend of the computing industry, together with the
+proliferation of web technologies, web applications are becoming more
+capable and processing-intensive. Introducing a traditional threading
+model and making browser APIs (such as \abbr{DOM}) thread-safe would
+be an overkill solution and a mismatch to the simplicity and backward
+compatibility requirements of the Web.
 
-\cite{asanovic2009view} \cite{WebWorkers}
+JavaScript is by design single-threaded with an asynchronous event
+model. The whole user interface also runs in the same thread, and thus
+long running JavaScript code freezes the whole interface during
+processing. The traditional approach has been to split the code into
+small enough pieces, and let the browser handle the scheduling of user
+interface events and JavaScript processing. This programming model is
+very hard, and combined with unpredictable browser garbage collection,
+user interface freezing might be hard to avoid. \cite{souders2009even}
+
+Web Workers are the proposed solution for parallel computing in
+JavaScript. They introduce a simple interface for sandboxed components
+with restricted access to browser APIs and an asynchronous
+communication channel between the worker and the main
+application. \cite{WebWorkers}
+
+Web Workers are external JavaScript files initialized from a web
+site. The worker runs in a separate \abbr{OS}-level thread and does
+not affect the main \abbr{UI} thread apart from the communication
+channel. The simple API is easy to work with and gives the long-needed
+ability of parallel computation in web applications.
 
 \subsubsection{Timing}
 
