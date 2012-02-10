@@ -437,6 +437,7 @@ work, but to degrade gracefully when the connection is lost or seems
 to be flaky.
 
 \subsection{Drag and Drop}
+\label{section:dragdrop}
 
 Drag and Drop is a common interaction technique where elements can be
 moved within the user interface from one place to another. Older
@@ -584,7 +585,26 @@ gestures.
 
 \subsection{Files}
 
---
+Local file system access is essential for native
+applications. JavaScript storage and database APIs can be used for
+certain structured data for caching and other purposes, but are
+cumbersome, for example, for large binary files of arbitrary
+format. File API specifications \cite{FileAPI, FileAPIWriter,
+  FileAPIDir} define interfaces for creating, reading, writing, and
+manipulating local files and directories. Error handling and security
+sandboxing are also specified in the APIs.
+
+Two versions of the file handling APIs are defined: an asynchronous
+API for normal file handling in the main thread and a synchronous API
+for file handling in Worker threads (See
+Section~\ref{section:webworkers}). Text and binary files can be
+manipulated in memory or as \abbr{Blob} \abbr{URLs} with the
+\abbr{DOM} API. These capabilities enable web applications to better
+optimize network transfer and offline support with large
+files. Combined with the Drag and Drop API (See
+Section~\ref{section:dragdrop}) and Web Workers (See
+Section~\ref{section:webworkers}), HTML5 forms can be greatly enhanced
+and optimized with richer interactivity and better performance.
 
 \subsection{Real-time Communication}
 
@@ -629,6 +649,7 @@ possible security issues into account. \cite{WebSocketProtocol}
 --
 
 \subsubsection{Web Workers}
+\label{section:webworkers}
 
 The whole \abbr{IT} industry has had a dramatic shift into parallel
 computing in recent years. Multicore processors have appeared even in
