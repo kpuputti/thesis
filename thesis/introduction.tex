@@ -655,13 +655,18 @@ possible security issues into account. \cite{WebSocketProtocol}
 
 \subsection{Server-Sent Events}
 
---
+Server-Sent Events specification \cite{ServerSentEvents} defines a
+data stream format \texttt{text/event-stream} that can be used to
+connect an event listener in the client side to listen for events
+initiated by the server. These streams can be used, for example, for
+real-time push notifications for data content updates.
 
-\subsection{Performance}
+The stream data format is very simple, and the API lets the browser
+handle the message passing. This helps developers to avoid, for
+example, polling a server for updates, which consumes a lot of
+computing and networking resources.
 
---
-
-\subsubsection{Web Workers}
+\subsection{Web Workers}
 \label{section:webworkers}
 
 The whole \abbr{IT} industry has had a dramatic shift into parallel
@@ -698,7 +703,7 @@ not affect the main \abbr{UI} thread apart from the communication
 channel. The simple API is easy to work with and gives the long-needed
 ability of parallel computation in web applications.
 
-\subsubsection{Analytics and Timing}
+\subsection{Analytics and Timing}
 
 Proper analytics is crucial for performance research and
 optimization. JavaScript timers have traditionally been used for
@@ -719,7 +724,7 @@ general purpose user action profiling \cite{UserTiming}. The
 Performance Timeline specification \cite{PerformanceTimeline} defines
 a unifying interface to access these performance metrics.
 
-\subsubsection{Page Visibility and Timer Control}
+\subsection{Page Visibility and Timer Control}
 
 Avoiding unneeded work whenever possible is an important performance
 optimization concept. Modern browsers usually have a tabbed interface
@@ -744,13 +749,33 @@ when the page is not visible to the user, the browser can throttle the
 animation frame frequency for not using \abbr{CPU} power when it might
 be needed more on another page.
 
-\subsection{Security and Privacy}
+\subsection{Cross-Origin Resource Sharing}
 
---
+Same-origin policy is an important security restriction in web
+browsers preventing web applications to obtain data from other origins
+\cite{CORS}. However, mashups and applications using data from
+external data APIs have been very popular in recent years, and
+techniques have been developed to overcome the restrictions. These
+techniques have been unsafe and very limited, so a need for
+cross-domain data sharing has risen.
 
-\subsubsection{Cross-Origin Resource Sharing}
+The Cross-Origin Resource Sharing specification \cite{CORS} extends
+the same-origin policy by allowing the HTTP layer to indicate allowed
+origins for data transfer between separate origins. The specification
+defines new HTTP headers for indicating allowed origins and for
+negotiating access control restrictions with preflight requests.
 
---
+\abbr{CORS} is an important specification for modern web applications,
+since data is very often distributed to different domains, for
+example, when using a content delivery network. It also makes mashup
+development with external data much easier and safer.
+
+Cross-domain resource usage can also be controlled with the means
+defined in the Content Security Policy specification
+\cite{ContentSecurityPolicy} and The From-Origin Header specification
+\cite{FromOriginHeader}. The specifications define HTTP headers that
+can be used to restrict certain content types to be allowed only from
+the given origins.
 
 \subsection{Device APIs}
 
