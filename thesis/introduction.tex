@@ -567,23 +567,8 @@ attributes for the event object. These enable developers to add
 functionality for rich interaction such as swipes and multi-touch
 gestures.
 
-\subsubsection{Web Notifications}
-
---
-
-\subsubsection{Web Messaging}
-
---
-
-\subsubsection{Fullscreen and Mouse Lock}
-
---
-
-\subsubsection{Clipboard}
-
---
-
 \subsection{Files}
+\label{section:fileapi}
 
 Local file system access is essential for native
 applications. JavaScript storage and database APIs can be used for
@@ -621,11 +606,11 @@ to do native media streaming within HTML documents. Also a direct
 peer-to-peer streaming communication channel between two user agents
 is defined.
 
-Combined with the getusermedia API \cite{getusermedia}, streams can be
-shown or recorded also from a local media source, such as a web
-camera. These specifications have lots of security and privacy issues
-to handle, but they promise very strong multimedia capabilities for
-web applications.
+Combined with the getusermedia API \cite{getusermedia} (see
+Section~\ref{section:getusermedia}), streams can be shown or recorded
+also from a local media source, such as a web camera. These
+specifications have lots of security and privacy issues to handle, but
+they promise very strong multimedia capabilities for web applications.
 
 \subsection{Web Sockets}
 
@@ -775,7 +760,9 @@ defined in the Content Security Policy specification
 \cite{ContentSecurityPolicy} and The From-Origin Header specification
 \cite{FromOriginHeader}. The specifications define HTTP headers that
 can be used to restrict certain content types to be allowed only from
-the given origins.
+the given origins. In addition to these specifications, the HTML5 Web
+Messaging specification \cite{WebMessaging} defines an API for
+cross-document messaging.
 
 \subsection{Device APIs}
 
@@ -802,19 +789,33 @@ the physical location of the user.
 
 \subsubsection{Device Orientation}
 
---
+Knowledge of the physical orientation of a device and changes in the
+orientation enable, for example, highly interactive games with rich
+input mechanisms. Typical sensor sources for the orientation include
+gyroscopes, compasses, and accelerometers \cite{DeviceOrientation}.
 
-\subsubsection{Gamepad}
-
---
+The Device Orientation specification \cite{DeviceOrientation} defines
+APIs and events to access this sensor data through an abstraction
+layer. The data can be used for rich interaction and gestures for a
+wide array of applications.
 
 \subsubsection{User Media}
+\label{section:getusermedia}
 
---
+The getusermedia specification \cite{getusermedia} defines means for
+accessing multimedia streams from local devices. The streams can be
+audio, video, or both, and the source device can be, for example, the
+web camera on a desktop computer or the microphone on a mobile device.
+
+The \texttt{getUserMedia} function can be used to request access to a
+multimedia stream, and the stream can then be handled, for example,
+with the File API (see Section~\ref{section:fileapi}) for recording to
+a file, or used as a source in an \texttt{audio} or a \texttt{video}
+element.
 
 \subsection{Other}
 
---
+notifications, fullscreen, mouse lock, clipboard, gamepad
 
 \section{Modern Mobile Web Application Architecture}
 \label{section:modern-mobile-web}
