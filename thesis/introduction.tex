@@ -698,13 +698,51 @@ not affect the main \abbr{UI} thread apart from the communication
 channel. The simple API is easy to work with and gives the long-needed
 ability of parallel computation in web applications.
 
-\subsubsection{Timing}
+\subsubsection{Analytics and Timing}
 
---
+Proper analytics is crucial for performance research and
+optimization. JavaScript timers have traditionally been used for
+timing and profiling client side interactions, but they can only
+provide crude analytics of what happens after the browser has started
+to parse the document and executes the JavaScript timing code.
 
-\subsubsection{Page Visibility}
+The Navigation Timing specification \cite{NavigationTiming} defines
+accurate analytics of events that happens since the user starts to
+navigate to the target page and until the page is fully loaded. These
+numbers are much more relevant than timing code supplied by the page
+itself, since they accurately match the user perceived load time that
+usually starts already much earlier than what the target page can
+time, for example, when a link is clicked on another page.
 
---
+Timing APIs are also defined for resources \cite{ResourceTiming} and
+general purpose user action profiling \cite{UserTiming}. The
+Performance Timeline specification \cite{PerformanceTimeline} defines
+a unifying interface to access these performance metrics.
+
+\subsubsection{Page Visibility and Timer Control}
+
+Avoiding unneeded work whenever possible is an important performance
+optimization concept. Modern browsers usually have a tabbed interface
+with possibly dozens of web pages open at a time. In addition, many
+interface functionalities use animations and effects to enhance the
+user experience, but if the page is not visible, these effects have
+little value and might use the \abbr{CPU} time in vain. Moreover,
+polling real-time data can use a lot of computing resources even if
+the data is not visible to the user.
+
+The Page Visibility specification \cite{PageVisibility} defines an API
+for JavaScript to know whether the document is currently visible and a
+\texttt{visibilitychange} event to get notified when the document
+visibility changes. In addition, the Timing control for script-based
+animations specification \cite{TimingControl} and the Efficient Script
+Yielding specification \cite{ScriptYielding} define means for
+requesting the browser to manage the event queue for efficient
+animation and interface event handling. For example, with the
+\texttt{requestAnimationFrame} function, the developer can
+periodically request for execution time for smooth animations, and
+when the page is not visible to the user, the browser can throttle the
+animation frame frequency for not using \abbr{CPU} power when it might
+be needed more on another page.
 
 \subsection{Security and Privacy}
 
