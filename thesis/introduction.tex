@@ -485,33 +485,99 @@ the Web that relate to what we can do with HTML, CSS, and JavaScript
 in modern web applications. In the following sections, we introduce
 the specifications that are of interest within the topic of this work.
 
-\subsection{Graphics and Typography}
+\subsection{Cascading Style Sheets}
 
---
+\abbr{CSS} Level 3 specifications introduce lots of new functionality
+for web application styling. Well separated layout layer keeps the
+document structure clean, and rich styling and effects capabilities
+reduce the need for scripting and provide graceful fallback
+functionality for older user agents. By letting the browser handle,
+for example, rich user interface animation effects lets developers
+optimize the responsiveness and performance of their applications
+since the browser can use the most efficient techniques of the
+platform to handle these effects.
 
-\subsubsection{CSS3}
+\begin{itemize}
 
---
+\item \textbf{Selectors}
 
-\subsubsection{Media Queries}
+  \abbr{CSS} selectors are patterns that are used to match elements in
+  a \abbr{DOM} tree. The patterns can then be used to apply style
+  rules to the matched elements. Selectors can also be used in
+  JavaScript to select elements for scripting.
 
-Older versions of HTML and \abbr{CSS} have already supported targeting
-stylesheets and rules to certain media types like 'screen', 'print',
-or 'mobile'. Media queries expand on this technique by adding extra
-feature queries that can be used to apply styles for certain devices
-and screen sizes. \cite{mediaqueries}
+  \abbr{CSS3} defines a set of new selectors \cite{CSS3Selectors} for
+  powerful matching of elements in complex DOM trees. These selectors
+  are useful for rich interactive web applications and reduce the need
+  for scripting for element matching. Efficient selectors are also
+  crucial for performance optimization.
 
-Media queries can be used to detect the device screen size and
-dimensions, orientation, aspect ratio, color depth,
-etc. \cite{mediaqueries}. Detecting these media features is especially
-useful when using the same HTML markup for different device types. For
-example, a layout of a web application might use more horizontal space
-when used on a desktop browser, but on a mobile device the fragments
-of the layout might be stacked vertically to avoid horizontal
-scrolling. Also background images might be swapped into smaller ones
-with smaller screens.
+\item \textbf{Transforms}
 
-\subsubsection{WebGL and Typed Arrays}
+  2D and 3D transforms \cite{CSStransforms} allow elements to be
+  transformed in two-dimensional or three-dimensional space. Elements
+  can be translated, rotated, and scaled in their coordinate
+  space. The specification defines lots of 2D and 3D transformation
+  functions, which can be used in the transforms.
+
+  Transforms can provide subtle but important user interface effects,
+  or they can be used for advanced interactive graphics. Combined
+  with, for example, timed animations or transitions, rich user
+  interfaces can be built with declarative CSS rules.
+
+\item \textbf{Transitions}
+
+  CSS transitions \cite{CSStransitions} allow element styles to change
+  smoothly over a specified duration, and they can be used for simple
+  animations. Normally when the value of a CSS property changes, the
+  result is seen instantly, but with transitions, the changes can be
+  timed and configured for presentational effects.
+
+\item \textbf{Animations}
+
+  Simple animations between two layout states can be done with
+  transitions, but for more complex series of changes, CSS animations
+  \cite{CSSanimations} can be used.
+
+  The animations specification defines so called keyframes, which can
+  be used to specify the progress of the animation between the start
+  and the end. Animations can also be configured to repeat a certain
+  number of times, to alternate between the begin and end values, to
+  control the running and paused states, and to delay the start
+  time. \cite{CSSanimations}
+
+\item \textbf{Media Queries}
+
+  Older versions of HTML and \abbr{CSS} have already supported targeting
+  stylesheets and rules to certain media types like 'screen', 'print',
+  or 'mobile'. Media queries expand on this technique by adding extra
+  feature queries that can be used to apply styles for certain devices
+  and screen sizes. \cite{mediaqueries}
+
+  Media queries can be used to detect the device screen size and
+  dimensions, orientation, aspect ratio, color depth,
+  etc. \cite{mediaqueries}. Detecting these media features is especially
+  useful when using the same HTML markup for different device types. For
+  example, a layout of a web application might use more horizontal space
+  when used on a desktop browser, but on a mobile device the fragments
+  of the layout might be stacked vertically to avoid horizontal
+  scrolling. Also background images might be swapped into smaller ones
+  with smaller screens.
+
+\item \textbf{Web Fonts}
+
+  Typography is an essential part of design. Traditionally web designers
+  have been constrained into only a few ``web safe'' fonts that are
+  known to be widely supported between different browsers and platforms.
+
+  CSS3 defines techniques to dynamically load custom fonts and specify
+  their properties \cite{cssfonts}. However, different browsers still
+  use different formats and developers might have to provide the custom
+  font files in all the formats that they want to support.
+
+\end{itemize}
+
+\subsection{WebGL and Typed Arrays}
 
 WebGL is a low-level 3D rendering API derived from the OpenGL® ES 2.0
 \cite{OpenGL} and it is designed as a rendering context for the
@@ -535,17 +601,6 @@ due to performance reasons, WebGL API needed more efficient data
 structures for 3D graphics. These typed arrays can also be used in
 non-graphics related contexts, for example, where efficient processing
 is needed for large amounts of binary data.
-
-\subsubsection{Web Fonts}
-
-Typography is an essential part of design. Traditionally web designers
-have been constrained into only a few ``web safe'' fonts that are
-known to be widely supported between different browsers and platforms.
-
-CSS3 defines techniques to dynamically load custom fonts and specify
-their properties \cite{cssfonts}. However, different browsers still
-use different formats and developers might have to provide the custom
-font files in all the formats that they want to support.
 
 \subsection{Interaction and Messaging}
 
