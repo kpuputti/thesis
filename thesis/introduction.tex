@@ -391,6 +391,7 @@ FALLBACK:
 \end{verbatim}
 
 \subsubsection{Data Storage}
+\label{section:datastorage}
 
 Storing data in the client side has traditionally been constrained
 into using cookies, but HTML5 specifies new options for data
@@ -884,18 +885,102 @@ vibration, network information, contacts, intents
 
 \subsection{Single-Page applications}
 
-\begin{itemize}
-\item simple REST backend as a dummy data layer
-\item all functionality in the client side
-\item application state in the frontend
-\item data persistency in the backend, frontend, or both
-\end{itemize}
+In recent years, the movement from traditional interlinked documents
+to interactive web applications has had a profound effect on the
+architecture of web applications. Traditional web sites have
+structured backend architectures often with a database layer, a layer
+for business logic, and a layer for generating the HTML documents from
+a template. The frontend usually uses \abbr{CSS} for layout and
+styling and some JavaScript for enhancing forms or some interactive
+components on a page.
+
+These conventional three-tiered web applications often use an
+\abbr{MVC} \cite{gamma1995design} framework for separating the data,
+logic, and presentation layers in the backend. However, the latest
+trend in web application development has been having only a simple
+\abbr{REST} \citationneeded API as a backend data layer, and using an
+JavaScript MVC framework in the frontend. Thus the whole application
+logic and presentation has moved to the client side, with the backend
+only working as a data persistency layer.
+
+Using modern JavaScript storage APIs (see
+Section~\ref{section:datastorage}), even the data persistency and
+application state layer can be in the client side, with backend only
+working as an application and data delivery layer. In addition to the
+client side data persistency, the storage APIs can be used to store
+the user-specific application state.
+
+Single-page applications might introduce a bigger initial page load,
+but after the startup, the network is only used when interacting with
+the backend data API. This makes the applications faster and more
+responsive, and minimizes the effects that flaky networks have on the
+application usage since separate page views do not require a new
+document request.
 
 \subsubsection{JavaScript MVC Libraries}
 
+Due to the recent trend to move application logic from the backend to
+the frontend, JavaScript code bases have grown into large applications
+that need a proper modular structure. Several frameworks have been
+developed to structure JavaScript applications into well-separated
+modules and layers.
+
+Many of the JavaScript application frameworks are derived from the MVC
+architecture pattern adapting it to the design needs and requirements
+of browser-based applications. Example frameworks include
+Backbone.js\footnote{\url{http://backbonejs.org/}},
+Spine\footnote{\url{http://spinejs.com/}},
+batman.js\footnote{\url{http://batmanjs.org/}},
+Knockout\footnote{\url{http://knockoutjs.com/}}, and
+JavaScriptMVC\footnote{\url{http://javascriptmvc.com/}}.
+
+One popular framework nowadays is Backbone.js, which we also chose for
+the application described in
+Chapter~\ref{chapter:methods}. Backbone.js is an open source
+JavaScript framework providing the essential components and structures
+for building large JavaScript applications. Backbone.js provides the
+following components:
+
 \begin{itemize}
-\item define MVC/MVVM etc. application patterns
-\item introduce example MVC libraries like backbone.js
+\item \textbf{Model}
+
+  Models provide the domain-specific data layer of the
+  application. They provide data manipulation, persistency, and
+  serialization methods as well as an event handling mechanism for
+  data changes.
+
+\item \textbf{Collection}
+
+  Collections are ordered sets of models. They can be used observe and
+  manipulate models as a group. They can also be used to filter
+  specific models for some purposes.
+
+\item \textbf{Router}
+
+  Routers provide methods for routing between pages of an application
+  by observing or modifying the \abbr{URL}. URLs can be mapped to
+  events and actions for client-side application navigation.
+
+\item \textbf{History}
+
+  The History utility is used together with Routers to handle the
+  application navigation to preserve the back button functionality and
+  the bookmarking of certain pages in the application.
+
+\item \textbf{Sync}
+
+  The Sync utility provides data synchronization to the backend.
+
+\item \textbf{View}
+
+  Views are structures that help organizing the user interface into
+  logical parts. They usually observe certain models or collections
+  for changes, and update themselves independently of each other when
+  the underlying data changes. They are often used together with some
+  templating library, such as
+  Mustache\footnote{\url{http://mustache.github.com/}} or
+  Handlebars\footnote{\url{http://handlebarsjs.com/}}.
+
 \end{itemize}
 
 \subsection{Responsive Design}
