@@ -487,6 +487,7 @@ in modern web applications. In the following sections, we introduce
 the specifications that are of interest within the topic of this work.
 
 \subsection{Cascading Style Sheets}
+\label{section:css}
 
 \abbr{CSS} Level 3 specifications introduce lots of new functionality
 for web application styling. Well separated layout layer keeps the
@@ -985,11 +986,17 @@ following components:
 
 \subsection{Responsive Design}
 
-\begin{itemize}
-\item scale UI to different screens
-\item use same code for mobile, tablets, and desktop
-\item media queries
-\end{itemize}
+Responsive design is a way to design a web page to fit to varying
+sizes of screens and devices. The traditional way to design a web page
+is to compromise on a certain width based on the expected desktop
+screen sizes of the target audience and to lay out the elements of the
+elements of the page to the chosen width.
+
+Using Media Queries (see Section~\ref{section:css}), we can provide
+tailored layouts for different screen sizes. For example, we can swap
+the images to smaller ones for mobile devices or hide some elements to
+make the layout cleaner on small screens. This enables us to use the
+same code base to target all devices and screens.
 
 \subsection{Progressive Enhancement}
 \label{subsection:progressive-enhancement}
@@ -1003,22 +1010,66 @@ following components:
 
 \subsection{UI Libraries}
 
-\begin{itemize}
-\item introduce a few example frameworks/libraries for building mobile
-  web apps
-\end{itemize}
-
 \subsubsection{jQuery Mobile}
 
---
+jQuery Mobile \footnote{\url{http://jquerymobile.com/}} is a client
+side framework optimized for touch devices. The user interface is
+based on HTML5 and the jQuery JavaScript
+framework\footnote{\url{http://jquery.com/}}. The aim of the project
+is to provide a progressively enhanced web framework for as many
+devices as possible. Figure~\ref{figure:jquerymobile.png} shows
+example components in the framework.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/jquerymobile.png}
+    \caption{jQuery Mobile user interface
+      components. \url{http://jquerymobile.com/demos/1.0.1/}}
+    \label{figure:jquerymobile.png}
+  \end{center}
+\end{figure}
+
+jQuery Mobile is an open source project sponsored by large mobile and
+media companies. The user interface is fully theamable and there are
+several third-party extensions and widgets to the framework.
 
 \subsubsection{jQTouch}
 
---
+jQTouch \footnote{\url{http://jqtouch.com/}} is a lightweight open
+source library for high-end smartphones and tablet devices. It only
+supports the WebKit browser
+engine \footnote{\url{http://www.webkit.org/}} used in iOS, Android,
+Blackberry, and WebOS devices. It provides customizable themes and
+user interface components, as well as helpers for handling touch
+input. Figure~\ref{figure:jqtouch.png} shows example components of the
+library.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/jqtouch.png}
+    \caption{jQTouch user
+      interface. \url{http://jqtouch.com/preview/demos/main/}}
+    \label{figure:jqtouch.png}
+  \end{center}
+\end{figure}
 
 \subsubsection{Sencha Touch}
 
---
+Sencha Touch is an open source HTML5 mobile web application framework
+for iPhone, Android, and Blackberry devices. The framework is fully
+theamable and comes with a large set of user interface components. It
+also provides helpers for touch input
+handling. Figure~\ref{figure:sencha.png} shows example components of
+the library.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/sencha.png}
+    \caption{Sencha Touch user
+      interface. \url{http://dev.sencha.com/deploy/touch/examples/kitchensink/}}
+    \label{figure:sencha.png}
+  \end{center}
+\end{figure}
 
 \subsection{Hybrid Applications}
 
