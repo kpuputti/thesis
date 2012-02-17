@@ -1073,13 +1073,40 @@ the library.
 
 \subsection{Hybrid Applications}
 
-\begin{itemize}
-\item combining web apps with native technologies
-\item level of web/native functionality be pretty much anything
-\item end result is an installable native app with web tech in it
-\item introduce Phonegap as an example tool
-\item app can be uploaded to an app store
-\end{itemize}
+Sometimes application stores can be a valuable marketing path, and
+visibility in these stores can bring a lot of users to an
+application. The stores also provide easy billing of applications
+themselves, and solutions for in-app billing. \citationneeded
+
+Fortunately, modern smartphone and tablet platforms provide a user
+interface component to embed a web browser view into a native
+application. This web view component can be used to build parts or
+even the whole application with web technologies. For example, the web
+view can take the whole available screen space of the application, and
+show a local HTML document together with local assets like CSS and
+JavaScript files and images.
+
+These applications that use a native web view wrapper with parts of
+the application built with web technologies are called hybrid
+applications. The level of native versus web technologies can vary,
+and everything is possible from fully utilizing web technologies with
+just a simple native wrapper to a native application with just a
+simple static HTML document.
+
+Several tools have been developed to build hybrid applications. One of
+these is PhoneGap \footnote{\url{http://phonegap.com/}}, which is an
+open source HTML5 application platform for building native
+applications with web technologies. PhoneGap provides native wrappers
+for all of the largest mobile platforms, and exposes extra JavaScript
+APIs that are not accessible in normal web pages. These APIs are based
+on the latest specifications, and they can be used to access device
+functionality that has previously been inaccessible using JavaScript.
+
+With tools like PhoneGap, developers can build native applications
+using familiar web technologies with access to native features and
+device APIs. These hybrid applications have only one code base that is
+deployed for several smartphone platforms, and the applications can be
+submitted to application stores.
 
 \clearpage
 \section{Performance Guidelines}
