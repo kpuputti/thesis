@@ -906,7 +906,7 @@ These conventional three-tiered web applications often use an
 \abbr{MVC} \cite{gamma1995design} framework for separating the data,
 logic, and presentation layers in the backend. However, the latest
 trend in web application development has been having only a simple
-\abbr{REST} \citationneeded API as a backend data layer, and using an
+\abbr{REST} \citationneeded API as a backend data layer, and using a
 JavaScript MVC framework in the frontend. Thus the whole application
 logic and presentation has moved to the client side, with the backend
 only working as a data persistency layer.
@@ -918,11 +918,11 @@ working as an application and data delivery layer. In addition to the
 client side data persistency, the storage APIs can be used to store
 the user-specific application state.
 
-Single-page applications might introduce a bigger initial page load,
-but after the startup, the network is only used when interacting with
-the backend data API. This makes the applications faster and more
-responsive, and minimizes the effects that flaky networks have on the
-application usage since separate page views do not require a new
+Single-page applications might introduce bigger initial page load, but
+after the startup, the network is only used when interacting with the
+backend data API. This makes the applications faster and more
+responsive, and minimizes the effects that unreliable networks have on
+the application usage since separate page views do not require a new
 document request.
 
 \subsubsection{JavaScript MVC Libraries}
@@ -960,14 +960,14 @@ following components:
 
 \item \textbf{Collection}
 
-  Collections are ordered sets of models. They can be used observe and
-  manipulate models as a group. They can also be used to filter
+  Collections are ordered sets of models. They can be used to observe
+  and manipulate models as a group. They can also be used to filter
   specific models for some purposes.
 
 \item \textbf{Router}
 
   Routers provide methods for routing between pages of an application
-  by observing or modifying the \abbr{URL}. URLs can be mapped to
+  by observing and modifying the \abbr{URL}. URLs can be mapped to
   events and actions for client-side application navigation.
 
 \item \textbf{History}
@@ -998,7 +998,7 @@ Responsive design is a way to design a web page to fit to varying
 sizes of screens and devices. The traditional way to design a web page
 is to compromise on a certain width based on the expected desktop
 screen sizes of the target audience and to lay out the elements of the
-elements of the page to the chosen width.
+page to the chosen width.
 
 Using Media Queries (see Section~\ref{section:css}), we can provide
 tailored layouts for different screen sizes. For example, we can swap
