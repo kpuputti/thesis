@@ -1009,12 +1009,46 @@ same code base to target all devices and screens.
 \subsection{Progressive Enhancement}
 \label{subsection:progressive-enhancement}
 
+Modern web sites and web applications are accessed with a huge variety
+of devices and form-factors with varying capabilities, and supporting
+all the possible browsers your users might have becomes a huge burden
+on developers. New standards support and \abbr{APIs} in latest
+browsers seem tempting and valuable, but having to support also
+less-capable browsers prevent developers from using a single solution
+for all browsers.
+
+The goal of progressive enhancement is to provide universal access to
+a web site or application no matter what capabilities the browser of
+the user has. Parker et al. define the three key principles of
+progressive enhancement \cite{parker2010designing}:
+
 \begin{itemize}
-\item mobile first
-\item start from the bottom with the least capable devices
-\item build up extra enhancement functionality for more capable browsers
-\item use feature detection
+\item Start with clear content and well-structured markup.
+\item Maintain strict separation of layout and presentation.
+\item Unobtrusively layer in advanced behavior and styling, with
+  careful consideration of accessibility implications.
 \end{itemize}
+
+Often the design is started ``mobile first'' meaning that the simplest
+and the most universal bottom layer of the application is designed for
+the least-capable browsers with very little screen estate. This forces
+the design to be simple and semantic, and filters out any extra markup
+that is not needed for the semantic presentation of the content and
+functionality. In addition, by designing first to browsers that might
+not even have \abbr{CSS} support forces a clear separation of layout
+and content as well as makes the clean markup easier to style and
+enhance \cite{parker2010designing}.
+
+Using feature detection (see Section~\ref{section:feature-detection}),
+more layers are added on top of the clean markup. The objective is to
+use unobtrusive JavaScript to enhance the markup to avoid breaking
+parts of the page or the whole site with careless scripting. By using
+feature detection, we ensure that we take the most out of the latest
+browsers by using their full capabilities, and at the same time,
+keeping the application accessible and functional in less-capable
+browsers. This also makes the applications future-proof when browsers
+are updated and new APIs and features are implemented in
+them. \cite{parker2010designing}
 
 \subsection{UI Libraries}
 
