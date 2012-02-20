@@ -118,11 +118,16 @@ and returned. The expiration time of a data item can be configured in
 the library settings.
 
 JSONCache also tries to fetch the data multiple times to handle small
-interruptions in network connections. \fixme{add example and explain
-  that it is very common}. If a data fetch fails, a new fetch is
-issued after a timeout (defined in the configuration). On subsequent
-attempts the timeout is increased, and after a defined number of
-attempts the fetch error is issued.
+interruptions in network connections.  For example, when a user leaves
+his or her work place and uses a web application, the mobile device
+changes from the workplace \abbr{WiFi} network to the \abbr{3G}
+network, there is a short interruption in the connection, and any
+ongoing network requests are affected.
+
+If a data fetch fails, a new fetch is issued after a timeout (defined
+in the configuration). On subsequent attempts the timeout is
+increased, and after a defined number of attempts the fetch error is
+issued.
 
 Figure~\ref{figure:jsoncache-demo.png} shows an interactive demo of
 the JSONCache library. The
