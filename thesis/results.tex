@@ -306,8 +306,22 @@ the offline support by saving the given feedback, for example, to
 localStorage and sending it later to the backend server when the
 network connection is open again.
 
-\fixme{Add dev headaches: device categories, refreshes in dev, cache
-  updates}
+We had some problems in developing the application when using the
+offline manifest. In development mode, we want changes to be shown
+immediately, and we had to conditionally use the offline manifest
+based on the environment.
+
+Using the offline manifest poses several additional problems. First,
+the whole cache is made invalid if only a single resource returns a
+404 Not Found HTTP status code. Second, if there are updates in the
+cache, the updates are indicated in the JavaScript events, but the
+updated resources are available only in the second page load after the
+updates. Therefore, updates do not show up immediately when the
+application is refreshed, and we had to show an additional confirm
+dialog for informing the user about updates so that they could refresh
+the page again. This has a noticeable impact on the application user
+experience, but was seen as a needed compromise to get the latest
+conference schedule data and interface updates.
 
 \subsection{Handling Interruptions}
 
