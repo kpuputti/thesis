@@ -13,17 +13,40 @@ session information and daily schedule for the conference.
 
 \subsection{Requirements}
 
-\begin{itemize}
-\item usage context: conference (network problems expected)
-\item target audience: mobile developers (knowledgeable audience)
-\item target devices: iPhone, Android phones, WP7, iPad (also tested
-  on more devices)
-\item personalized application: session favorites
-\item contextual UI: showing coming/ongoing favorite sessions, showing
-  current time in agenda, opening agenda in the current day
-\item floor maps with rooms
-\item session feedback form
-\end{itemize}
+The target group for the conference application was mobile developers
+attending the Qt Developer Days conference. Therefore, we could expect
+a good technical knowledge and high-end mobile devices from the target
+audience.
+
+A native version of the application was built for devices with Qt
+support, and the HTML5 application was for all other devices. The main
+target devices were iPhone, Android devices, Windows Phone 7 devices,
+and iPad. In addition to these, the application was tested on devices
+running Symbian and Meego, as well as desktop browsers.
+
+The conference was expected to have some thousands of attendees, of
+which a few hundred was expected to use the web application. In
+conferences of this size, network connectivity and reliability is
+often a problem. Also, mobile networks other than the \abbr{WiFi}
+network supplied by the conference might be too expensive for users
+that come from other countries. This is why offline support was
+needed.
+
+The client wanted high interactivity and personalization in the
+application. Users could save interesting sessions to their favorites,
+which were shown in the home view of the application. The home view
+was expected to be contextual in taking into account the current time
+and showing the ongoing sessions and the remaining time for them, as
+well as the time left for later favorite sessions to start. Current
+time was also expected to be indicated in the agenda view, where a red
+line was to be drawn to the current time for easily visualizing the
+ongoing sessions. By default, the agenda view should show the ongoing
+day of the conference if possible.
+
+The user interface was required to use the touch input interactions
+for panning and zooming the floor maps of the conference venue. Also,
+the client wanted a touchable star rating widget on the feedback form
+for easy and visual session rating on touch screens.
 
 \subsection{Application Architecture}
 
