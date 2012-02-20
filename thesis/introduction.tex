@@ -371,8 +371,8 @@ without extra page refreshes. \cite{HTML5draft}
 By design, web sites have always needed a working network
 connection. Applications, however, should be able to work offline or
 in unreliable and flaky networks. Especially mobile networks are
-unreliable \citationneeded, which has raised the need for offline
-support in HTML5.
+unreliable \cite{zandy2002reliable}, which has raised the need for
+offline support in HTML5.
 
 There are several ways to enable offline support in HTML5
 applications. We present these approaches in the following sections.
@@ -682,11 +682,12 @@ file within an HTML document is not enough for multimedia rich
 applications.
 
 Real-time media streaming and playing has been traditionally
-implemented with Adobe Flash \citationneeded and \abbr{RTMP}
-\citationneeded, but the Web RTC API \cite{WebRTC} brings the ability
-to do native media streaming within HTML documents. Also a direct
-peer-to-peer streaming communication channel between two user agents
-is defined.
+implemented with Adobe
+Flash\footnote{\url{http://www.adobe.com/products/flashplayer.html}}
+and \abbr{RTMP}\footnote{\url{http://www.adobe.com/devnet/rtmp.html}},
+but the Web RTC API \cite{WebRTC} brings the ability to do native
+media streaming within HTML documents. Also a direct peer-to-peer
+streaming communication channel between two user agents is defined.
 
 Combined with the getusermedia API \cite{getusermedia} (see
 Section~\ref{section:getusermedia}), streams can be shown or recorded
@@ -910,7 +911,8 @@ vibration, network information, contacts, intents
 
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{images/anatomy-of-a-html5-mobile-app.png}
-  \caption{HTML5 Mobile Application Anatomy \citationneeded}
+  \caption{HTML5 Mobile Application Anatomy according to
+    \url{http://pinchzoom.com/posts/anatomy-of-a-html5-mobile-app/}}
   \label{figure:anatomy-of-a-html5-mobile-app.png}
 \end{figure}
 
@@ -930,10 +932,10 @@ These conventional three-tiered web applications often use an
 \abbr{MVC} \cite{gamma1995design} framework for separating the data,
 logic, and presentation layers in the backend. However, the latest
 trend in web application development has been having only a simple
-\abbr{REST} \citationneeded API as a backend data layer, and using a
-JavaScript MVC framework in the frontend. Thus the whole application
-logic and presentation has moved to the client side, with the backend
-only working as a data persistency layer.
+\abbr{REST} \cite{fielding2000architectural} API as a backend data
+layer, and using a JavaScript MVC framework in the frontend. Thus the
+whole application logic and presentation has moved to the client side,
+with the backend only working as a data persistency layer.
 
 Using modern JavaScript storage APIs (see
 Section~\ref{section:datastorage}), even the data persistency and
@@ -1142,7 +1144,8 @@ the library.
 Sometimes application stores can be a valuable marketing path, and
 visibility in these stores can bring a lot of users to an
 application. The stores also provide easy billing of applications
-themselves, and solutions for in-app billing. \citationneeded
+themselves, and solutions for in-app
+billing. \cite{cortimiglia2011mobile}
 
 Fortunately, modern smartphone and tablet platforms provide a user
 interface component to embed a web browser view into a native

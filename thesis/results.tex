@@ -138,8 +138,8 @@ The viewport meta tag was first introduced in Apple's iPhone and
 afterwards ported to other platforms, such as Android. The possible
 configuration options and default values might vary between
 platforms. Values accepted by Android are shown in
-Table~\ref{table:viewport-meta} (\fixme{Check table ref number})
-\citationneeded. iOS devices also support these same properties.
+Table~\ref{table:viewport-meta} (\fixme{Check table ref number}). iOS
+devices also support these same properties.
 
 \begin{table}
   \begin{tabular}{ l | l | p{5cm} }
@@ -153,16 +153,18 @@ Table~\ref{table:viewport-meta} (\fixme{Check table ref number})
     target-densitydpi & Visual pixel density. & dpi value, 'device-dpi', 'high-dpi', 'medium-dpi', or 'low-dpi' \\
   \end{tabular}
   \label{table:viewport-meta}
-  \caption{Viewport meta tag configuration for Android.}
+  \caption{Viewport meta tag configuration for Android according to
+    \url{http://developer.android.com/guide/webapps/targeting.html}}
 \end{table}
 
 If we do not set the viewport configuration tag, the device uses its
 own default values for the properties. For example, the default value
-for the width property is 980 pixels in iOS \citationneeded, which is
-clearly defined for web sites targeting desktop browsers. Without
-setting this value to something smaller and more appropriate in a
-mobile context, the whole application is very wide and has small and
-unreadable text in the initial zoom level.
+for the width property is 980 pixels in
+iOS\footnote{\url{https://developer.apple.com/library/safari/documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html}},
+which is clearly defined for web sites targeting desktop
+browsers. Without setting this value to something smaller and more
+appropriate in a mobile context, the whole application is very wide
+and has small and unreadable text in the initial zoom level.
 
 In the viewport configuration we used for the conference application
 (as defined above), we set the viewport width to 'device-width'. This
@@ -206,13 +208,13 @@ browser does not support the orientation change event.
 \label{section:handling-networks}
 
 One of the biggest problems in mobile web applications is the network
-that is often slow and unreliable \citationneeded. Our conference
-application was designed for a context where the application cannot
-trust on the networking but should still manage to handle interactions
-and persist application state. Also being a conference where people
-come from around the world, the network data transfer cost might be
-surprisingly high, and thus bandwidth should be saved whenever
-possible.
+that is often slow and unreliable \cite{zandy2002reliable}. Our
+conference application was designed for a context where the
+application cannot trust on the networking but should still manage to
+handle interactions and persist application state. Also being a
+conference where people come from around the world, the network data
+transfer cost might be surprisingly high, and thus bandwidth should be
+saved whenever possible.
 
 \subsection{Minimizing Data Transfer}
 
@@ -224,10 +226,10 @@ transferred.
 
 First, we made sure the data was minimized and compressed with
 Gzip. Second, using \abbr{JSON} instead of \abbr{XML} in \abbr{Ajax}
-requests saves bandwidth \citationneeded and needed effort of the
-browser to process the data. Third, using the offline manifest ensured
-that the application assets and data needed to be downloaded only
-once, and using localStorage we could store the application state
+requests saves bandwidth \cite{charland2011mobile} and needed effort
+of the browser to process the data. Third, using the offline manifest
+ensured that the application assets and data needed to be downloaded
+only once, and using localStorage we could store the application state
 locally to the browser avoiding the network completely.
 
 \subsection{Caching}
@@ -325,12 +327,13 @@ conference schedule data and interface updates.
 
 \subsection{Handling Interruptions}
 
-Small interruptions are common in mobile networks \citationneeded. For
-example, the user might have a stable network connection, but after
-walking into an elevator the connection drops for a moment. Then after
-exiting the elevator the device reconnects to the
-network. Applications should expect these interruptions and should not
-fail immediately with brief interruptions in flaky networks.
+Small interruptions are common in mobile networks
+\cite{zandy2002reliable}. For example, the user might have a stable
+network connection, but after walking into an elevator the connection
+drops for a moment. Then after exiting the elevator the device
+reconnects to the network. Applications should expect these
+interruptions and should not fail immediately with brief interruptions
+in flaky networks.
 
 JSONCache library introduced in Section~\ref{section:jsoncache} had a
 functionality to overcome these issues. The library tries to download
@@ -368,10 +371,11 @@ did not use any animations.
 
 There are lots of best practices and conventions that have been
 developed by the web developer community. A lot of these tried and
-tested techniques are outlined in the HTML5 Boilerplate
-\citationneeded that we used as our base for the conference
-application. Here we present some techniques and tools that help to
-improve application performance and reduce bugs.
+tested techniques are outlined in the HTML5 Mobile
+Boilerplate\footnote{\url{http://html5boilerplate.com/mobile}} that we
+used as our base for the conference application. Here we present some
+techniques and tools that help to improve application performance and
+reduce bugs.
 
 \subsection{JSLint}
 
@@ -382,10 +386,10 @@ for performance or code maintainability
 syntax and convention violations, which is valuable because the code
 will be sent in the source form to be interpreted by the browser.
 
-We had automatic JSLint checking integrated in the Emacs
-\citationneeded editor that we used for all JavaScript programming,
-which helped to notice common errors as early as possible and made the
-code cleaner.
+We had automatic JSLint checking integrated in the GNU
+Emacs\footnote{\url{http://www.gnu.org/software/emacs/}} editor that
+we used for all JavaScript programming, which helped to notice common
+errors as early as possible and made the code cleaner.
 
 \subsection{Lazy initialization}
 
@@ -412,7 +416,7 @@ and with an overly simplistic (but still common) implementation would
 create the list items and add them to the list container one by
 one. This causes the browser to reflow the page after each insertion
 and might add up to user interface artifacts and
-slowness. \citationneeded
+slowness. \cite{zakas2010high}
 
 One approach to handle updating several elements at once is to use
 document fragments. With document fragments, several elements can be
@@ -442,9 +446,10 @@ of the event and execute the wanted functionality based on the target.
 One other optimization for touch screens is to use native touch events
 instead of traditional mouse events such as click. Mobile browsers
 typically have a delay or 300 milliseconds after a touchstart event
-until the the click event is fired \citationneeded. This is because
-the browser waits if the user is doing a double tap instead of a
-single tap and a delay is needed before a double tap can be
+until the click event is
+fired\footnote{\url{http://code.google.com/mobile/articles/fast_buttons.html}}. This
+is because the browser waits if the user is doing a double tap instead
+of a single tap and a delay is needed before a double tap can be
 excluded. If we bind our event handlers to the touch events instead of
 click events, we can immediately dismiss this delay altogether and
 make the user interface components a lot more responsive.
@@ -507,11 +512,12 @@ extending mechanism as specified in the HTML5 specification draft
 
 \subsection{Page Speed}
 
-Page Speed \citationneeded is an open-source project by Google for
-analyzing and optimizing web site performance best practices. We used
-the Google Chrome browser extension to analyze the conference
-application against the performance rules defined in Page Speed. The
-results are shown in Figure~\ref{figure:devdays-pagespeed.png}.
+Page Speed\footnote{\url{http://code.google.com/speed/page-speed/}} is
+an open-source project by Google for analyzing and optimizing web site
+performance best practices. We used the Google Chrome browser
+extension to analyze the conference application against the
+performance rules defined in Page Speed. The results are shown in
+Figure~\ref{figure:devdays-pagespeed.png}.
 
 \begin{figure}[ht]
   \begin{center}
