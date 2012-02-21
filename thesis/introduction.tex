@@ -136,29 +136,19 @@ optimizations and the compromises that had to be made.
 
 \fixme{Add more about background and objectives of this work}
 
-\section{Research Question}
+\section{Research Questions}
 
-Assuming that we know the reasons and motivation for cross-platform
-HTML5 and the importance of application performance and
-responsiveness:
+Knowing the reasons and motivation for cross-platform HTML5 and the
+importance of application performance and responsiveness:
 
-\begin{itemize}
-\item How should we build cross-platform HTML5 applications?
+\begin{enumerate}
+\item What are the main problem areas in mobile web development?
+\item Do HTML5 and related specifications solve these problems?
+\item What other practical means do we have to solve these problems?
+\end{enumerate}
 
-  \begin{itemize}
-  \item How can we optimize the user interface performance?
-  \item How can we handle the flaky and slow mobile networks?
-  \item How can we handle different screen sizes and device types?
-  \end{itemize}
-\end{itemize}
-
-\noindent In other words, we know the Why, but what about the How?
-
-\chapter{Specifications}
-\label{chapter:specifications}
-
-\section{HTML5}
-\label{section:html5}
+\chapter{HTML5}
+\label{chapter:html5}
 
 HTML5 is a cross-platform and device form-factor agnostic markup
 language for defining structured documents. It is a backward
@@ -207,7 +197,7 @@ WHATWG specifications are not separated since they are not
 clear-cut. This is the practical view that, in our opinion, the web
 development community has on HTML5.
 
-\subsection{Semantic Markup}
+\section{Semantic Markup}
 
 Google did a study\footnote{\url{http://code.google.com/webstats/}} in
 2005 of a sample of over a billion HTML documents about the popular
@@ -280,7 +270,7 @@ that group elements with similar characteristics \cite{HTML5draft}:
 
 \end{itemize}
 
-\subsection{Extensibility}
+\section{Extensibility}
 
 HTML5 defines the main constructs of a semantic and accessible
 document. However, some specific use cases require a more precise and
@@ -302,7 +292,7 @@ structure. Using \texttt{data-*=""} and \texttt{rel} attributes,
 the content can be enhanced for automatic reasoning and machine
 readability. \cite{HTML5draft}
 
-\subsection{Media}
+\section{Media}
 
 Multimedia support is crucial for modern applications. HTML5 defines
 elements and APIs for audio, video, subtitles, and embedded content.
@@ -312,7 +302,7 @@ rely on third-party plugins and browser extensions. Not having to rely
 on plugins and extensions has been one of the main goals of the HTML5
 standard for improving the openness and accessibility of web content.
 
-\subsection{Canvas 2D Context}
+\section{Canvas 2D Context}
 
 HTML5 defines the \texttt{canvas} element. It is a
 resolution-dependent bitmap canvas for dynamically rendering
@@ -325,7 +315,7 @@ surface. The API defines functions for drawing shapes, paths, text,
 gradients, and images on the canvas and other functions for handling
 the bitmap data.
 
-\subsection{Form Enhancements}
+\section{Form Enhancements}
 
 Forms are an essential construction in interactive HTML
 documents. However, due to their relative simplicity in terms of
@@ -348,7 +338,7 @@ forms. Automatic form validation in the client side also reduces the
 need for unneeded page refreshes since the browser can show error
 messages in invalid fields without any JavaScript validation.
 
-\subsection{Session History Manipulation}
+\section{Session History Manipulation}
 
 HTML was originally designed to be based on documents and hyperlinks
 between these distinct documents with each of them having a unique
@@ -366,7 +356,7 @@ manipulate the session history. The history stack can be changed and
 used for navigation and even the browser address bar can be changed
 without extra page refreshes. \cite{HTML5draft}
 
-\subsection{Offline Web Applications}
+\section{Offline Web Applications}
 
 By design, web sites have always needed a working network
 connection. Applications, however, should be able to work offline or
@@ -377,7 +367,7 @@ offline support in HTML5.
 There are several ways to enable offline support in HTML5
 applications. We present these approaches in the following sections.
 
-\subsubsection{Application Cache}
+\subsection{Application Cache}
 \label{section:appcache}
 
 \abbr{AppCache} is a relatively simple way to indicate all resources
@@ -412,7 +402,7 @@ FALLBACK:
 / /offline.html
 \end{verbatim}
 
-\subsubsection{Data Storage}
+\subsection{Data Storage}
 \label{section:datastorage}
 
 Storing data in the client side has traditionally been constrained
@@ -441,7 +431,7 @@ transactional API can be used for more complex persistency needs than
 with the simple key/value storages, and it provides a native
 JavaScript API that does not involve the relative complexities of SQL.
 
-\subsubsection{Detecting Network State}
+\subsection{Detecting Network State}
 
 Knowing whether the user is online or offline can affect the user
 interface or the response to user interactions. HTML5 defines
@@ -459,7 +449,7 @@ Therefore, applications should be designed to expect the network to
 work, but to degrade gracefully when the connection is lost or seems
 to be unreliable.
 
-\subsection{Drag and Drop}
+\section{Drag and Drop}
 \label{section:dragdrop}
 
 Drag and Drop is a common interaction technique where elements can be
@@ -474,7 +464,7 @@ interaction before, but little JavaScript code is needed with the new
 API. The browser handles the interaction and the dynamic rendering,
 reducing the interface lagging and the need for extra processing.
 
-\subsection{SVG and MathML}
+\section{SVG and MathML}
 
 While not part of the HTML5 standard, the specification allows for
 embedding \abbr{SVG} \cite{SVGTiny12} and \abbr{MathML} \cite{MathML}
@@ -496,7 +486,8 @@ with it. Also, vector graphics can be scaled to fit the available
 space no matter the screen size, which improves the cross-platform
 usefulness for different device form factors.
 
-\section{Other Related Specifications}
+\chapter{Other Related Specifications}
+\label{chapter:other-related-specifications}
 
 There are lots of specifications related to HTML5 that are considered
 to be part of the practical view of all the new Web APIs that are
@@ -508,7 +499,7 @@ the Web that relate to what we can do with HTML, CSS, and JavaScript
 in modern web applications. In the following sections, we introduce
 the specifications that are of interest within the topic of this work.
 
-\subsection{Cascading Style Sheets}
+\section{Cascading Style Sheets}
 \label{section:css}
 
 \abbr{CSS} Level 3 specifications introduce lots of new functionality
@@ -603,7 +594,7 @@ group\footnote{\url{http://www.w3.org/Style/CSS/members.en.php3}}.
 
 \end{itemize}
 
-\subsection{WebGL and Typed Arrays}
+\section{WebGL and Typed Arrays}
 
 WebGL is a low-level 3D rendering API derived from the OpenGL® ES 2.0
 \cite{OpenGL} and it is designed as a rendering context for the
@@ -629,11 +620,7 @@ structures for 3D graphics. These typed arrays can also be used in
 non-graphics related contexts, for example, where efficient processing
 is needed for large amounts of binary data.
 
-\subsection{Interaction and Messaging}
-
---
-
-\subsubsection{Touch Events}
+\section{Touch Events}
 
 User interface events have traditionally relied on the input device
 being a pointer or a keyboard. Modern mobile devices and tablets,
@@ -649,7 +636,7 @@ attributes for the event object. These enable developers to add
 functionality for rich interaction such as swipes and multi-touch
 gestures.
 
-\subsection{Files}
+\section{Files}
 \label{section:fileapi}
 
 Local file system access is essential for native
@@ -673,7 +660,7 @@ Section~\ref{section:dragdrop}) and Web Workers (See
 Section~\ref{section:webworkers}), HTML5 forms can be greatly enhanced
 and optimized with richer interactivity and better performance.
 
-\subsection{Web Real-time Communication}
+\section{Web Real-time Communication}
 
 Support for different multimedia such as audio and video playing is a
 crucial first step into rich and interactive web
@@ -695,7 +682,7 @@ also from a local media source, such as a web camera. These
 specifications have lots of security and privacy issues to handle, but
 they promise very strong multimedia capabilities for web applications.
 
-\subsection{Web Sockets}
+\section{Web Sockets}
 
 Web Sockets API \cite{WebSockets, WebSocketProtocol} defines a two-way
 communication protocol for real-time applications between a client,
@@ -721,7 +708,7 @@ protocol that works well with HTTP and the existing HTTP
 infrastructure, and that is as close to TCP as possible taking
 possible security issues into account. \cite{WebSocketProtocol}
 
-\subsection{Server-Sent Events}
+\section{Server-Sent Events}
 
 Server-Sent Events specification \cite{ServerSentEvents} defines a
 data stream format \texttt{text/event-stream} that can be used to
@@ -734,7 +721,7 @@ handle the message passing. This helps developers to avoid, for
 example, polling a server for updates, which consumes a lot of
 computing and networking resources.
 
-\subsection{Web Workers}
+\section{Web Workers}
 \label{section:webworkers}
 
 The whole \abbr{IT} industry has had a dramatic shift into parallel
@@ -772,7 +759,7 @@ not affect the main user interface thread apart from the communication
 channel. The simple API is easy to work with and enables the
 long-needed ability of parallel computation in web applications.
 
-\subsection{Analytics and Timing}
+\section{Analytics and Timing}
 
 Proper analytics is crucial for performance research and
 optimization. JavaScript timers have traditionally been used for
@@ -793,7 +780,7 @@ general purpose user action profiling \cite{UserTiming}. The
 Performance Timeline specification \cite{PerformanceTimeline} defines
 a unifying interface to access these performance metrics.
 
-\subsection{Page Visibility and Timer Control}
+\section{Page Visibility and Timer Control}
 
 Avoiding unneeded work whenever possible is an important performance
 optimization concept. Modern browsers usually have a tabbed interface
@@ -818,7 +805,7 @@ when the page is not visible to the user, the browser can throttle the
 animation frame frequency for not using \abbr{CPU} power when it might
 be needed more on another page.
 
-\subsection{Cross-Origin Resource Sharing}
+\section{Cross-Origin Resource Sharing}
 
 Same-origin policy is an important security restriction in web
 browsers preventing web applications to obtain data from other origins
@@ -849,11 +836,11 @@ the given origins. In addition to these specifications, the HTML5 Web
 Messaging specification \cite{WebMessaging} defines an API for
 cross-document messaging.
 
-\subsection{Device APIs}
+\section{Device APIs}
 
---
+\fixme{add intro to device apis}
 
-\subsubsection{Geolocation}
+\subsection{Geolocation}
 
 Context is one of the main components or a personalized application
 \cite{fling2009mobile}. Probably the most important aspect affecting
@@ -872,7 +859,7 @@ The implementations usually provide some sort of privacy protection by
 asking the user whether they want to grant the application access to
 the physical location of the user.
 
-\subsubsection{Device Orientation}
+\subsection{Device Orientation}
 
 Knowledge of the physical orientation of a device and changes in the
 orientation enable, for example, highly interactive games with rich
@@ -884,7 +871,7 @@ APIs and events to access this sensor data through an abstraction
 layer. The data can be used for rich interaction and gestures for a
 wide array of applications.
 
-\subsubsection{User Media}
+\subsection{User Media}
 \label{section:getusermedia}
 
 The getusermedia specification \cite{getusermedia} defines means for
@@ -898,16 +885,17 @@ with the File API (see Section~\ref{section:fileapi}) for recording to
 a file, or used as a source in an \texttt{audio} or a \texttt{video}
 element.
 
-\subsection{Other}
+\section{Other}
+
+\fixme{mention other related specs and drafts}
 
 notifications, fullscreen, mouse lock, clipboard, gamepad, battery,
 vibration, network information, contacts, intents
 
-\chapter{Tools and Techniques}
+\chapter{Tools for Modern Mobile Web Applications}
 \label{chapter:tools-and-techniques}
 
-\section{Modern Mobile Web Application Architecture}
-\label{section:modern-mobile-web}
+\fixme{add intro to this chapter}
 
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{images/anatomy-of-a-html5-mobile-app.png}
@@ -916,7 +904,7 @@ vibration, network information, contacts, intents
   \label{figure:anatomy-of-a-html5-mobile-app.png}
 \end{figure}
 
-\subsection{Single-Page applications}
+\section{Single-Page applications}
 \label{section:single-page-applications}
 
 In recent years, the movement from traditional interlinked documents
@@ -951,7 +939,7 @@ responsive, and minimizes the effects that unreliable networks have on
 the application usage since separate page views do not require a new
 document request.
 
-\subsubsection{JavaScript MVC Libraries}
+\section{JavaScript MVC Libraries}
 \label{section:js-mvc}
 
 Due to the recent trend to move application logic from the backend to
@@ -1018,7 +1006,7 @@ following components:
 
 \end{itemize}
 
-\subsection{Responsive Design}
+\section{Responsive Design}
 
 Responsive design is a way to design a web page to fit to varying
 sizes of screens and devices. The traditional way to design a web page
@@ -1032,7 +1020,7 @@ the images to smaller ones for mobile devices or hide some elements to
 make the layout cleaner on small screens. This enables us to use the
 same code base to target all devices and screens.
 
-\subsection{Progressive Enhancement}
+\section{Progressive Enhancement}
 \label{subsection:progressive-enhancement}
 
 Modern web sites and web applications are accessed with a huge variety
@@ -1076,9 +1064,9 @@ browsers. This also makes the applications future-proof when browsers
 are updated and new APIs and features are implemented in
 them. \cite{parker2010designing}
 
-\subsection{UI Libraries}
+\section{UI Libraries}
 
-\subsubsection{jQuery Mobile}
+\subsection{jQuery Mobile}
 
 jQuery Mobile \footnote{\url{http://jquerymobile.com/}} is a client
 side framework optimized for touch devices. The user interface is
@@ -1101,7 +1089,7 @@ jQuery Mobile is an open source project sponsored by large mobile and
 media companies. The user interface is fully theamable and there are
 several third-party extensions and widgets to the framework.
 
-\subsubsection{jQTouch}
+\subsection{jQTouch}
 
 jQTouch \footnote{\url{http://jqtouch.com/}} is a lightweight open
 source library for high-end smartphones and tablet devices. It only
@@ -1121,7 +1109,7 @@ library.
   \end{center}
 \end{figure}
 
-\subsubsection{Sencha Touch}
+\subsection{Sencha Touch}
 
 Sencha Touch is an open source HTML5 mobile web application framework
 for iPhone, Android, and Blackberry devices. The framework is fully
@@ -1139,7 +1127,7 @@ the library.
   \end{center}
 \end{figure}
 
-\subsection{Hybrid Applications}
+\section{Hybrid Applications}
 
 Sometimes application stores can be a valuable marketing path, and
 visibility in these stores can bring a lot of users to an
