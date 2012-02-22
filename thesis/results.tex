@@ -105,10 +105,30 @@ feature detection library\footnote{\url{http://www.modernizr.com/}} to
 check for HTML5 features.
 
 For example, the user could add sessions to his or her favorites by
-clicking the star in the agenda or on the session details view
-(\fixme{add screenshot}). The favorites were then listed on the home
-view (\fixme{add screenshot}) together with information about the time
-left for them to begin.
+clicking the star in the agenda (see
+Figure~\ref{figure:iphone-android-agenda.jpg}) or on the session
+details view. The favorites were then listed on the home view (see
+Figure~\ref{figure:android-home-favorites.jpg}) together with
+information about the time left for them to begin.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/iphone-android-agenda.jpg}
+    \caption{Agenda view with stars to add favorites on an iPhone
+      (left) and on a device running Android (right).}
+    \label{figure:iphone-android-agenda.jpg}
+  \end{center}
+\end{figure}
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/android-home.jpg}
+    \caption{Home view without favorites (left) on a device running
+      Windows Phone 7 and with favorites (right) on a device running
+      Android.}
+    \label{figure:android-home-favorites.jpg}
+  \end{center}
+\end{figure}
 
 We used HTML5 localStorage for storing the favorites in the user's web
 browser. By using Modernizr, we detected localStorage support and
@@ -178,11 +198,20 @@ application without any initial zooming.
 
 In addition to the viewport configuration, we used media queries (see
 Section~\ref{section:css}) to use better background images for
-high-resolution screens. We also dynamically set the map view
-(\fixme{Add screenshot?}) images based on the screen dimensions so
-that we could provide smaller images for smaller screens and high
-resolution images for tablets and other devices with larger screen
-estate.
+high-resolution screens. We also dynamically set the map view (see
+Figure~\ref{figure:nokia-map.jpg}) images based on the screen
+dimensions so that we could provide smaller images for smaller screens
+and high resolution images for tablets and other devices with larger
+screen estate.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{images/nokia-map.jpg}
+    \caption{Floor map view on a device running Nokia Belle
+      (previously Symbian Belle).}
+    \label{figure:nokia-map.jpg}
+  \end{center}
+\end{figure}
 
 \section{Handling Different Orientations}
 
@@ -458,7 +487,17 @@ make the user interface components a lot more responsive.
 
 We used event delegation and touch events, for example, in the main
 navigation of the conference application to get the best performance
-and responsiveness in changing the page views.
+and responsiveness in changing the page views. We also used touch
+events in the session rating form seen in
+Figure~\ref{figure:android-feedback-stars.jpg}.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{images/android-feedback-stars.jpg}
+    \caption{Touchable session rating stars on a device running Android.}
+    \label{figure:android-feedback-stars.jpg}
+  \end{center}
+\end{figure}
 
 \section{Performance Analysis}
 \label{section:performance-analysis}
