@@ -838,7 +838,10 @@ cross-document messaging.
 
 \section{Device APIs}
 
-\fixme{add intro to device apis}
+One of the main differences between native and web applications is the
+device sensor access. In the following sections we present some
+specifications that define \abbr{API}s to access the device features
+from JavaScript.
 
 \subsection{Geolocation}
 
@@ -887,10 +890,44 @@ element.
 
 \section{Other}
 
-\fixme{mention other related specs and drafts}
+There are also lots of other specifications, drafts, and proposals for
+other device feature and sensor data access. Below we list some of
+these.
 
-notifications, fullscreen, mouse lock, clipboard, gamepad, battery,
-vibration, network information, contacts, intents
+\begin{itemize}
+
+\item \textbf{Web Notifications} \cite{WebNotifications} for
+  displaying simple notification to the user
+
+\item \textbf{Fullscreen} \cite{Fullscreen} for controlling fullscreen
+  display of the application
+
+\item \textbf{Pointer Lock} \cite{PointerLock} for controlling input
+  pointers
+
+\item \textbf{Clipboard} \cite{ClipboardAPI} for using copy, cut, and
+  paste operations
+
+\item \textbf{Gamepad} \cite{Gamepad} for a low-level interface to
+  gamepad devices
+
+\item \textbf{Battery Status} \cite{BatteryStatusAPI} for accessing
+  information about the battery status of the device
+
+\item \textbf{Vibration API} \cite{VibrationAPI} for accessing the
+  vibration mechanism of the device
+
+\item \textbf{Network Information} \cite{NetworkInformationAPI} for an
+  interface to access the underlying connection information or the
+  device
+
+\item \textbf{Contacts} \cite{ContactsAPI} for an interface to access
+  the address book of the user
+
+\item \textbf{Web Intents}\footnote{\url{http://webintents.org/}} for
+  service discovery and inter-application communication.
+
+\end{itemize}
 
 \chapter{Tools for Modern Mobile Web Applications}
 \label{chapter:tools-and-techniques}
