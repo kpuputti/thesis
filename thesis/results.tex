@@ -2,8 +2,8 @@
 \label{chapter:results}
 
 In this chapter we present the techniques we used and the compromises
-we had to make to tackle the problems in mobile web development using
-moderns tools introduced in Chapter~\ref{chapter:tools-and-techniques}
+we had to make to tackle the problems in mobile web development. We
+used tools introduced in Chapter~\ref{chapter:tools-and-techniques}
 and APIs introduced in Chapter~\ref{chapter:html5} and
 Chapter~\ref{chapter:other-related-specifications}.
 
@@ -25,9 +25,9 @@ of these were used in our conference application.
 
 The User-Agent (\abbr{UA}) \abbr{HTTP} header contains detailed
 information of the web browser and the platform where the request
-originates. As we can see from Table~\ref{table:user-agents}
-(\fixme{Check table ref number}), we can extract platform and browser
-specific information from the UA header.
+originates from. As we can see from Table~\ref{table:user-agents}
+(\fixme{Check table ref number}), we can extract platform- and
+browser-specific information from the UA header.
 
 \begin{table}
   \begin{tabular}{ l | l | p{7cm} }
@@ -147,9 +147,9 @@ approach was considered as reasonable.
 \label{section:targeting-screens}
 
 Probably the biggest difference in various devices and form factors is
-the screen size, resolution, and dimensions. Web applications should
-adjust to the available space and flexibly handle screen orientation
-and window size changes.
+the screen and its size, resolution, and dimensions. Web applications
+should adjust to the available space and flexibly handle screen
+orientation and window size changes.
 
 First, to target mobile and tablet platforms, the viewport meta
 information should be indicated in the document. The following tag was
@@ -611,4 +611,62 @@ static assets were an essential part of our caching strategy.
 
 \section{Conclusions}
 
-\fixme{conclude results and go through RQs and answer them}
+In this chapter, we presented techniques and tools to handle
+problematic areas in mobile web development. We used several APIs
+defined in HTML5 and related specifications to tackle these practical
+challenges.
+
+First challenge was to handle the varying screens and device
+form-factors. Feature detection with media queries (see
+Section~\ref{section:css}) and the Modernizr library proved to be a
+very practical and working solution for targeting styles for different
+device types. Custom \texttt{meta} tags in the document as well as
+orientation handling events were invaluable in setting the viewport
+dimensions and handling changes in it. However, screen dimension and
+orientation handling have lots of differences between mobile browsers,
+and due to the differing APIs and plain browser bugs, handling varying
+screens and form-factors needed a lot of testing to get the
+application layout work properly.
+
+Handling mobile networks is a huge challenge in building mobile web
+applications. We presented many solutions such as minimizing data
+transfer, caching on different application layers, preloading
+resources, and adding offline support with HTML5 APIs. These
+techniques need a lot of know-how and experience, and might not be
+trivial to implement.
+
+The offline capabilities defined in HTML5 specifications were very
+valuable and adding offline support ended up being rather simple for a
+single-page application. However, handling interruptions and
+unreliable networks is more complex, which is why we developed the
+JSONCache utility library for caching and fetching data multiple times
+in unreliable networks. In our testing, the library worked very well,
+and using this approach can have a big effect on the end-user
+experience.
+
+Defining cross-browser stylesheets for different mobile and tablet
+devices is hard. The CSS support varies between platforms and platform
+versions, and usually the group of target devices for testing ends up
+being very large. Animations were a huge pain point in CSS. Adding an
+animation is very simple using the CSS3 animation rules, but the
+performance in mobile browsers is very poor to say the least. This is
+why we dropped all animations from the page changes in the conference
+application. We hope this is one area where future platform and mobile
+browser updates put focus, since animations are an essential part of
+the user experience of an application.
+
+We provided many techniques for efficient scripting in mobile web
+applications. In our view, the architecture as well and DOM and event
+handling are the most important areas for performance optimization. We
+provided solutions like lazy initialization, document fragments, and
+event delegation as well as introduced the JSLint tool for
+automatically checking code quality.
+
+Last, we did a quantitative web performance best practices analysis on
+the conference application. Using the YSlow and Page Speed tools, we
+got very high scores and explained the areas for further
+improvement. These automatic tools are valuable in optimizing the
+overall performance, since they point out the most problematic areas
+for improvement, and many of the solutions can be very simple, such as
+configuring the web server without even touching the application
+itself.
