@@ -670,3 +670,33 @@ overall performance, since they point out the most problematic areas
 for improvement, and many of the solutions can be very simple, such as
 configuring the web server without even touching the application
 itself.
+
+\section{Further Work}
+
+At the time of implementing the conference application, we used the
+presented tools, YSlow and Page Speed, for analyzing the performance
+best practices of the application. However, there are other and newer
+tools especially targeted for analyzing mobile web application
+performance practices. For example, the online version of Page Speed
+offers rules for mobile performance
+optimization\footnote{\url{http://code.google.com/speed/page-speed/docs/mobile.html}},
+which add some mobile-specific optimizations. This service would
+probably offer a better alternative for mobile web application
+optimization than the versions we used in our performance analysis.
+
+One of the major optimizations we were aware of, but did not have time
+to do, was optimizing images. This was a rather large area where we
+could have had significant improvements in the application
+performance. Going further, combining several images into one large
+image sprite would reduce the number of HTTP requests, and using
+lossless or lossy image optimization tools, the size of the images
+could be further reduced.
+
+The conference application targeted the high-end smartphones that the
+users were expected to have in a developer conference. However, a
+typical mobile web application does not have this advantage in its
+target users. Using progressive enhancement techniques, we can start
+from the lowest performing devices and build from there up to the
+latest and best-performing devices. This also goes with the very idea
+of the Web by providing a truly open and universal access to the
+applications.
