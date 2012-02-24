@@ -297,6 +297,9 @@
 \newcommand{\abbr}[1] {#1}
 % \citationneeded
 \newcommand{\citationneeded} {\ensuremath{^{[ \, citation \; needed \, ]}} }
+% \tableref
+\newcommand{\tableref}{}
+\newcommand{\tablerefs}{ }
 
 % Other stuff
 % ------------------------------------------------------------------
@@ -304,8 +307,8 @@
 \newcommand{\FPROFESSORSHIP}{Mediatekniikka}
 % Professorship code is the same in all languages
 \newcommand{\PROFCODE}{T-110}
-\newcommand{\KEYWORDS}{\fixme{Add English keywords}}
-\newcommand{\FKEYWORDS}{\fixme{Add Finnish keywords}}
+\newcommand{\KEYWORDS}{mobile, HTML5, cross-platform, performance}
+\newcommand{\FKEYWORDS}{mobiili, HTML5, alusta-riippumattomuus, suorituskyky}
 \newcommand{\LANGUAGE}{English}
 \newcommand{\FLANGUAGE}{Englanti}
 
@@ -392,11 +395,69 @@
 
 % Abstract in English
 % ------------------------------------------------------------------
-\thesisabstract{english}{\fixme{Add English abstract}}
+\thesisabstract{english}{
+
+In twenty years, the Web has become an integral part of our everyday
+lives. The rapid growth of the smartphone market has brought the Web
+from our home desks to anywhere we are, and enabled us to access this
+vast source of information at any time.
+
+However, the proliferation of mobile devices and platforms has raised
+new problems for application development. The growing amount of
+different platforms and their distinct native technologies make it
+hard to develop applications that can be accessed with all these
+devices.
+
+The only combining factor in all these platforms is the browser, and
+it is becoming the universal application platform. We cannot anymore
+afford to build application for the silos and walled gardens of single
+platforms, and building cross-platform applications is essential in
+the modern mobile market.
+
+In this work, we introduce the HTML5 specification as well as several
+related specifications or specification drafts for modern web
+development. We also present several tools and libraries for mobile
+web development.
+
+We implemented a mobile web application and a network utility library,
+and assessed the practical performance of the modern tools and
+\abbr{API}s. In this work, we present the tools and techniques for
+performance optimization of mobile web applications.
+
+}
 
 % Abstract in Finnish
 % ------------------------------------------------------------------
-\thesisabstract{finnish}{\fixme{Add Finnish abstract}}
+\thesisabstract{finnish}{
+
+Kahdenkymmenen vuoden aikana webistä on tullut oleellinen osa
+jokapäiväistä elämäämme. Mobiilimarkkinoiden huikea kasvu on tuonut
+webin kotipöydiltämme mukaamme missä ikinä olemmekin ja mahdollistanut
+tämän laajan tietovaraston käyttämisen milloin tahansa.
+
+Mobiililaitteiden käytön räjähdysmäinen kasvu on kuitenkin nostanut
+uusia haasteita ohjelmistokehitykselle. Monien eri alustojen
+natiiviteknologiat poikkeavat toisistaan, ja ohjelmistojen
+kehittäminen kaikille näille alustoille on haastavaa.
+
+Ainoa yhteinen tekijä näissä alustoissa on \abbr{WWW}-selain, josta on
+tulossa universaali ohjelmistoalusta. Enää ei voida kehittää
+ohjelmistoja vain tiettyjen suljettujen alustojen käyttäjille, ja
+alusta-riippumattomuudesta on tullut oleellinen osa
+mobiilimarkkinoita.
+
+Tässä työssä esittelemme HTML5-standardin sekä muita siihen liittyviä
+standardeja sekä standardiluonnoksia, jotka tuovat uusia ominaisuuksia
+ja helpotuksia web-kehitykseen. Esittelemme myös useita työkaluja ja
+tekniikoita moderniin web-kehitykseen mobiililaitteille.
+
+Toteutimme mobiililaitteissa toimivan web-ohjelmiston sekä kirjaston
+tiedon siirtämiseen mobiiliverkoissa, ja arvioimme modernien
+työkalujen ja rajapintojen käytännön suorituskykyä. Tässä työssä
+esitämme useita työkaluja ja tekniikoita web-ohjelmistojen
+suorituskyvyn optimointiin mobiililaitteille.
+
+}
 
 
 % Acknowledgements
