@@ -1,11 +1,121 @@
-\chapter{Results}
-\label{chapter:results}
+\chapter{Implementation and Results}
+\label{chapter:implementation}
 
-In this chapter we present the techniques we used and the compromises
-we had to make to tackle the problems in mobile web development. We
-used tools introduced in Chapter~\ref{chapter:tools-and-techniques}
-and APIs introduced in Chapter~\ref{chapter:html5} and
+We implemented to example cases: a mobile web application for a
+developer conference and a networking library for data caching and
+fetching multiple times. Here we present the architecture, components
+and the implementation details we used for fulfilling the requirements
+listed in Chapter~\ref{chapter:methods} and the techniques we used and
+the compromises we had to make to tackle the problems in mobile web
+development. We used tools introduced in
+Chapter~\ref{chapter:tools-and-techniques} and APIs introduced in
+Chapter~\ref{chapter:html5} and
 Chapter~\ref{chapter:other-related-specifications}.
+
+\fixme{add references to the requirements list}
+
+\section{Conference Application}
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/devdays.png}
+    \caption{Conference schedule application architecture.}
+    \label{figure:devdays.png}
+  \end{center}
+\end{figure}
+
+The conference
+schedule\footnote{\url{http://m.qtdevdays2011.qt.nokia.com/}} is a
+single-page application (see
+Section~\ref{section:single-page-applications}) with a lightweight
+backend written in Python using the Django Web
+Framework\footnote{\url{https://www.djangoproject.com/}}.
+
+The backend provides the static assets (JavaScript, \abbr{CSS},
+images, etc.) and an \abbr{API} for persisting session feedback to a
+MySQL\footnote{\url{http://www.mysql.com/}} relational database. It
+also generates the HTML5 AppCache (see Section~\ref{section:appcache})
+offline cache manifest file based on the categorized device type.
+
+The frontend is a JavaScript application written using the
+Backbone\footnote{\url{http://backbonejs.org/}} \abbr{MVC} framework
+(see Section~\ref{section:js-mvc}). Other used JavaScript libraries
+include Underscore\footnote{\url{http://underscorejs.org/}} for data
+manipulation, jQuery\footnote{\url{http://jquery.com/}} for \abbr{DOM}
+API abstraction, Handlebars\footnote{\url{http://handlebarsjs.com/}}
+for templating, and
+Modernizr\footnote{\url{http://www.modernizr.com/}} for feature
+detection. The HTML5 Mobile
+Boilerplate\footnote{\url{http://html5boilerplate.com/mobile}} was
+used as an initial markup structure for the application. The
+architecture of is shown in Figure~\ref{figure:devdays.png}. Wireless
+networks can be unreliable in conference settings, so offline support
+was also added using several different JavaScript techniques and HTML5
+APIs.
+
+The application was designed for touch screens on various platforms
+and screen sizes. The layout adjusts to the available space and
+provides rich interactive components. Integration to social networking
+services was also added as an additional
+functionality. Figure~\ref{figure:ipad-session.jpg} shows an example
+view in the application.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/ipad-session.jpg}
+    \caption{Session details view on an iPad.}
+    \label{figure:ipad-session.jpg}
+  \end{center}
+\end{figure}
+
+\section{JSONCache JavaScript Library}
+\label{section:jsoncache}
+
+JSONCache is a lightweight JavaScript library for fetching \abbr{JSON}
+data in unreliable networks. The library was designed especially to
+handle unreliable mobile networks with connection problems and short
+interruptions. The goal is to avoid networking as long as possible and
+failing gracefully if the network connection is not stable.
+
+JSONCache provides two main functionalities: data caching and
+attempting to fetch the data multiple times.
+
+The caching layer uses the client side localStorage (see
+Section~\ref{section:datastorage}) cache of \abbr{HTML5}. Data
+requests can be done using the JSONCache \abbr{API} which always
+checks the local cache first before opening any network
+connections. If the data is already in the cache, the cached data is
+checked for validity and if the data has not been expired, it is
+returned immediately. If the data is not in the cache or it has been
+expired, a new network request is made and the received data is cached
+and returned. The expiration time of a data item can be configured in
+the library settings.
+
+JSONCache also tries to fetch the data multiple times to handle small
+interruptions in network connections.  For example, when a user leaves
+his or her work place and uses a web application, the mobile device
+changes from the workplace \abbr{WiFi} network to the \abbr{3G}
+network, there is a short interruption in the connection, and any
+ongoing network requests are affected.
+
+If a data fetch fails, a new fetch is issued after a timeout (defined
+in the configuration). On subsequent attempts the timeout is
+increased, and after a defined number of attempts the fetch error is
+issued.
+
+Figure~\ref{figure:jsoncache-demo.png} shows an interactive demo of
+the JSONCache library. The
+demo\footnote{\url{http://kpuputti.github.com/JSONCache/demo/index.html}}
+simulates the caching and fetching functionality of the library by
+simulating an unreliable network based on the configuration.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/jsoncache-demo.png}
+    \caption{Interactive JSONCache demo.}
+    \label{figure:jsoncache-demo.png}
+  \end{center}
+\end{figure}
 
 \section{Targeting Different Platforms}
 \label{section:targeting-platforms}
@@ -606,7 +716,9 @@ the end of the \abbr{URLs} because they might not be cached in some
 proxies. We did not change this because the query strings in the
 static assets were an essential part of our caching strategy.
 
-\section{Conclusions}
+\section{Summary of Results}
+
+\fixme{add references to the RQs and requirements list analysis}
 
 In this chapter, we presented techniques and tools to handle
 problematic areas in mobile web development. We used several APIs
@@ -667,33 +779,3 @@ overall performance, since they point out the most problematic areas
 for improvement, and many of the solutions can be very simple, such as
 configuring the web server without even touching the application
 itself.
-
-\section{Further Work}
-
-At the time of implementing the conference application, we used the
-presented tools, YSlow and Page Speed, for analyzing the performance
-best practices of the application. However, there are other and newer
-tools especially targeted for analyzing mobile web application
-performance practices. For example, the online version of Page Speed
-offers rules for mobile performance
-optimization\footnote{\url{http://code.google.com/speed/page-speed/docs/mobile.html}},
-which add some mobile-specific optimizations. This service would
-probably offer a better alternative for mobile web application
-optimization than the versions we used in our performance analysis.
-
-One of the major optimizations we were aware of, but did not have time
-to do, was optimizing images. This was a rather large area where we
-could have had significant improvements in the application
-performance. Going further, combining several images into one large
-image sprite would reduce the number of HTTP requests, and using
-lossless or lossy image optimization tools, the size of the images
-could be further reduced.
-
-The conference application targeted the high-end smartphones that the
-users were expected to have in a developer conference. However, a
-typical mobile web application does not have this advantage in its
-target users. Using progressive enhancement techniques, we can start
-from the lowest performing devices and build from there up to the
-latest and best-performing devices. This also goes with the very idea
-of the Web by providing a truly open and universal access to the
-applications.
