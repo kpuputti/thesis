@@ -12,7 +12,7 @@ Chapter~\ref{chapter:tools-and-techniques} and APIs introduced in
 Chapter~\ref{chapter:html5} and
 Chapter~\ref{chapter:other-related-specifications}.
 
-\fixme{add references to the requirements list}
+\fixme{add references to the requirements list within the sections?}
 
 \section{Conference Application}
 
@@ -718,8 +718,6 @@ static assets were an essential part of our caching strategy.
 
 \section{Summary of Results}
 
-\fixme{add references to the RQs and requirements list analysis}
-
 In this chapter, we presented techniques and tools to handle
 problematic areas in mobile web development. We used several APIs
 defined in HTML5 and related specifications to tackle these practical
@@ -779,3 +777,41 @@ overall performance, since they point out the most problematic areas
 for improvement, and many of the solutions can be very simple, such as
 configuring the web server without even touching the application
 itself.
+
+To answer the research questions posed in
+Section~\ref{section:research-questions}, we sum up as follows:
+
+\begin{itemize}
+\item \textbf{RQ1}: \textit{What are the main problem areas in mobile
+  web development?}
+
+  The main problems are targeting different types and sizes of screens
+  and resolutions, handling the unreliable networks and offline modes,
+  and user interface performance, especially with animations.
+
+\item \textbf{RQ2}: \textit{Do HTML5 and related specifications solve
+  these problems?}
+
+  The specifications offer a good way to target different screens with
+  media queries, but browsers have a lot of differences that have to
+  be tested for.
+
+  Offline support is relatively easy to provide, but handling
+  interruptions and unreliability have to be tailored in the
+  application architecture.
+
+  Performance optimization is the job of the application developer,
+  and animation performance is hard to optimize for, leaving future
+  updates for the browsers as the only viable option.
+
+\item \textbf{RQ3}: \textit{What other practical means do we have to
+  solve these problems?}
+
+  Custom meta tags are very useful for configuring the viewport and
+  sound architectural choices and best practices help optimizing the
+  application performance.
+
+\end{itemize}
+
+\fixme{add req list analysis? or is it already implied in previous
+  sections?}
