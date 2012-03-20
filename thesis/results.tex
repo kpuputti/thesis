@@ -1,13 +1,13 @@
 \chapter{Implementation and Results}
 \label{chapter:implementation}
 
-We implemented to example cases: a mobile web application for a
+I implemented to example cases: a mobile web application for a
 developer conference and a networking library for data caching and
-fetching multiple times. Here we present the architecture, components
-and the implementation details we used for fulfilling the requirements
-listed in Chapter~\ref{chapter:methods} and the techniques we used and
-the compromises we had to make to tackle the problems in mobile web
-development. We used tools introduced in
+fetching multiple times. Here I present the architecture, components
+and the implementation details I used for fulfilling the requirements
+listed in Chapter~\ref{chapter:methods} and the techniques I used and
+the compromises I had to make to tackle the problems in mobile web
+development. I used tools introduced in
 Chapter~\ref{chapter:tools-and-techniques} and APIs introduced in
 Chapter~\ref{chapter:html5} and
 Chapter~\ref{chapter:other-related-specifications}.
@@ -126,7 +126,7 @@ form factors vary from tiny mobile screens to touch screen tablets and
 desktop monitors and each device and platform has its own feature
 set. Browsers also have known bugs that have to be handled.
 
-Therefore, means to detect the user's device are needed. Here we
+Therefore, means to detect the user's device are needed. Here I
 present two such means: device detection and feature detection. Both
 of these were used in our conference application.
 
@@ -135,8 +135,8 @@ of these were used in our conference application.
 
 The User-Agent (\abbr{UA}) \abbr{HTTP} header contains detailed
 information of the web browser and the platform where the request
-originates from. As we can see from Table~7.1\tableref, we can extract
-platform- and browser-specific information from the UA header.
+originates from. As can be seen from Table~7.1\tableref, we can
+extract platform- and browser-specific information from the UA header.
 
 \begin{table}
   \begin{tabular}{ l | l | p{7cm} }
@@ -162,8 +162,8 @@ First, there is no way to surely know if the device actually is what
 it reports itself to be. Second, the most important thing to know when
 generating the screen-specific assets in the manifest file would have
 been the screen size. However, this information is not present in the
-UA header. We could have listed all the assets for all the devices,
-but then the list of offline assets would have grown too much and, for
+UA header. I could have listed all the assets for all the devices, but
+then the list of offline assets would have grown too much and, for
 example, have large images also for older mobile phones.
 
 Despite the drawbacks, the received advantages of this approach
@@ -212,7 +212,7 @@ functionality.
 Doing run-time feature detection provides the possibility to give
 additional functionality to modern browsers and instant support for
 devices that add the support for the feature in the lifetime of the
-application. In the conference application, we used the Modernizr
+application. In the conference application, I used the Modernizr
 feature detection library\footnote{\url{http://www.modernizr.com/}} to
 check for HTML5 features.
 
@@ -242,13 +242,13 @@ information about the time left for them to begin.
   \end{center}
 \end{figure}
 
-We used HTML5 localStorage for storing the favorites in the user's web
-browser. By using Modernizr, we detected localStorage support and
+I used HTML5 localStorage for storing the favorites in the user's web
+browser. By using Modernizr, I detected localStorage support and
 showed the favorite stars only in browsers that supported the
 functionality. For all other browsers, the stars were simply hidden
-and users could not add favorites. We could have also provided a
+and users could not add favorites. I could have also provided a
 fallback mechanism for persisting the favorites to the backend, but
-for simplicity and because we targeted mostly modern platforms, this
+for simplicity and because I targeted mostly modern platforms, this
 approach was considered as reasonable.
 
 \section{Targeting Different Screens}
@@ -290,7 +290,7 @@ Table~6.3\tableref. iOS devices also support these same properties.
     \url{http://developer.android.com/guide/webapps/targeting.html}}
 \end{table}
 
-If we do not set the viewport configuration tag, the device uses its
+If I do not set the viewport configuration tag, the device uses its
 own default values for the properties. For example, the default value
 for the width property is 980 pixels in
 iOS\footnote{\url{https://developer.apple.com/library/safari/documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html}},
@@ -299,19 +299,19 @@ browsers. Without setting this value to something smaller and more
 appropriate in a mobile context, the whole application is very wide
 and has small and unreadable text in the initial zoom level.
 
-In the viewport configuration we used for the conference application
-(as defined above), we set the viewport width to 'device-width'. This
+In the viewport configuration I used for the conference application
+(as defined above), I set the viewport width to 'device-width'. This
 makes the application width to adjust to the visual pixels of the
 device screen and works well with screens of different sizes and
-dimensions. The only other viewport property we set is the initial
+dimensions. The only other viewport property I set is the initial
 scaling. This is set to 1.0 to force the browser to render the
 application without any initial zooming.
 
-In addition to the viewport configuration, we used media queries (see
+In addition to the viewport configuration, I used media queries (see
 Section~\ref{section:css}) to use better background images for
-high-resolution screens. We also dynamically set the map view (see
+high-resolution screens. I also dynamically set the map view (see
 Figure~\ref{figure:nokia-map.jpg}) images based on the screen
-dimensions so that we could provide smaller images for smaller screens
+dimensions so that I could provide smaller images for smaller screens
 and high resolution images for tablets and other devices with larger
 screen estate.
 
@@ -333,16 +333,16 @@ and height of the touch screens are usually different, and the user
 can hold the device either in portrait or in landscape mode and at any
 point switch between the two.
 
-In the conference application, we wanted to have different header and
-footer background images for different orientations. We also needed to
+In the conference application, I wanted to have different header and
+footer background images for different orientations. I also needed to
 redraw the agenda view when the screen width changes since the items
 on the schedule needed to be dynamically positioned to the available
 space.
 
 Mobile browsers fire an 'orientationchange' event whenever the device
-orientation changes. We listened to this event, inferred the
-orientation from the screen dimensions, and executed the wanted
-functionality for the event. We also had to do a fallback for Mobile
+orientation changes. The application listened to this event, inferred
+the orientation from the screen dimensions, and executed the wanted
+functionality for the event. I also had to do a fallback for Mobile
 \abbr{IE} browser to listen to the window resize event because the
 browser does not support the orientation change event.
 
@@ -366,12 +366,12 @@ caching. However, with initial download or with dynamic data, the
 second best option is to minimize the size of the data needed to be
 transferred.
 
-First, we made sure the data was minimized and compressed with
+First, I made sure the data was minimized and compressed with
 Gzip. Second, using \abbr{JSON} instead of \abbr{XML} in \abbr{Ajax}
 requests saves bandwidth \cite{charland2011mobile} and needed effort
 of the browser to process the data. Third, using the offline manifest
 ensured that the application assets and data needed to be downloaded
-only once, and using localStorage we could store the application state
+only once, and using localStorage I could store the application state
 locally to the browser avoiding the network completely.
 
 \subsection{Caching}
@@ -383,13 +383,13 @@ Section~\ref{section:datastorage}), on the HTTP level letting the
 browser handle it complying to the HTTP caching header semantics, or
 in various levels of the backend application stack.
 
-In the conference application, we put the most focus on the HTTP
+In the conference application, I put the most focus on the HTTP
 caching. Following the performance guidelines specified in
-Section~\ref{section:performance-guidelines}, we created unique
+Section~\ref{section:performance-guidelines}, I created unique
 \abbr{URLs} for all different versions of all static resources
 (images, CSS files, JavaScript files, and the AppCache manifest file)
-and set a far future expires header to them. This way we could tell
-the browser to cache all resources as far as possible and updating the
+and set a far future expires header to them. This way I could tell the
+browser to cache all resources as far as possible and updating the
 resources was handled by changing the version number in their
 corresponding URLs.
 
@@ -404,7 +404,7 @@ file was requested for changes.
 
 Client side caching was used in saving the user specific state in the
 conference application and experimented with the JSONCache library
-specified in Section~\ref{section:jsoncache}. Using localStorage, we
+specified in Section~\ref{section:jsoncache}. Using localStorage, I
 can persist data in the browser and avoid networking if the cached
 data is still relevant.
 
@@ -417,8 +417,8 @@ networking can be avoided altogether.
 
 One way to prevent user interface slowness due to flaky networks is to
 preload resources and data that is expected to be used later on. In
-the conference application we predownloaded background images and
-other graphics in the application initialization.
+the conference application I predownloaded background images and other
+graphics in the application initialization.
 
 For example, downloading the header and footer background images for
 both orientations made the device orientation change more responsive
@@ -430,8 +430,8 @@ instantly without any networking.
 \subsection{Offline Support}
 
 Using HTML5 AppCache offline manifest file and storing application
-state in localStorage, we provided full offline compatibility for the
-conference application. With the offline manifest, we specified the
+state in localStorage, I provided full offline compatibility for the
+conference application. With the offline manifest, I specified the
 needed resources for all device types as categorized by the rules
 defined in Section~\ref{subsection:device-detection}. The offline
 cache also made subsequent application startups faster since the cache
@@ -445,15 +445,15 @@ been able to check the session schedule during the conference.
 However, the only thing needing the network was the session feedback
 functionality. The application had a feedback form for all sessions,
 and the submitted data was persisted in the backend. In offline mode,
-this functionality was not available. Going further, we could extend
+this functionality was not available. Going further, I could extend
 the offline support by saving the given feedback, for example, to
 localStorage and sending it later to the backend server when the
 network connection is open again.
 
-We had some problems in developing the application when using the
-offline manifest. In development mode, we want changes to be shown
-immediately, and we had to conditionally use the offline manifest
-based on the environment.
+I had some problems in developing the application when using the
+offline manifest. In development mode, I want changes to be shown
+immediately, and I had to conditionally use the offline manifest based
+on the environment.
 
 Using the offline manifest poses several additional problems. First,
 the whole cache is made invalid if only a single resource returns a
@@ -461,7 +461,7 @@ the whole cache is made invalid if only a single resource returns a
 cache, the updates are indicated in the JavaScript events, but the
 updated resources are available only in the second page load after the
 updates. Therefore, updates do not show up immediately when the
-application is refreshed, and we had to show an additional confirm
+application is refreshed, and I had to show an additional confirm
 dialog for informing the user about updates so that they could refresh
 the page again. This has a noticeable impact on the application user
 experience, but was seen as a needed compromise to get the latest
@@ -497,15 +497,15 @@ uniform and pleasing to the eye.
 There are several ways to animate elements in a web application. The
 simplest is to use \abbr{CSS3} animations (see
 Section~\ref{section:css}). However, the performance of the animations
-is not yet good enough for a cross-platform mobile application. We
+is not yet good enough for a cross-platform mobile application. I
 tried to animate the view changes in our conference application, but
 even a simple cross-fade did not have good enough performance in all
 target platforms.
 
 Using progressive enhancement techniques (see
-Section~\ref{subsection:progressive-enhancement}) we could have
+Section~\ref{subsection:progressive-enhancement}) I could have
 provided enhanced experience for the platforms that support animations
-well, but only iOS devices performed well enough, so for simplicity we
+well, but only iOS devices performed well enough, so for simplicity I
 did not use any animations.
 
 \section{Following JavaScript Best Practices}
@@ -514,8 +514,8 @@ did not use any animations.
 There are lots of best practices and conventions that have been
 developed by the web developer community. A lot of these tried and
 tested techniques are outlined in the HTML5 Mobile
-Boilerplate\footnote{\url{http://html5boilerplate.com/mobile}} that we
-used as our base for the conference application. Here we present some
+Boilerplate\footnote{\url{http://html5boilerplate.com/mobile}} that I
+used as our base for the conference application. Here I present some
 techniques and tools that help to improve application performance and
 reduce bugs.
 
@@ -528,9 +528,9 @@ for performance or code maintainability
 syntax and convention violations, which is valuable because the code
 will be sent in the source form to be interpreted by the browser.
 
-We had automatic JSLint checking integrated in the GNU
-Emacs\footnote{\url{http://www.gnu.org/software/emacs/}} editor that
-we used for all JavaScript programming, which helped to notice common
+I had automatic JSLint checking integrated in the GNU
+Emacs\footnote{\url{http://www.gnu.org/software/emacs/}} editor that I
+used for all JavaScript programming, which helped to notice common
 errors as early as possible and made the code cleaner.
 
 \subsection{Lazy initialization}
@@ -542,7 +542,7 @@ are then initialized only when they are requested.
 
 Implementing lazy initialization needs more work than simply doing all
 initialization work in the application startup, but the received
-benefits are worth the extra effort. In the conference application we
+benefits are worth the extra effort. In the conference application I
 tried to postpone all work to be done as late as possible and doing as
 little work as possible for faster execution.
 
@@ -568,8 +568,8 @@ requires only one reflow from the browser. One other solution is
 hiding the container while its contents is modified, and showing after
 the modifications are done. \cite{zakas2010high}
 
-We used these techniques in the conference application to minimize
-user interface reflows to improve the perceived performance.
+I used these techniques in the conference application to minimize user
+interface reflows to improve the perceived performance.
 
 \subsection{Efficient Event Handling}
 
@@ -580,8 +580,8 @@ the list. This obviously becomes a burden especially in mobile devices
 with limited processing power and memory.
 
 One way to minimize event listeners is to use event delegation
-\cite{zakas2010high}. In event delegation we attach only one event
-listener to a parent element of the elements that we want to
+\cite{zakas2010high}. In event delegation only one event listener is
+attached to a parent element of the elements that we want to
 observe. Then, in the parent event handler we check the target element
 of the event and execute the wanted functionality based on the target.
 
@@ -596,9 +596,9 @@ excluded. If we bind our event handlers to the touch events instead of
 click events, we can immediately dismiss this delay altogether and
 make the user interface components a lot more responsive.
 
-We used event delegation and touch events, for example, in the main
+I used event delegation and touch events, for example, in the main
 navigation of the conference application to get the best performance
-and responsiveness in changing the page views. We also used touch
+and responsiveness in changing the page views. I also used touch
 events in the session rating form seen in
 Figure~\ref{figure:android-feedback-stars.jpg}.
 
@@ -613,7 +613,7 @@ Figure~\ref{figure:android-feedback-stars.jpg}.
 \section{Performance Analysis}
 \label{section:performance-analysis}
 
-We made a quantitative analysis of the conference application
+I made a quantitative analysis of the conference application
 performance by using two different tools: YSlow and Page Speed. These
 tools analyze the performance practices of a web page and provide
 optimization guidelines. Many of the rules used in these tools are
@@ -625,7 +625,7 @@ Section~\ref{section:performance-guidelines}.
 
 YSlow is a website analyzer originally developed by Steve Souders. It
 checks the website against the rules defined in
-Section~\ref{section:performance-guidelines}. We analyzed the
+Section~\ref{section:performance-guidelines}. I analyzed the
 conference application performance using YSlow. The results of the
 analysis are seen in Figure~\ref{figure:yslow-v2-grade.png} and
 Figure~\ref{figure:yslow-v2-statistics.png}.
@@ -666,9 +666,9 @@ extending mechanism as specified in the HTML5 specification draft
 
 Page Speed\footnote{\url{http://code.google.com/speed/page-speed/}} is
 an open-source project by Google for analyzing and optimizing web site
-performance best practices. We used the Google Chrome browser
-extension to analyze the conference application against the
-performance rules defined in Page Speed. The results are shown in
+performance best practices. I used the Google Chrome browser extension
+to analyze the conference application against the performance rules
+defined in Page Speed. The results are shown in
 Figure~\ref{figure:devdays-pagespeed.png}.
 
 \begin{figure}[ht]
@@ -679,14 +679,14 @@ Figure~\ref{figure:devdays-pagespeed.png}.
   \end{center}
 \end{figure}
 
-We were very happy with the Page Speed score of 92 out of 100. A lot
-of the performance rules analyzed by Page Speed are similar to the
+I was very happy with the Page Speed score of 92 out of 100. A lot of
+the performance rules analyzed by Page Speed are similar to the
 guidelines listed in Section~\ref{section:performance-guidelines}, but
 there are also additional rules.
 
-The only real problem in the score was the 'Optimize Images' rule. We
+The only real problem in the score was the 'Optimize Images' rule. I
 had not optimized the images used in the application, but instead used
-the images provided by the designers. Going further, we could have
+the images provided by the designers. Going further, I could have
 saved a lot or bandwidth by optimizing the images with tools such as
 Pngcrush\footnote{\url{http://pmt.sourceforge.net/pngcrush/}}.
 
@@ -694,7 +694,7 @@ Of the other notes in the results, 'Defer parsing of JavaScript' could
 have been avoided by adding a 'defer' attribute to all the script tags
 in the document. The reason for this rule is that scripts block page
 rendering as defined in
-Section~\ref{section:performance-guidelines}. However, since we
+Section~\ref{section:performance-guidelines}. However, since I
 followed the guideline 'Put Scripts at the Bottom', this rendering
 issue is avoided. The only script in the document head was Modernizr,
 which must be included before the page is parsed because it creates
@@ -704,22 +704,22 @@ before the tags are parsed.
 The 'Minify JavaScript' note was probably due to the Handlebars
 templating library not being minified. All the JavaScript libraries
 were included in their minified form, but Handlebars library was only
-available unminified. We also did not want to minify it ourselves to
-avoid breaking any functionality. All other JavaScript files were
-minified and combined to avoid extra HTTP requests.
+available unminified. I also did not want to minify it myself to avoid
+breaking any functionality. All other JavaScript files were minified
+and combined to avoid extra HTTP requests.
 
 The 'Minify CSS' note was not seen as important since CSS compression
 does not yield big improvements and because the CSS files were already
 delivered Gzipped. The 'Remove query strings from static resources'
 note means that query parameters like '?123' should be removed from
 the end of the \abbr{URLs} because they might not be cached in some
-proxies. We did not change this because the query strings in the
-static assets were an essential part of our caching strategy.
+proxies. I did not change this because the query strings in the static
+assets were an essential part of our caching strategy.
 
 \section{Summary of Results}
 
-In this chapter, we presented techniques and tools to handle
-problematic areas in mobile web development. We used several APIs
+In this chapter, I presented techniques and tools to handle
+problematic areas in mobile web development. I used several APIs
 defined in HTML5 and related specifications to tackle these practical
 challenges.
 
@@ -736,7 +736,7 @@ screens and form-factors needed a lot of testing to get the
 application layout work properly.
 
 Handling mobile networks is a huge challenge in building mobile web
-applications. We presented many solutions such as minimizing data
+applications. I presented many solutions such as minimizing data
 transfer, caching on different application layers, preloading
 resources, and adding offline support with HTML5 APIs. These
 techniques need a lot of know-how and experience, and might not be
@@ -745,7 +745,7 @@ trivial to implement.
 The offline capabilities defined in HTML5 specifications were very
 valuable and adding offline support ended up being rather simple for a
 single-page application. However, handling interruptions and
-unreliable networks is more complex, which is why we developed the
+unreliable networks is more complex, which is why I developed the
 JSONCache utility library for caching and fetching data multiple times
 in unreliable networks. In our testing, the library worked very well,
 and using this approach can have a big effect on the end-user
@@ -757,20 +757,20 @@ versions, and usually the group of target devices for testing ends up
 being very large. Animations were a huge pain point in CSS. Adding an
 animation is very simple using the CSS3 animation rules, but the
 performance in mobile browsers is very poor to say the least. This is
-why we dropped all animations from the page changes in the conference
-application. We hope this is one area where future platform and mobile
+why I dropped all animations from the page changes in the conference
+application. I hope this is one area where future platform and mobile
 browser updates put focus, since animations are an essential part of
 the user experience of an application.
 
-We provided many techniques for efficient scripting in mobile web
+I provided many techniques for efficient scripting in mobile web
 applications. In our view, the architecture as well and DOM and event
-handling are the most important areas for performance optimization. We
+handling are the most important areas for performance optimization. I
 provided solutions like lazy initialization, document fragments, and
 event delegation as well as introduced the JSLint tool for
 automatically checking code quality.
 
-Last, we did a quantitative web performance best practices analysis on
-the conference application. Using the YSlow and Page Speed tools, we
+Last, I did a quantitative web performance best practices analysis on
+the conference application. Using the YSlow and Page Speed tools, I
 got very high scores and explained the areas for further
 improvement. These automatic tools are valuable in optimizing the
 overall performance, since they point out the most problematic areas
@@ -779,7 +779,7 @@ configuring the web server without even touching the application
 itself.
 
 To answer the research questions posed in
-Section~\ref{section:research-questions}, we sum up as follows:
+Section~\ref{section:research-questions}, I sum up as follows:
 
 \begin{itemize}
 \item \textbf{RQ1}: \textit{What are the main problem areas in mobile
