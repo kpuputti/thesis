@@ -1,0 +1,340 @@
+\chapter{HTML5}
+\label{chapter:html5}
+
+HTML5 is a cross-platform and device form-factor agnostic markup
+language for defining structured documents. It is a backward
+compatible revision of older HTML standards bringing lots of new
+functionality, removing unneeded features, and officially documenting
+some ``de facto'' standards already supported by some or several web
+browsers. \cite{pilgrim2010html5}
+
+In the early 2000s, \abbr{W3C} was developing \abbr{XHTML} and
+\abbr{XForms} standards to be the future of the Web. Many parts of
+these standards were backward incompatible and required very strict
+and error-free authoring. Being frustrated with this vision that was
+seen as impractical for the real world, a group of web browser vendors
+and other interested parties had a competing vision of the future of
+the Web: evolving HTML4 to include additional features maintaining
+backward compatibility. W3C members did not agree with this vision,
+and as a result, the WHAT Working Group was born. \abbr{WHATWG}
+defines itself as a ``loose, unofficial, and open collaboration of Web
+browser manufacturers and interested
+parties''\footnote{\url{http://www.whatwg.org/news/start}}. \cite{pilgrim2010html5}
+
+According to a
+study\footnote{\url{http://dev.opera.com/articles/view/mama-key-findings/}}
+made by Opera in 2008, more than 95\% of web sites do not pass markup
+validation. Therefore, to maintain backward compatibility and
+practicality, it is crucial to have a well defined error handling
+mechanism.
+
+Having the browser vendors and web development community support
+behind them, after several years the WHATWG work was finally accepted
+by W3C and a joint effort was started to standardize HTML5. There are
+still differences in the W3C and WHATWG specifications in what
+features they include in the main standard and what are separated in
+other specifications or leaved out, but the main goal is to develop
+the standards together with browser vendors to get usage feedback
+while the specifications are being made. This results in many features
+being available in modern web browsers while the HTML5 and related
+standards are not yet finished. As a drawback, however, the
+implementations might change between browser versions, and developers
+must take extra effort in detecting the supported
+features. \cite{pilgrim2010html5}
+
+In this work, I look at HTML5 beyond the main specifications, and take
+into account also related standards that affect modern web application
+development. Also, the differences between the W3C and the WHATWG
+specifications are not separated since they are not clear-cut. This is
+the practical view that, in my opinion, the web development community
+has on HTML5.
+
+\section{Semantic Markup}
+
+Google did a study\footnote{\url{http://code.google.com/webstats/}} in
+2005 of a sample of over a billion HTML documents about the popular
+class names, elements, attributes and related metadata. This analysis
+had a large impact on which elements and attributes were considered in
+the upcoming HTML5 standard.
+
+HTML5 defines several new elements and attributes. The objective is to
+make the markup more semantic for developers and for content
+processors such as search engines and screen readers.
+
+The specification aims for a more semantic structure of HTML by
+dropping many presentational features. The rationale behind this is
+explained with the following reasons \cite{HTML5draft}:
+
+\begin{itemize}
+\item Media-independent markup works for more users and yields better
+  accessibility
+\item Having style-independent markup separates document structure
+  from its layout and makes maintenance easier
+\item Separating styling results in smaller document sizes.
+\end{itemize}
+
+\noindent Each element in HTML5 is in zero or more content categories
+that group elements with similar characteristics \cite{HTML5draft}:
+
+\begin{itemize}
+\item \textbf{Metadata content:} Content that sets the behavior of the
+  document, sets its relationships to other documents, or conveys
+  other information of the document.
+
+  \textit{Examples:} \texttt{link}, \texttt{meta}, \texttt{script},
+  \texttt{title}
+
+\item \textbf{Flow content:} Most content that is used in the body of
+  a document.
+
+  \textit{Examples:} \texttt{a}, \texttt{article}, \texttt{audio},
+  \texttt{div}, \texttt{header}, \texttt{form}, \texttt{nav},
+  \texttt{p}
+
+\item \textbf{Sectioning content:} Content that defines the scope of
+  headings and footers.
+
+  \textit{Examples:} \texttt{article}, \texttt{aside}, \texttt{nav},
+  \texttt{section}
+
+\item \textbf{Heading content:} Content that defines a header of a
+  section.
+
+  \textit{Examples:} \texttt{h1}, \texttt{h2}, \texttt{hgroup}
+
+\item \textbf{Phrasing content:} Content that holds or marks up the
+  text of the document.
+
+  \textit{Examples:} \texttt{abbr}, \texttt{audio}, \texttt{canvas},
+  \texttt{img}, \texttt{em}
+
+\item \textbf{Embedded content:} Content that imports another resource
+  or inserts content from another vocabulary into the document.
+
+  \textit{Examples:} \texttt{audio}, \texttt{embed}, \texttt{iframe},
+  \texttt{img}
+
+\item \textbf{Interactive content:} Content that is intended for user
+  interaction.
+
+  \textit{Examples:} \texttt{a}, \texttt{button}, \texttt{menu},
+  \texttt{select}
+
+\end{itemize}
+
+\section{Extensibility}
+
+HTML5 defines the main constructs of a semantic and accessible
+document. However, some specific use cases require a more precise and
+context-dependent and fine-grained semantics. Also, web browsers might
+introduce new features that must conform to the standards. This is why
+HTML5 is made extensible for adding more semantics or additional
+features on top of the existing standard.
+
+There are several ways to extend HTML5. The simplest approaches
+include using the defined general attributes with certain
+vocabularies. For example,
+microformats\footnote{\url{http://microformats.org/}} and
+Schema.org\footnote{\url{http://schema.org/}} define common elements
+and class names with certain semantics for defining document metadata.
+
+HTML5 also defines explicit mechanisms for extending the markup
+structure. Using \texttt{data-*=""} and \texttt{rel} attributes,
+\texttt{meta} tags, or a generic microdata mechanism, the semantics of
+the content can be enhanced for automatic reasoning and machine
+readability. \cite{HTML5draft}
+
+\section{Media}
+
+Multimedia support is crucial for modern applications. HTML5 defines
+elements and APIs for audio, video, subtitles, and embedded content.
+
+Previously to use these rich content types, developers have had to
+rely on third-party plugins and browser extensions. Not having to rely
+on plugins and extensions has been one of the main goals of the HTML5
+standard for improving the openness and accessibility of web content.
+
+\section{Canvas 2D Context}
+
+HTML5 defines the \texttt{canvas} element. It is a
+resolution-dependent bitmap canvas for dynamically rendering
+graphics. It can be used, for example, for graphs, games, or other
+visuals. \cite{HTML5draft}
+
+The Canvas 2D Context specification draft \cite{canvas2Ddraft} defines
+a JavaScript API for programmatically drawing on the 2D canvas
+surface. The API defines functions for drawing shapes, paths, text,
+gradients, and images on the canvas and other functions for handling
+the bitmap data.
+
+\section{Form Enhancements}
+
+Forms are an essential construction in interactive HTML
+documents. However, due to their relative simplicity in terms of
+expressiveness and the lack of proper accessibility features,
+developers have been forced to build lots of JavaScript solutions to
+enhance and fix some of these problems.
+
+HTML5 brings several enhancements to forms. New input types for
+numbers, dates, email addresses, etc. obsolete the need of scripted
+widgets by using native platform controls. New form attributes like
+\texttt{placeholder} and \texttt{autofocus} bring easy-to-use
+accessibility and usability improvements and also reduce the need for
+scripting. \cite{HTML5draft}
+
+These additions and enhancements work especially well in mobile
+context where user input is slow and cumbersome. For example, by
+having a numeric input field lets the mobile platform open the numeric
+keyboard by default, which greatly improves the usability of
+forms. Automatic form validation in the client side also reduces the
+need for unneeded page refreshes since the browser can show error
+messages in invalid fields without any JavaScript validation.
+
+\section{Session History Manipulation}
+
+HTML was originally designed to be based on documents and hyperlinks
+between these distinct documents with each of them having a unique
+\abbr{URL}. This hyperlinked structure, however, does not suit well
+for web applications with dynamic content and interactively changing
+user interface.
+
+Two of the basic functionalities that users are accustomed to are
+bookmarking and going back and forth in the session
+history. Traditionally these have been compromised in dynamic
+\abbr{Ajax} applications or handled with a lot of extra work.
+
+HTML5 addresses these issues by allowing the developers dynamically
+manipulate the session history. The history stack can be changed and
+used for navigation and even the browser address bar can be changed
+without extra page refreshes. \cite{HTML5draft}
+
+\section{Offline Web Applications}
+
+By design, web sites have always needed a working network
+connection. Applications, however, should be able to work offline or
+in unreliable and flaky networks. Especially mobile networks are
+unreliable \cite{zandy2002reliable}, which has raised the need for
+offline support in HTML5.
+
+There are several ways to enable offline support in HTML5
+applications. I present these approaches in the following sections.
+
+\subsection{Application Cache}
+\label{section:appcache}
+
+\abbr{AppCache} is a relatively simple way to indicate all resources
+needed for offline functionality. A manifest file is defined in the
+HTML document, and within the file there are sections for resources
+that should always or never be cached as well as fallback \abbr{URLs}
+for resources that are not cached but with which the fetching
+fails. In addition to the simple manifest file listing offline
+resources, JavaScript events are defined for cache
+changes. \cite{HTML5draft} \\
+
+\clearpage
+\noindent \textbf{Example manifest file:}
+\begin{verbatim}
+CACHE MANIFEST
+
+# Example manifest version 1.
+
+# The resources in this section are cached for offline use.
+CACHE:
+js/scripts.js
+css/styles.css
+img/sprite.png
+http://example.org/external-image.jpg
+
+# The resources in this section require the user to be online.
+NETWORK:
+/login
+
+# This section defines resources and their fallback
+# URLs if they are inaccessible.
+FALLBACK:
+/ /offline.html
+\end{verbatim}
+
+\subsection{Data Storage}
+\label{section:datastorage}
+
+Storing data in the client side has traditionally been constrained
+into using cookies, but HTML5 specifies new options for data
+persistence.
+
+Two different key/value storages are defined: \texttt{localStorage}
+and\\ \texttt{sessionStorage}. The \abbr{API} is same with both of
+these, but with\\ \texttt{sessionStorage}, the data is persisted only
+for the current browser session. These interfaces are very simple and
+easy to use, but are constrained into storing only textual
+data. \cite{webstoragedraft}
+
+Two more expressive storage \abbr{APIs} have been specified: client
+side \abbr{SQL} database \cite{webstoragedraft} and the Indexed
+Database \cite{indexedDBdraft}. The client side SQL database defines
+an asynchronous and transactional JavaScript API for a SQL
+database. Although being very expressive, due to the relative
+complexity compared to simple and scalable key/value storage options,
+it is yet to be seen if the client side SQL storage will be accepted
+by the browser vendors and developers.
+
+Indexed Database provides synchronous and asynchronous APIs for
+storing and querying large amounts of structured data. The
+transactional API can be used for more complex persistency needs than
+with the simple key/value storages, and it provides a native
+JavaScript API that does not involve the relative complexities of SQL.
+
+\subsection{Detecting Network State}
+
+Knowing whether the user is online or offline can affect the user
+interface or the response to user interactions. HTML5 defines
+functionality to detect the current network status and events that are
+fired when the status changes. \cite{HTML5draft}
+
+Although providing important information, these network status
+indicators are inherently unreliable \cite{HTML5draft}. Due to the
+distributed ad-hoc architecture of the network and possible local or
+external proxies or middleware, the application can never be sure if
+the network is connected or not. The only option is just to attempt to
+make requests and wait for the response or possible failure.
+
+Therefore, applications should be designed to expect the network to
+work, but to degrade gracefully when the connection is lost or seems
+to be unreliable.
+
+\section{Drag and Drop}
+\label{section:dragdrop}
+
+Drag and Drop is a common interaction technique where elements can be
+moved within the user interface from one place to another. Older
+browsers have had proprietary solutions for this interaction pattern,
+but HTML5 standardizes the API.
+
+The specification defines the element attributes and \abbr{DOM} events
+for easily enabling and controlling draggable elements and drop
+targets. Custom cross-browser JavaScript solutions have enabled this
+interaction before, but little JavaScript code is needed with the new
+API. The browser handles the interaction and the dynamic rendering,
+reducing the interface lagging and the need for extra processing.
+
+\section{SVG and MathML}
+
+While not part of the HTML5 standard, the specification allows for
+embedding \abbr{SVG} \cite{SVGTiny12} and \abbr{MathML} \cite{MathML}
+markup within HTML.
+
+SVG is a markup language for describing two-dimensional vector
+graphics in \abbr{XML}. The markup can be accessed with the \abbr{DOM}
+API for creating dynamic and interactive functionality. Within an
+HTML5 document, SVG markup can be embedded within the \texttt{svg}
+element.
+
+MathML is an \abbr{XML} markup language for describing the structure
+and content of mathematical notation. It can be embedded within an
+HTML5 document with the \texttt{math} element.
+
+Both of these languages reduce the need of custom images, making the
+content more accessible, dynamic, and enabling dynamic interaction
+with it. Also, vector graphics can be scaled to fit the available
+space no matter what the screen size is, which improves the
+cross-platform usefulness for different device form factors.

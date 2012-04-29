@@ -1,0 +1,441 @@
+\chapter{Other Related Specifications}
+\label{chapter:other-related-specifications}
+
+There are lots of specifications related to HTML5 that are considered
+to be part of the practical view of all the new Web APIs that are
+often referred to as 'HTML5'. Some of these originate from the work of
+the \abbr{WHATWG} and some from the work of \abbr{W3C}, some have been
+part of HTML5 at some point but have been taken out of it into their
+own separate specifications, and some are just new specifications for
+the Web that relate to what we can do with HTML, CSS, and JavaScript
+in modern web applications. In the following sections, I introduce the
+specifications that are of interest within the topic of this work.
+
+\section{Cascading Style Sheets}
+\label{section:css}
+
+\abbr{CSS} Level 3 specifications introduce lots of new functionality
+for web application styling. Well separated layout layer keeps the
+document structure clean, and rich styling and effects capabilities
+reduce the need for scripting and provide graceful fallback
+functionality for older user agents. By letting the browser handle,
+for example, rich user interface animation effects allows developers
+to easily optimize the responsiveness and performance of their
+applications since the browser can use the most efficient techniques
+of the platform to handle these effects. Below I list the main
+components and specifications of the \abbr{W3C} CSS working
+group\footnote{\url{http://www.w3.org/Style/CSS/members.en.php3}}.
+
+\begin{itemize}
+
+\item \textbf{Selectors}
+
+  \abbr{CSS} selectors are patterns that are used to match elements in
+  a \abbr{DOM} tree. The patterns can then be used to apply style
+  rules to the matched elements. Selectors can also be used in
+  JavaScript to select elements for scripting.
+
+  \abbr{CSS3} defines a set of new selectors \cite{CSS3Selectors} for
+  powerful matching of elements in complex DOM trees. These selectors
+  are useful for rich interactive web applications and reduce the need
+  for scripting for element matching. Efficient selectors are also
+  important for performance optimization.
+
+\item \textbf{Transforms}
+
+  2D and 3D transforms \cite{CSStransforms} allow elements to be
+  transformed in two-dimensional or three-dimensional space. Elements
+  can be translated, rotated, and scaled in their coordinate
+  space. The specification defines several 2D and 3D transformation
+  functions, which can be used in the transforms.
+
+  Transforms can provide subtle but important user interface effects,
+  or they can be used for advanced interactive graphics. Combined
+  with, for example, timed animations or transitions, rich user
+  interfaces can be built with declarative CSS rules.
+
+\item \textbf{Transitions}
+
+  CSS transitions \cite{CSStransitions} allow element styles to change
+  smoothly over a specified duration, and they can be used for simple
+  animations. Normally when the value of a CSS property changes, the
+  result is seen instantly, but with transitions, the changes can be
+  timed and configured for presentational effects.
+
+\item \textbf{Animations}
+
+  Simple animations between two layout states can be done with
+  transitions, but for more complex series of changes, CSS animations
+  \cite{CSSanimations} can be used.
+
+  The animations specification defines so-called keyframes, which can
+  be used to specify the progress of the animation between the start
+  and the end states. Animations can also be configured to repeat a
+  certain number of times, to alternate between the begin and end
+  values, to control the running and paused states, and to delay the
+  start time. \cite{CSSanimations}
+
+\item \textbf{Media Queries}
+
+  Older versions of HTML and \abbr{CSS} have already supported targeting
+  stylesheets and rules to certain media types like 'screen', 'print',
+  or 'mobile'. Media queries expand on this technique by adding extra
+  feature queries that can be used to apply styles for certain devices
+  and screen sizes. \cite{mediaqueries}
+
+  Media queries can be used to detect the device screen size and
+  dimensions, orientation, aspect ratio, color depth,
+  etc. \cite{mediaqueries}. Detecting these media features is especially
+  useful when using the same HTML markup for different device types. For
+  example, a layout of a web application might use more horizontal space
+  when used on a desktop browser, but on a mobile device the fragments
+  of the layout might be stacked vertically to avoid horizontal
+  scrolling. Also background images might be swapped into smaller ones
+  with smaller screens.
+
+\item \textbf{Web Fonts}
+
+  Typography is an essential part of design. Traditionally web designers
+  have been constrained into only a few ``web safe'' fonts that are
+  known to be widely supported between different browsers and platforms.
+
+  CSS3 defines techniques to dynamically load custom fonts and specify
+  their properties \cite{cssfonts}. However, different browsers still
+  use different formats and developers might have to provide the custom
+  font files in all the formats that they want to support.
+
+\end{itemize}
+
+\section{WebGL and Typed Arrays}
+
+\abbr{WebGL} is a low-level 3D rendering API derived from the
+\abbr{OpenGL® ES} 2.0 \cite{OpenGL} and it is designed as a rendering
+context for the \texttt{canvas} element introduced in HTML5. An
+interactive 3D graphics API in the browser is essential for game
+development and creates a global platform for cross-platform
+games. WebGL was originally developed by the Khronos
+Group\footnote{\url{http://www.khronos.org/}} and later the
+specification work was participated by browser vendors and 3D
+developers. \cite{WebGL}
+
+Being based on the OpenGL ES API, WebGL can run on many different
+devices, such as desktop computers, mobile phones, tablets, and
+TVs. The use is not constrained into games only; WebGL can also be
+used in 3D modeling and design tools, simulations, data visualization,
+or in interactive art.
+
+Originated from the WebGL specification, typed arrays have been
+separated into their own specification \cite{TypedArrays}. Traditional
+JavaScript arrays are not typed, but due to performance reasons, WebGL
+API needed more efficient data structures for 3D graphics. These typed
+arrays can also be used in non-graphics related contexts, for example,
+where efficient processing is needed for large amounts of binary data.
+
+\section{Touch Events}
+
+User interface events have traditionally relied on the input device
+being a pointer or a keyboard. Modern mobile devices and tablets,
+however, usually have a touch screen. Pointer and keyboard events have
+been mapped into the touch interaction, but proper touch events are
+needed to support the rich interaction of touch input.
+
+The Touch Events specification \cite{touchevents} defines a set of
+events for one or more points of contact on a touch surface. The
+specification defines \texttt{touchstart}, \texttt{touchmove},
+\texttt{touchend}, and \texttt{touchcancel} events and several new
+attributes for the event object. These enable developers to add
+functionality for rich interaction such as swipes and multi-touch
+gestures.
+
+\section{Files}
+\label{section:fileapi}
+
+Local file system access is essential for native
+applications. JavaScript storage and database APIs can be used for
+certain structured data for caching and other purposes, but are
+cumbersome, for example, for large binary files of arbitrary
+format. File API specifications \cite{FileAPI, FileAPIWriter,
+  FileAPIDir} define interfaces for creating, reading, writing, and
+manipulating local files and directories. Error handling and security
+sandboxing are also specified in the APIs.
+
+Two versions of the file handling APIs are defined: an asynchronous
+API for normal file handling in the main thread and a synchronous API
+for file handling in Worker threads (See
+Section~\ref{section:webworkers}). Text and binary files can be
+manipulated in memory or as \abbr{Blob} \abbr{URLs} with the
+\abbr{DOM} API. These capabilities enable web applications to better
+optimize network transfer and offline support with large
+files. Combined with the Drag and Drop API (See
+Section~\ref{section:dragdrop}) and Web Workers (See
+Section~\ref{section:webworkers}), HTML5 forms can be greatly enhanced
+and optimized with richer interactivity and better performance.
+
+\section{Web Real-time Communication}
+
+Support for different multimedia such as audio and video playing is a
+crucial first step into rich and interactive web
+applications. However, simply being able to play a video or an audio
+file within an HTML document is not enough for multimedia-rich
+applications.
+
+Real-time media streaming and playing has been traditionally
+implemented with Adobe
+Flash\footnote{\url{http://www.adobe.com/products/flashplayer.html}}
+and \abbr{RTMP}\footnote{\url{http://www.adobe.com/devnet/rtmp.html}},
+but the Web RTC API \cite{WebRTC} brings the ability to do native
+media streaming within HTML documents. Also a direct peer-to-peer
+streaming communication channel between two user agents is defined.
+
+Combined with the getusermedia API \cite{getusermedia} (see
+Section~\ref{section:getusermedia}), streams can be shown or recorded
+also from a local media source, such as a web camera. These
+specifications have lots of security and privacy issues to handle, but
+they promise very strong multimedia capabilities for web applications.
+
+\section{Web Sockets}
+
+Web Sockets API \cite{WebSockets, WebSocketProtocol} defines a two-way
+communication protocol for real-time applications between a client,
+such as web browser, and a remote server. Because HTTP is a stateless
+protocol, highly interactive applications have introduced many
+problems when attempting to keep response times and latency
+low. Real-time applications such as chat clients have been forced to
+rely on complex workarounds to overcome latency issues.
+
+The Web Socket connection can be open or secure, like \abbr{HTTP} and
+\abbr{HTTPS}. The API uses a single \abbr{TCP} connection that is kept
+open and allows for traffic in both ways. \cite{WebSockets,
+  WebSocketProtocol}
+
+The communication protocol specification defines a layer on top of
+\abbr{TCP} that defines the connection handshaking with HTTP, an
+``origin''-based security model, addressing and protocol naming
+mechanism for multiple services on one port and multiple host names on
+a single \abbr{IP} address, mechanism to overcome TCP packet length
+limits, and a closing handshake to help deal with proxies and other
+intermediaries. The intent of Web Sockets is to provide a simple
+protocol that works well with HTTP and the existing HTTP
+infrastructure, and that is as close to TCP as possible taking
+possible security issues into account. \cite{WebSocketProtocol}
+
+\section{Server-Sent Events}
+
+Server-Sent Events specification \cite{ServerSentEvents} defines a
+data stream format \texttt{text/event-stream} that can be used to
+connect an event listener in the client side to listen for events
+initiated by the server. These streams can be used, for example, for
+real-time push notifications for data content updates.
+
+The stream data format is very simple, and the API lets the browser
+handle the message passing. This helps developers to avoid, for
+example, polling a server for updates, which consumes a lot of
+computing and networking resources.
+
+\section{Web Workers}
+\label{section:webworkers}
+
+The whole \abbr{IT} industry has had a dramatic shift into parallel
+computing in recent years. Multicore processors have appeared even in
+mobile devices, and the number of cores is increasing in modern
+\abbr{CPUs}. This parallellization of processing poses challenges and
+opportunities also for application developers. \cite{asanovic2009view}
+
+Following the trend of the computing industry, together with the
+proliferation of web technologies, web applications are becoming more
+capable and processing-intensive. Introducing a traditional threading
+model and making browser APIs (such as \abbr{DOM}) thread-safe would
+be an overkill solution and a mismatch to the simplicity and backward
+compatibility requirements of the Web.
+
+JavaScript is by design single-threaded with an asynchronous event
+model. The whole user interface also runs in the same thread, and
+therefore long running JavaScript code freezes the whole interface
+during processing. The traditional approach has been to split the code
+into small enough pieces, and let the browser handle the scheduling of
+user interface events and JavaScript processing. This programming
+model is very hard, and combined with unpredictable browser garbage
+collection, user interface freezing might be hard to
+avoid. \cite{souders2009even}
+
+Web Workers are the proposed solution for parallel computing in
+JavaScript. They introduce a simple interface for sandboxed components
+with restricted access to browser APIs and an asynchronous
+communication channel between the worker and the main
+application. \cite{WebWorkers}
+
+Web Workers are external JavaScript files initialized from a web
+site. The worker runs in a separate \abbr{OS}-level thread and does
+not affect the main user interface thread apart from the communication
+channel. The simple API is easy to work with and enables the
+long-needed ability of parallel computation in web applications.
+
+\section{Analytics and Timing}
+
+Proper analytics is crucial for performance research and
+optimization. JavaScript timers have traditionally been used for
+timing and profiling client side interactions, but they can only
+provide crude analytics of what happens after the browser has started
+to parse the document and executes the JavaScript timing code.
+
+The Navigation Timing specification \cite{NavigationTiming} defines
+accurate analytics of events that happens since the user starts to
+navigate to the target page and until the page is fully loaded. These
+numbers are much more relevant than timing code supplied by the page
+itself, since they accurately match the user perceived load time that
+usually starts already much earlier than what the target page can
+time, for example, when a link is clicked on another page.
+
+Timing APIs are also defined for resources \cite{ResourceTiming} and
+general purpose user action profiling \cite{UserTiming}. The
+Performance Timeline specification \cite{PerformanceTimeline} defines
+a unifying interface to access these performance metrics.
+
+\section{Page Visibility and Timer Control}
+
+Avoiding unneeded work whenever possible is an important performance
+optimization concept. Modern browsers usually have a tabbed interface
+with possibly dozens of web pages open at a time. In addition, many
+interface functionalities use animations and effects to enhance the
+user experience, but if the page is not visible, these effects have
+little value and might use the \abbr{CPU} time in vain. Moreover,
+polling real-time data can use a lot of computing resources even if
+the data is not visible to the user.
+
+The Page Visibility specification \cite{PageVisibility} defines an API
+for JavaScript to know whether the document is currently visible and a
+\texttt{visibilitychange} event to get notified when the document
+visibility changes. In addition, the Timing control for script-based
+animations specification \cite{TimingControl} and the Efficient Script
+Yielding specification \cite{ScriptYielding} define means for
+requesting the browser to manage the event queue for efficient
+animation and interface event handling. For example, with the
+\texttt{requestAnimationFrame} function, the developer can
+periodically request for execution time for smooth animations, and
+when the page is not visible to the user, the browser can throttle the
+animation frame frequency for not using \abbr{CPU} power when it might
+be needed more on another page.
+
+\section{Cross-Origin Resource Sharing}
+
+Same-origin policy is an important security restriction in web
+browsers preventing web applications to obtain data from other origins
+\cite{CORS}. However, mashups and applications using data from
+external data APIs have been very popular in recent years, and
+techniques have been developed to overcome the restrictions. These
+techniques have been unsafe and very limited, so a need for
+cross-domain data sharing has risen.
+
+The Cross-Origin Resource Sharing (\abbr{CORS}) specification
+\cite{CORS} extends the same-origin policy by allowing the HTTP layer
+to indicate allowed origins for data transfer between separate
+origins. The specification defines new HTTP headers for indicating
+allowed origins and for negotiating access control restrictions with
+preflight requests.
+
+\abbr{CORS} is an important specification for modern web applications,
+since data is very often distributed to different domains, for
+example, when using a content delivery network. It also makes mashup
+development with external data easier and safer.
+
+Cross-domain resource usage can also be controlled with the means
+defined in the Content Security Policy specification
+\cite{ContentSecurityPolicy} and The From-Origin Header specification
+\cite{FromOriginHeader}. The specifications define HTTP headers that
+can be used to restrict certain content types to be allowed only from
+the given origins. In addition to these specifications, the HTML5 Web
+Messaging specification \cite{WebMessaging} defines an API for
+cross-document messaging.
+
+\section{Device APIs}
+
+One of the main differences between native and web applications is the
+device sensor access. In the following sections I present some
+specifications that define \abbr{API}s to access the device features
+from JavaScript.
+
+\subsection{Geolocation}
+
+Context is one of the main components of a personalized application
+\cite{fling2009mobile}. Probably the most important aspect affecting
+the context is the physical location of the user. However, only very
+crude and error-prone \abbr{IP}-based detection techniques have been
+available for web sites.
+
+The Geolocation API defines a standardized JavaScript API for web
+applications to query the location of the user. The API is agnostic of
+the underlying location information sources; the source might usually
+be the \abbr{GPS} chip on a mobile device or a \abbr{WiFi} network
+with a known location. The coordinates and their accuracy are provided
+by the API. \cite{geolocationAPI}
+
+The implementations usually provide some sort of privacy protection by
+asking the user whether they want to grant the application access to
+the physical location of the user.
+
+\subsection{Device Orientation}
+
+Knowledge of the physical orientation of a device and changes in the
+orientation enable, for example, highly interactive games with rich
+input mechanisms. Typical sensor sources for the orientation include
+gyroscopes, compasses, and accelerometers \cite{DeviceOrientation}.
+
+The Device Orientation specification \cite{DeviceOrientation} defines
+APIs and events to access this sensor data through an abstraction
+layer. The data can be used for rich interaction and gestures for a
+wide array of applications.
+
+\subsection{User Media}
+\label{section:getusermedia}
+
+The getusermedia specification \cite{getusermedia} defines means for
+accessing multimedia streams from local devices. The streams can be
+audio, video, or both, and the source device can be, for example, the
+web camera on a desktop computer or the microphone on a mobile device.
+
+The \texttt{getUserMedia} function can be used to request access to a
+multimedia stream, and the stream can then be handled, for example,
+with the File API (see Section~\ref{section:fileapi}) for recording to
+a file, or used as a source in an \texttt{audio} or a \texttt{video}
+element.
+
+\section{Other}
+
+There are also lots of other specifications, drafts, and proposals for
+other device feature and sensor data access. Below I list some of
+these.
+
+\begin{itemize}
+
+\item \textbf{Web Notifications} \cite{WebNotifications} for
+  displaying simple notification to the user
+
+\item \textbf{Fullscreen} \cite{Fullscreen} for controlling fullscreen
+  display of the application
+
+\item \textbf{Pointer Lock} \cite{PointerLock} for controlling input
+  pointers
+
+\item \textbf{Clipboard} \cite{ClipboardAPI} for using copy, cut, and
+  paste operations
+
+\item \textbf{Gamepad} \cite{Gamepad} for a low-level interface to
+  gamepad devices
+
+\item \textbf{Battery Status} \cite{BatteryStatusAPI} for accessing
+  information about the battery status of the device
+
+\item \textbf{Vibration API} \cite{VibrationAPI} for accessing the
+  vibration mechanism of the device
+
+\item \textbf{Network Information} \cite{NetworkInformationAPI} for an
+  interface to access the underlying connection information or the
+  device
+
+\item \textbf{Contacts} \cite{ContactsAPI} for an interface to access
+  the address book of the user
+
+\item \textbf{Web Intents}\footnote{\url{http://webintents.org/}} for
+  service discovery and inter-application communication.
+
+\end{itemize}
