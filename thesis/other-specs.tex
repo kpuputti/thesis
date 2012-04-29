@@ -7,9 +7,10 @@ often referred to as 'HTML5'. Some of these originate from the work of
 the \abbr{WHATWG} and some from the work of \abbr{W3C}, some have been
 part of HTML5 at some point but have been taken out of it into their
 own separate specifications, and some are just new specifications for
-the Web that relate to what we can do with HTML, CSS, and JavaScript
-in modern web applications. In the following sections, I introduce the
-specifications that are of interest within the topic of this work.
+the Web that relate to what we can do with HTML, \abbr{CSS} (Cascading
+Style Sheets), and JavaScript in modern web applications. In the
+following sections, I introduce the specifications that are of
+interest within the topic of this work.
 
 \section{Cascading Style Sheets}
 \label{section:css}
@@ -35,11 +36,12 @@ group\footnote{\url{http://www.w3.org/Style/CSS/members.en.php3}}.
   rules to the matched elements. Selectors can also be used in
   JavaScript to select elements for scripting.
 
-  \abbr{CSS3} defines a set of new selectors \cite{CSS3Selectors} for
-  powerful matching of elements in complex DOM trees. These selectors
-  are useful for rich interactive web applications and reduce the need
-  for scripting for element matching. Efficient selectors are also
-  important for performance optimization.
+  \abbr{CSS3} (Cascading Style Sheets level 3) defines a set of new
+  selectors \cite{CSS3Selectors} for powerful matching of elements in
+  complex DOM trees. These selectors are useful for rich interactive
+  web applications and reduce the need for scripting for element
+  matching. Efficient selectors are also important for performance
+  optimization.
 
 \item \textbf{Transforms}
 
@@ -108,8 +110,9 @@ group\footnote{\url{http://www.w3.org/Style/CSS/members.en.php3}}.
 
 \section{WebGL and Typed Arrays}
 
-\abbr{WebGL} is a low-level 3D rendering API derived from the
-\abbr{OpenGL® ES} 2.0 \cite{OpenGL} and it is designed as a rendering
+\abbr{WebGL} (Web Graphics Library) is a low-level 3D rendering API
+derived from the \abbr{OpenGL® ES} 2.0 (Open Graphics Library for
+Embedded Systems) \cite{OpenGL} and it is designed as a rendering
 context for the \texttt{canvas} element introduced in HTML5. An
 interactive 3D graphics API in the browser is essential for game
 development and creates a global platform for cross-platform
@@ -163,10 +166,10 @@ Two versions of the file handling APIs are defined: an asynchronous
 API for normal file handling in the main thread and a synchronous API
 for file handling in Worker threads (See
 Section~\ref{section:webworkers}). Text and binary files can be
-manipulated in memory or as \abbr{Blob} \abbr{URLs} with the
-\abbr{DOM} API. These capabilities enable web applications to better
-optimize network transfer and offline support with large
-files. Combined with the Drag and Drop API (See
+manipulated in memory or as \abbr{Blob} (Binary Large Object)
+\abbr{URLs} with the \abbr{DOM} API. These capabilities enable web
+applications to better optimize network transfer and offline support
+with large files. Combined with the Drag and Drop API (See
 Section~\ref{section:dragdrop}) and Web Workers (See
 Section~\ref{section:webworkers}), HTML5 forms can be greatly enhanced
 and optimized with richer interactivity and better performance.
@@ -182,10 +185,11 @@ applications.
 Real-time media streaming and playing has been traditionally
 implemented with Adobe
 Flash\footnote{\url{http://www.adobe.com/products/flashplayer.html}}
-and \abbr{RTMP}\footnote{\url{http://www.adobe.com/devnet/rtmp.html}},
-but the Web RTC API \cite{WebRTC} brings the ability to do native
-media streaming within HTML documents. Also a direct peer-to-peer
-streaming communication channel between two user agents is defined.
+and \abbr{RTMP}\footnote{\url{http://www.adobe.com/devnet/rtmp.html}}
+(Real Time Messaging Protocol), but the Web RTC API \cite{WebRTC}
+brings the ability to do native media streaming within HTML
+documents. Also a direct peer-to-peer streaming communication channel
+between two user agents is defined.
 
 Combined with the getusermedia API \cite{getusermedia} (see
 Section~\ref{section:getusermedia}), streams can be shown or recorded
@@ -197,26 +201,28 @@ they promise very strong multimedia capabilities for web applications.
 
 Web Sockets API \cite{WebSockets, WebSocketProtocol} defines a two-way
 communication protocol for real-time applications between a client,
-such as web browser, and a remote server. Because HTTP is a stateless
-protocol, highly interactive applications have introduced many
-problems when attempting to keep response times and latency
-low. Real-time applications such as chat clients have been forced to
-rely on complex workarounds to overcome latency issues.
+such as web browser, and a remote server. Because \abbr{HTTP}
+(Hypertext Transfer Protocol) is a stateless protocol, highly
+interactive applications have introduced many problems when attempting
+to keep response times and latency low. Real-time applications such as
+chat clients have been forced to rely on complex workarounds to
+overcome latency issues.
 
 The Web Socket connection can be open or secure, like \abbr{HTTP} and
-\abbr{HTTPS}. The API uses a single \abbr{TCP} connection that is kept
-open and allows for traffic in both ways. \cite{WebSockets,
+\abbr{HTTPS} (Hypertext Transfer Protocol Secure). The API uses a
+single \abbr{TCP} (Transmission Control Protocol) connection that is
+kept open and allows for traffic in both ways. \cite{WebSockets,
   WebSocketProtocol}
 
 The communication protocol specification defines a layer on top of
 \abbr{TCP} that defines the connection handshaking with HTTP, an
 ``origin''-based security model, addressing and protocol naming
 mechanism for multiple services on one port and multiple host names on
-a single \abbr{IP} address, mechanism to overcome TCP packet length
-limits, and a closing handshake to help deal with proxies and other
-intermediaries. The intent of Web Sockets is to provide a simple
-protocol that works well with HTTP and the existing HTTP
-infrastructure, and that is as close to TCP as possible taking
+a single \abbr{IP} (Internet Protocol) address, mechanism to overcome
+TCP packet length limits, and a closing handshake to help deal with
+proxies and other intermediaries. The intent of Web Sockets is to
+provide a simple protocol that works well with HTTP and the existing
+HTTP infrastructure, and that is as close to TCP as possible taking
 possible security issues into account. \cite{WebSocketProtocol}
 
 \section{Server-Sent Events}
@@ -235,10 +241,11 @@ computing and networking resources.
 \section{Web Workers}
 \label{section:webworkers}
 
-The whole \abbr{IT} industry has had a dramatic shift into parallel
-computing in recent years. Multicore processors have appeared even in
-mobile devices, and the number of cores is increasing in modern
-\abbr{CPUs}. This parallellization of processing poses challenges and
+The whole \abbr{IT} (Information Technology) industry has had a
+dramatic shift into parallel computing in recent years. Multicore
+processors have appeared even in mobile devices, and the number of
+cores is increasing in modern \abbr{CPUs} (Central Processing
+Unit). This parallellization of processing poses challenges and
 opportunities also for application developers. \cite{asanovic2009view}
 
 Following the trend of the computing industry, together with the
@@ -265,10 +272,11 @@ communication channel between the worker and the main
 application. \cite{WebWorkers}
 
 Web Workers are external JavaScript files initialized from a web
-site. The worker runs in a separate \abbr{OS}-level thread and does
-not affect the main user interface thread apart from the communication
-channel. The simple API is easy to work with and enables the
-long-needed ability of parallel computation in web applications.
+site. The worker runs in a separate \abbr{OS}-level (Operating System)
+thread and does not affect the main user interface thread apart from
+the communication channel. The simple API is easy to work with and
+enables the long-needed ability of parallel computation in web
+applications.
 
 \section{Analytics and Timing}
 
@@ -365,9 +373,10 @@ available for web sites.
 The Geolocation API defines a standardized JavaScript API for web
 applications to query the location of the user. The API is agnostic of
 the underlying location information sources; the source might usually
-be the \abbr{GPS} chip on a mobile device or a \abbr{WiFi} network
-with a known location. The coordinates and their accuracy are provided
-by the API. \cite{geolocationAPI}
+be the \abbr{GPS} (Global Positioning System) chip on a mobile device
+or a \abbr{WiFi} (Wireless Local Area Network, WLAN) network with a
+known location. The coordinates and their accuracy are provided by the
+API. \cite{geolocationAPI}
 
 The implementations usually provide some sort of privacy protection by
 asking the user whether they want to grant the application access to

@@ -92,9 +92,10 @@ library settings.
 JSONCache also tries to fetch the data multiple times to handle small
 interruptions in network connections.  For example, when a user leaves
 his or her work place and uses a web application, the mobile device
-changes from the workplace \abbr{WiFi} network to the \abbr{3G}
-network, there is a short interruption in the connection, and any
-ongoing network requests are affected.
+changes from the workplace \abbr{WiFi} network to the \abbr{3G} (3rd
+Generation Mobile Telecommunications) network, there is a short
+interruption in the connection, and any ongoing network requests are
+affected.
 
 If a data fetch fails, a new fetch is issued after a timeout (defined
 in the configuration). On subsequent attempts the timeout is
@@ -655,10 +656,10 @@ Figure~\ref{figure:yslow-v2-statistics.png}.
 
 The only sections where an A grade (best grade) was not achieved, were
 in ``Use a Content Delivery Network'' and in ``Minify JavaScript and
-CSS''. The \abbr{CDN} notice was not seen as important because the
-application was not designed for world-wide intensive use with lots of
-users, but rather for a single conference use with some hundreds of
-users.
+CSS''. The \abbr{CDN} (Content Delivery Network) notice was not seen
+as important because the application was not designed for world-wide
+intensive use with lots of users, but rather for a single conference
+use with some hundreds of users.
 
 The minification section notice explained in the details that inline
 script tag contents should be minified. This was somewhat a limitation

@@ -30,14 +30,15 @@ styling and some JavaScript for enhancing forms or some interactive
 components on the page.
 
 These conventional three-tiered web applications
-\cite{laine2011towards} often use an \abbr{MVC} \cite{gamma1995design}
-framework for separating the data, logic, and presentation layers in
-the backend. However, the latest trend in web application development
-has been having only a simple \abbr{REST}
-\cite{fielding2000architectural} API as a backend data layer, and
-using a JavaScript MVC framework in the frontend. Thus the whole
-application logic and presentation has moved to the client side, with
-the backend only working as a data persistency layer.
+\cite{laine2011towards} often use an \abbr{MVC}
+(Model-View-Controller) \cite{gamma1995design} framework for
+separating the data, logic, and presentation layers in the
+backend. However, the latest trend in web application development has
+been having only a simple \abbr{REST} (Representational State
+Transfer) \cite{fielding2000architectural} API as a backend data
+layer, and using a JavaScript MVC framework in the frontend. Thus the
+whole application logic and presentation has moved to the client side,
+with the backend only working as a data persistency layer.
 
 Using modern JavaScript storage APIs (see
 Section~\ref{section:datastorage}), even the data persistency and
@@ -371,12 +372,12 @@ performance guidelines defined by Souders \cite{souders2007high}.
 
 \item \textbf{Reduce DNS Lookups}
 
-  Apart from cached \abbr{DNS} lookups, the browser typically needs
-  20--120 milliseconds to look up the \abbr{IP} address for a given
-  hostname. The cache lifetime of a lookup depends on the \abbr{TTL}
-  value of the DNS record and having the components of a page
-  distributed across several domains might accumulate into a
-  noticeable response time.
+  Apart from cached \abbr{DNS} (Domain Name System) lookups, the
+  browser typically needs 20--120 milliseconds to look up the
+  \abbr{IP} address for a given hostname. The cache lifetime of a
+  lookup depends on the \abbr{TTL} (Time To Live) value of the DNS
+  record and having the components of a page distributed across
+  several domains might accumulate into a noticeable response time.
 
   There is also a trade-off between unique hostnames and allowed
   parallel connections and therefore these settings should be
@@ -404,11 +405,11 @@ performance guidelines defined by Souders \cite{souders2007high}.
 
 \item \textbf{Configure ETags}
 
-  \abbr{ETags} are a mechanism in HTTP for servers and browsers to
-  validate cached resources. The typical default values set by
-  commonly used web servers might hurt performance, and should thus be
-  configured properly to address the application architecture and
-  needs.
+  \abbr{ETags} (Entity Tag) are a mechanism in HTTP for servers and
+  browsers to validate cached resources. The typical default values
+  set by commonly used web servers might hurt performance, and should
+  thus be configured properly to address the application architecture
+  and needs.
 
 \item \textbf{Make Ajax Cacheable}
 
