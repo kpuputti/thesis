@@ -137,7 +137,7 @@ compromises. \cite{charland2011mobile, fling2009mobile}
 
 In this work I look at the performance of \abbr{HTML5} as a
 cross-platform application platform for different device
-form-factors. To study the performance, I built a real world HTML5
+form-factors. To study the performance, I built a real-world HTML5
 application and a JavaScript library and fine-tuned the performance to
 get the best possible user experience. I then asses these
 optimizations and the compromises that had to be made.
@@ -217,9 +217,9 @@ seen as impractical for the real world, a group of web browser vendors
 and other interested parties had a competing vision of the future of
 the Web: evolving HTML4 to include additional features maintaining
 backward compatibility. W3C members did not agree with this vision,
-and as a result, the WHAT Working Group was born. \abbr{WHATWG} is a
-``loose, unofficial, and open collaboration of Web browser
-manufacturers and interested
+and as a result, the WHAT Working Group was born. \abbr{WHATWG}
+defines itself as a ``loose, unofficial, and open collaboration of Web
+browser manufacturers and interested
 parties''\footnote{\url{http://www.whatwg.org/news/start}}. \cite{pilgrim2010html5}
 
 According to a
@@ -229,18 +229,19 @@ validation. Therefore, to maintain backward compatibility and
 practicality, it is crucial to have a well defined error handling
 mechanism.
 
-Having the browser vendor and web development community support behind
-them, after several years the WHATWG work was finally accepted by W3C
-and a joint effort was started to standardize HTML5. There are still
-differences in the W3C and WHATWG specifications in what features they
-include in the main standard and what are separated in other
-specifications or leaved out, but the main goal is to develop the
-standards together with browser vendors to get usage feedback while
-the specifications are being made. This results in many features being
-available in modern web browsers while the HTML5 and related standards
-are not yet finished. As a drawback, however, the implementations
-might change between browser versions, and developers must take extra
-effort in detecting the supported features. \cite{pilgrim2010html5}
+Having the browser vendors and web development community support
+behind them, after several years the WHATWG work was finally accepted
+by W3C and a joint effort was started to standardize HTML5. There are
+still differences in the W3C and WHATWG specifications in what
+features they include in the main standard and what are separated in
+other specifications or leaved out, but the main goal is to develop
+the standards together with browser vendors to get usage feedback
+while the specifications are being made. This results in many features
+being available in modern web browsers while the HTML5 and related
+standards are not yet finished. As a drawback, however, the
+implementations might change between browser versions, and developers
+must take extra effort in detecting the supported
+features. \cite{pilgrim2010html5}
 
 In this work, I look at HTML5 beyond the main specifications, and take
 into account also related standards that affect modern web application
@@ -379,8 +380,8 @@ HTML5 brings several enhancements to forms. New input types for
 numbers, dates, email addresses, etc. obsolete the need of scripted
 widgets by using native platform controls. New form attributes like
 \texttt{placeholder} and \texttt{autofocus} bring easy-to-use
-accessibility and usability improvements and also diminish the need
-for scripting. \cite{HTML5draft}
+accessibility and usability improvements and also reduce the need for
+scripting. \cite{HTML5draft}
 
 These additions and enhancements work especially well in mobile
 context where user input is slow and cumbersome. For example, by
@@ -399,9 +400,9 @@ for web applications with dynamic content and interactively changing
 user interface.
 
 Two of the basic functionalities that users are accustomed to are
-bookmarking and going back in the session history. Traditionally these
-have been compromised in dynamic \abbr{Ajax} applications or handled
-with a lot of extra work.
+bookmarking and going back and forth in the session
+history. Traditionally these have been compromised in dynamic
+\abbr{Ajax} applications or handled with a lot of extra work.
 
 HTML5 addresses these issues by allowing the developers dynamically
 manipulate the session history. The history stack can be changed and
@@ -431,6 +432,7 @@ fails. In addition to the simple manifest file listing offline
 resources, JavaScript events are defined for cache
 changes. \cite{HTML5draft} \\
 
+\clearpage
 \noindent \textbf{Example manifest file:}
 \begin{verbatim}
 CACHE MANIFEST
@@ -462,8 +464,8 @@ into using cookies, but HTML5 specifies new options for data
 persistence.
 
 Two different key/value storages are defined: \texttt{localStorage}
-and \texttt{sessionStorage}. The \abbr{API} is same with both of
-these, but with \texttt{sessionStorage}, the data is persisted only
+and\\ \texttt{sessionStorage}. The \abbr{API} is same with both of
+these, but with\\ \texttt{sessionStorage}, the data is persisted only
 for the current browser session. These interfaces are very simple and
 easy to use, but are constrained into storing only textual
 data. \cite{webstoragedraft}
@@ -535,8 +537,8 @@ HTML5 document with the \texttt{math} element.
 Both of these languages reduce the need of custom images, making the
 content more accessible, dynamic, and enabling dynamic interaction
 with it. Also, vector graphics can be scaled to fit the available
-space no matter the screen size, which improves the cross-platform
-usefulness for different device form factors.
+space no matter what the screen size is, which improves the
+cross-platform usefulness for different device form factors.
 
 \chapter{Other Related Specifications}
 \label{chapter:other-related-specifications}
@@ -579,14 +581,14 @@ group\footnote{\url{http://www.w3.org/Style/CSS/members.en.php3}}.
   powerful matching of elements in complex DOM trees. These selectors
   are useful for rich interactive web applications and reduce the need
   for scripting for element matching. Efficient selectors are also
-  crucial for performance optimization.
+  important for performance optimization.
 
 \item \textbf{Transforms}
 
   2D and 3D transforms \cite{CSStransforms} allow elements to be
   transformed in two-dimensional or three-dimensional space. Elements
   can be translated, rotated, and scaled in their coordinate
-  space. The specification defines lots of 2D and 3D transformation
+  space. The specification defines several 2D and 3D transformation
   functions, which can be used in the transforms.
 
   Transforms can provide subtle but important user interface effects,
@@ -648,29 +650,28 @@ group\footnote{\url{http://www.w3.org/Style/CSS/members.en.php3}}.
 
 \section{WebGL and Typed Arrays}
 
-WebGL is a low-level 3D rendering API derived from the OpenGL® ES 2.0
-\cite{OpenGL} and it is designed as a rendering context for the
-\texttt{canvas} element introduced in HTML5. An interactive 3D
-graphics API in the browser is essential for game development and
-creates a global platform for cross-platform games. WebGL was
-originally developed by the Khronos
+\abbr{WebGL} is a low-level 3D rendering API derived from the
+\abbr{OpenGL® ES} 2.0 \cite{OpenGL} and it is designed as a rendering
+context for the \texttt{canvas} element introduced in HTML5. An
+interactive 3D graphics API in the browser is essential for game
+development and creates a global platform for cross-platform
+games. WebGL was originally developed by the Khronos
 Group\footnote{\url{http://www.khronos.org/}} and later the
 specification work was participated by browser vendors and 3D
 developers. \cite{WebGL}
 
 Being based on the OpenGL ES API, WebGL can run on many different
 devices, such as desktop computers, mobile phones, tablets, and
-TVs. The use is not constrained into games only; WebGl can also be
+TVs. The use is not constrained into games only; WebGL can also be
 used in 3D modeling and design tools, simulations, data visualization,
 or in interactive art.
 
 Originated from the WebGL specification, typed arrays have been
-separated into a distinct specification
-\cite{TypedArrays}. Traditional JavaScript arrays are not typed, but
-due to performance reasons, WebGL API needed more efficient data
-structures for 3D graphics. These typed arrays can also be used in
-non-graphics related contexts, for example, where efficient processing
-is needed for large amounts of binary data.
+separated into their own specification \cite{TypedArrays}. Traditional
+JavaScript arrays are not typed, but due to performance reasons, WebGL
+API needed more efficient data structures for 3D graphics. These typed
+arrays can also be used in non-graphics related contexts, for example,
+where efficient processing is needed for large amounts of binary data.
 
 \section{Touch Events}
 
@@ -717,7 +718,7 @@ and optimized with richer interactivity and better performance.
 Support for different multimedia such as audio and video playing is a
 crucial first step into rich and interactive web
 applications. However, simply being able to play a video or an audio
-file within an HTML document is not enough for multimedia rich
+file within an HTML document is not enough for multimedia-rich
 applications.
 
 Real-time media streaming and playing has been traditionally
@@ -897,7 +898,7 @@ from JavaScript.
 
 \subsection{Geolocation}
 
-Context is one of the main components or a personalized application
+Context is one of the main components of a personalized application
 \cite{fling2009mobile}. Probably the most important aspect affecting
 the context is the physical location of the user. However, only very
 crude and error-prone \abbr{IP}-based detection techniques have been
@@ -907,8 +908,8 @@ The Geolocation API defines a standardized JavaScript API for web
 applications to query the location of the user. The API is agnostic of
 the underlying location information sources; the source might usually
 be the \abbr{GPS} chip on a mobile device or a \abbr{WiFi} network
-with a known location. The coordinates and their accuracy is then
-provided by the API. \cite{geolocationAPI}
+with a known location. The coordinates and their accuracy are provided
+by the API. \cite{geolocationAPI}
 
 The implementations usually provide some sort of privacy protection by
 asking the user whether they want to grant the application access to
@@ -1010,16 +1011,17 @@ structured backend architectures often with a database layer, a layer
 for business logic, and a layer for generating the HTML documents from
 a template. The frontend usually uses \abbr{CSS} for layout and
 styling and some JavaScript for enhancing forms or some interactive
-components on a page.
+components on the page.
 
-These conventional three-tiered web applications often use an
-\abbr{MVC} \cite{gamma1995design} framework for separating the data,
-logic, and presentation layers in the backend. However, the latest
-trend in web application development has been having only a simple
-\abbr{REST} \cite{fielding2000architectural} API as a backend data
-layer, and using a JavaScript MVC framework in the frontend. Thus the
-whole application logic and presentation has moved to the client side,
-with the backend only working as a data persistency layer.
+These conventional three-tiered web applications
+\cite{laine2011towards} often use an \abbr{MVC} \cite{gamma1995design}
+framework for separating the data, logic, and presentation layers in
+the backend. However, the latest trend in web application development
+has been having only a simple \abbr{REST}
+\cite{fielding2000architectural} API as a backend data layer, and
+using a JavaScript MVC framework in the frontend. Thus the whole
+application logic and presentation has moved to the client side, with
+the backend only working as a data persistency layer.
 
 Using modern JavaScript storage APIs (see
 Section~\ref{section:datastorage}), even the data persistency and
@@ -1049,6 +1051,7 @@ architecture pattern adapting it to the design needs and requirements
 of browser-based applications. Example frameworks include
 Backbone.js\footnote{\url{http://backbonejs.org/}},
 Spine\footnote{\url{http://spinejs.com/}},
+ember\footnote{\url{http://emberjs.com/}},
 batman.js\footnote{\url{http://batmanjs.org/}},
 Knockout\footnote{\url{http://knockoutjs.com/}}, and
 JavaScriptMVC\footnote{\url{http://javascriptmvc.com/}}.
@@ -1128,8 +1131,8 @@ less-capable browsers prevent developers from using a single solution
 for all browsers.
 
 The goal of progressive enhancement is to provide universal access to
-a web site or application no matter what capabilities the browser of
-the user has. Parker et al. define the three key principles of
+a web site or an application no matter what capabilities the browser
+or the user has. Parker et al. define the three key principles of
 progressive enhancement \cite{parker2010designing}:
 
 \begin{itemize}
@@ -1266,7 +1269,6 @@ device APIs. These hybrid applications have only one code base that is
 deployed for several smartphone platforms, and the applications can be
 submitted to application stores.
 
-\clearpage
 \section{Performance Guidelines}
 \label{section:performance-guidelines}
 
@@ -1285,7 +1287,7 @@ performance guidelines defined by Souders \cite{souders2007high}.
 \item \textbf{Make Fewer HTTP Requests}
 
   According to Souders, 80--90\% of the end user response time is
-  spent downloading components in a page other than the requested HTML
+  spent downloading components on a page other than the requested HTML
   page. Therefore, the simplest way to improve the response time is to
   reduce the number of HTTP requests needed to get all the required
   components.
@@ -1304,14 +1306,14 @@ performance guidelines defined by Souders \cite{souders2007high}.
 
 \item \textbf{Add an Expires Header}
 
-  Avoiding a HTTP request altogether is the best option for reducing
-  the response time when downloading the components in a page. Good
+  Avoiding an HTTP request altogether is the best option for reducing
+  the response time when downloading the components on a page. Good
   caching strategies help browsers to know which resources are valid
   and for how long until they should be updated.
 
   The Expires header in HTTP tells the client how long a resource is
   valid, and especially far future Expires headers reduce the need for
-  downloading and updating the components in a page after the initial
+  downloading and updating the components on a page after the initial
   download.
 
 \item \textbf{Gzip Components}
@@ -1375,7 +1377,7 @@ performance guidelines defined by Souders \cite{souders2007high}.
 
 \item \textbf{Avoid Redirects}
 
-  Rerouting any component in a page takes time, and avoiding any kind
+  Rerouting any component on a page takes time, and avoiding any kind
   of redirects improves the response times.
 
 \item \textbf{Remove Duplicate Scripts}
@@ -1422,7 +1424,7 @@ also specifies additional techniques to improve performance
 
   Most browsers block the downloads of other resources when scripts
   are being downloaded and executed. There are several ways to
-  circumvent this behavior to allow browsers download scripts in
+  circumvent this behavior to allow browsers to download scripts in
   parallel with other resources as well as with other script files.
 
 \item \textbf{Coupling Asynchronous Scripts}

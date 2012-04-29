@@ -13,6 +13,7 @@ conference application as well as the requirements for the JSONCache
 network utility library.
 
 \section{Conference Application Requirements}
+\label{section:devdays-requirements}
 
 The target group for the conference application was mobile developers
 attending the Qt Developer Days conference. Therefore, I could expect
@@ -61,17 +62,18 @@ To sum up, the main requirements are as follows:
 \item Offline support
 \item Floor map view with pinch-to-zoom gesture and panning support
 \item Rich agenda and track view with sessions shown visually in a
-  timeline
+  timeline.
 \end{enumerate}
 
 \section{JSONCache Requirements}
+\label{section:jsoncache-requirements}
 
 JSONCache was designed as a JavaScript network utility library for
 unreliable mobile networks. It is used in \abbr{Ajax} data requests
 with \abbr{JSON} data. The main idea was to avoid refetching data that
 was already fetched and to handle network interruptions without the
 user noticing anything. The requirements are as follows:
-\begin{enumerate}
+\begin{enumerate}[resume]
 \item Cache data in the client side (localStorage) to avoid fetching
   data that has already been transferred
 \item Attempt to fetch the data multiple times if the requests fail

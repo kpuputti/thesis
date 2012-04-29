@@ -1,7 +1,7 @@
 \chapter{Implementation and Results}
 \label{chapter:implementation}
 
-I implemented to example cases: a mobile web application for a
+I implemented two example cases: a mobile web application for a
 developer conference and a networking library for data caching and
 fetching multiple times. Here I present the architecture, components
 and the implementation details I used for fulfilling the requirements
@@ -11,8 +11,6 @@ development. I used tools introduced in
 Chapter~\ref{chapter:tools-and-techniques} and APIs introduced in
 Chapter~\ref{chapter:html5} and
 Chapter~\ref{chapter:other-related-specifications}.
-
-\fixme{add references to the requirements list within the sections?}
 
 \section{Conference Application}
 
@@ -39,8 +37,8 @@ offline cache manifest file based on the categorized device type.
 
 The frontend is a JavaScript application written using the
 Backbone\footnote{\url{http://backbonejs.org/}} \abbr{MVC} framework
-(see Section~\ref{section:js-mvc}). Other used JavaScript libraries
-include Underscore\footnote{\url{http://underscorejs.org/}} for data
+(see Section~\ref{section:js-mvc}). Other JavaScript libraries include
+Underscore\footnote{\url{http://underscorejs.org/}} for data
 manipulation, jQuery\footnote{\url{http://jquery.com/}} for \abbr{DOM}
 API abstraction, Handlebars\footnote{\url{http://handlebarsjs.com/}}
 for templating, and
@@ -48,10 +46,10 @@ Modernizr\footnote{\url{http://www.modernizr.com/}} for feature
 detection. The HTML5 Mobile
 Boilerplate\footnote{\url{http://html5boilerplate.com/mobile}} was
 used as an initial markup structure for the application. The
-architecture of is shown in Figure~\ref{figure:devdays.png}. Wireless
-networks can be unreliable in conference settings, so offline support
-was also added using several different JavaScript techniques and HTML5
-APIs.
+architecture of the application is shown in
+Figure~\ref{figure:devdays.png}. Wireless networks can be unreliable
+in conference settings, so offline support was also added using
+several different JavaScript techniques and HTML5 APIs.
 
 The application was designed for touch screens on various platforms
 and screen sizes. The layout adjusts to the available space and
@@ -85,11 +83,11 @@ Section~\ref{section:datastorage}) cache of \abbr{HTML5}. Data
 requests can be done using the JSONCache \abbr{API} which always
 checks the local cache first before opening any network
 connections. If the data is already in the cache, the cached data is
-checked for validity and if the data has not been expired, it is
-returned immediately. If the data is not in the cache or it has been
-expired, a new network request is made and the received data is cached
-and returned. The expiration time of a data item can be configured in
-the library settings.
+checked for validity and if the data is not expired, it is returned
+immediately. If the data is not in the cache or it is expired, a new
+network request is made and the received data is cached and
+returned. The expiration time of a data item can be configured in the
+library settings.
 
 JSONCache also tries to fetch the data multiple times to handle small
 interruptions in network connections.  For example, when a user leaves
@@ -107,7 +105,7 @@ Figure~\ref{figure:jsoncache-demo.png} shows an interactive demo of
 the JSONCache library. The
 demo\footnote{\url{http://kpuputti.github.com/JSONCache/demo/index.html}}
 simulates the caching and fetching functionality of the library by
-simulating an unreliable network based on the configuration.
+demonstrating an unreliable network based on the configuration.
 
 \begin{figure}[h!]
   \begin{center}
@@ -126,16 +124,18 @@ form factors vary from tiny mobile screens to touch screen tablets and
 desktop monitors and each device and platform has its own feature
 set. Browsers also have known bugs that have to be handled.
 
-Therefore, means to detect the user's device are needed. Here I
-present two such means: device detection and feature detection. Both
-of these were used in our conference application.
+Therefore, means to detect the user's device are needed (see
+requirements 1 and 2 in
+Section~\ref{section:devdays-requirements}). Here I present two such
+means: device detection and feature detection. Both of these were used
+in our conference application.
 
 \subsection{Device Detection}
 \label{subsection:device-detection}
 
 The User-Agent (\abbr{UA}) \abbr{HTTP} header contains detailed
 information of the web browser and the platform where the request
-originates from. As can be seen from Table~7.1\tableref, we can
+originates from. As can be seen from Table~6.1\tableref, we can
 extract platform- and browser-specific information from the UA header.
 
 \begin{table}
@@ -155,7 +155,7 @@ backend to provide a different offline AppCache manifest (see
 Section~\ref{section:appcache}) to different device groups. The
 detection was also used in defining the assets to be preloaded in the
 application. The devices were divided into four categories based on
-the rules defined in Table~7.2\tableref. There were serious
+the rules defined in Table~6.2\tableref. There were serious
 limitations in this approach, and compromises had to be made.
 
 First, there is no way to surely know if the device actually is what
@@ -189,10 +189,10 @@ not downloaded for offline use.
 
 Getting platform and browser information from the UA header might look
 tempting and useful, but it is considered a bad practice to detect a
-device from it and provide device specific bug fixes or additional
+device from it and providing device-specific bug fixes or additional
 features. The header can easily be changed and some browsers or
 browser plugins even provide preconfigured values for certain browsers
-or devices for spoofing. Also, the device specific bug fixes might
+or devices for spoofing. Also, the device-specific bug fixes might
 become obsolete with browser and platform updates, and the application
 might break due to invalid expectations. This is why feature detection
 is generally the recommended option whenever possible.
@@ -202,12 +202,12 @@ is generally the recommended option whenever possible.
 
 Feature detection is an important concept in designing with
 progressive enhancement (See
-Section~\ref{subsection:progressive-enhancement}). A lot of the HTML5
-related JavaScript APIs are still unsupported in several platforms,
-but browser developers are constantly filling in the gaps. Therefore,
-it is important to check whether a certain feature is supported and
-provide graceful fallback mechanisms for browsers lacking the
-functionality.
+Section~\ref{subsection:progressive-enhancement}). A lot of the
+HTML5-related JavaScript APIs are still unsupported in several
+platforms, but browser developers are constantly filling in the
+gaps. Therefore, it is important to check whether a certain feature is
+supported and to provide graceful fallback mechanisms for browsers
+lacking the functionality.
 
 Doing run-time feature detection provides the possibility to give
 additional functionality to modern browsers and instant support for
@@ -221,7 +221,8 @@ clicking the star in the agenda (see
 Figure~\ref{figure:iphone-android-agenda.jpg}) or on the session
 details view. The favorites were then listed on the home view (see
 Figure~\ref{figure:android-home-favorites.jpg}) together with
-information about the time left for them to begin.
+information about the time left for them to begin (see requirements 3
+and 6 in Section~\ref{section:devdays-requirements}).
 
 \begin{figure}[h!]
   \begin{center}
@@ -246,10 +247,7 @@ I used HTML5 localStorage for storing the favorites in the user's web
 browser. By using Modernizr, I detected localStorage support and
 showed the favorite stars only in browsers that supported the
 functionality. For all other browsers, the stars were simply hidden
-and users could not add favorites. I could have also provided a
-fallback mechanism for persisting the favorites to the backend, but
-for simplicity and because I targeted mostly modern platforms, this
-approach was considered as reasonable.
+and users could not add favorites.
 
 \section{Targeting Different Screens}
 \label{section:targeting-screens}
@@ -257,7 +255,8 @@ approach was considered as reasonable.
 Probably the biggest difference in various devices and form factors is
 the screen and its size, resolution, and dimensions. Web applications
 should adjust to the available space and flexibly handle screen
-orientation and window size changes.
+orientation and window size changes (see requirement 2 in
+Section~\ref{section:devdays-requirements}).
 
 First, to target mobile and tablet platforms, the viewport meta
 information should be indicated in the document. The following tag was
@@ -313,7 +312,8 @@ high-resolution screens. I also dynamically set the map view (see
 Figure~\ref{figure:nokia-map.jpg}) images based on the screen
 dimensions so that I could provide smaller images for smaller screens
 and high resolution images for tablets and other devices with larger
-screen estate.
+screen estate (see requirement 5 in
+Section~\ref{section:devdays-requirements}).
 
 \begin{figure}[h!]
   \begin{center}
@@ -331,7 +331,8 @@ between devices. In addition to handling different resolutions and
 dimensions, we must also handle screen orientation changes. The width
 and height of the touch screens are usually different, and the user
 can hold the device either in portrait or in landscape mode and at any
-point switch between the two.
+point switch between the two (see requirement 2 in
+Section~\ref{section:devdays-requirements}).
 
 In the conference application, I wanted to have different header and
 footer background images for different orientations. I also needed to
@@ -353,7 +354,8 @@ One of the biggest problems in mobile web applications is the network
 that is often slow and unreliable \cite{zandy2002reliable}. Our
 conference application was designed for a context where the
 application cannot trust on the networking but should still manage to
-handle interactions and persist application state. Also being a
+handle interactions and persist application state (see requirement 4
+in Section~\ref{section:devdays-requirements}). Also being a
 conference where people come from around the world, the network data
 transfer cost might be surprisingly high, and thus bandwidth should be
 saved whenever possible.
@@ -369,10 +371,11 @@ transferred.
 First, I made sure the data was minimized and compressed with
 Gzip. Second, using \abbr{JSON} instead of \abbr{XML} in \abbr{Ajax}
 requests saves bandwidth \cite{charland2011mobile} and needed effort
-of the browser to process the data. Third, using the offline manifest
-ensured that the application assets and data needed to be downloaded
-only once, and using localStorage I could store the application state
-locally to the browser avoiding the network completely.
+from the browser to process the data. Third, using the offline
+manifest ensured that the application assets and data needed to be
+downloaded only once, and using localStorage I could store the
+application state locally to the browser avoiding the network
+completely.
 
 \subsection{Caching}
 
@@ -394,9 +397,10 @@ resources was handled by changing the version number in their
 corresponding URLs.
 
 In addition to the HTTP-level caching, using the AppCache manifest
-file told the browser to cache all needed resources to a more
+file to tell the browser to cache all needed resources to a more
 persistent offline cache, which minimized needed downloads on
-application startup if the resources were already in the cache. The
+application startup if the resources were already in the cache (see
+requirement 4 in Section~\ref{section:devdays-requirements}). The
 effect of this was clearly seen in the application log files, where
 the manifest file was first downloaded with the referenced other files
 on the first page load, but on subsequent page loads only the manifest
@@ -405,13 +409,14 @@ file was requested for changes.
 Client side caching was used in saving the user specific state in the
 conference application and experimented with the JSONCache library
 specified in Section~\ref{section:jsoncache}. Using localStorage, I
-can persist data in the browser and avoid networking if the cached
+could persist data in the browser and avoid networking if the cached
 data is still relevant.
 
 JSONCache handles the localStorage caching automatically, with only
 user configuration needed for setting the data lifetime. Every time
 the data is requested again, the local cache is checked first, and
-networking can be avoided altogether.
+networking can be avoided altogether (see requirement 7 in
+Section~\ref{section:jsoncache-requirements}).
 
 \subsection{Preloading}
 
@@ -463,9 +468,9 @@ updated resources are available only in the second page load after the
 updates. Therefore, updates do not show up immediately when the
 application is refreshed, and I had to show an additional confirm
 dialog for informing the user about updates so that they could refresh
-the page again. This has a noticeable impact on the application user
-experience, but was seen as a needed compromise to get the latest
-conference schedule data and interface updates.
+the page again. This has a somewhat noticeable impact on the
+application user experience, but was seen as a needed compromise to
+get the latest conference schedule data and interface updates.
 
 \subsection{Handling Interruptions}
 
@@ -480,11 +485,13 @@ in flaky networks.
 JSONCache library introduced in Section~\ref{section:jsoncache} had a
 functionality to overcome these issues. The library tries to download
 the requested data multiple times, and fails only when the configured
-maximum attempt count is reached. With every iteration, a timeout is
-set for a new request, and the timeout is increased after each failed
-attempt. This approach works very well, and together with localStorage
-caching lets data updates circumvent small network interruptions
-failing only when the network connection seems to be completely down.
+maximum attempt count is reached (see requirement 8 in
+Section~\ref{section:jsoncache-requirements}). With every iteration, a
+timeout is set for a new request, and the timeout is increased after
+each failed attempt. This approach works very well, and together with
+localStorage caching lets data updates circumvent small network
+interruptions failing only when the network connection seems to be
+completely down.
 
 \section{Animations}
 \label{section:animations}
@@ -515,7 +522,7 @@ There are lots of best practices and conventions that have been
 developed by the web developer community. A lot of these tried and
 tested techniques are outlined in the HTML5 Mobile
 Boilerplate\footnote{\url{http://html5boilerplate.com/mobile}} that I
-used as our base for the conference application. Here I present some
+used as a base for the conference application. Here I present some
 techniques and tools that help to improve application performance and
 reduce bugs.
 
@@ -565,8 +572,8 @@ document fragments. With document fragments, several elements can be
 added to one fragment, which can then be added to the element
 container. This has no effect on the \abbr{DOM} tree itself, but it
 requires only one reflow from the browser. One other solution is
-hiding the container while its contents is modified, and showing after
-the modifications are done. \cite{zakas2010high}
+hiding the container while its contents is modified, and showing it
+after the modifications are done. \cite{zakas2010high}
 
 I used these techniques in the conference application to minimize user
 interface reflows to improve the perceived performance.
@@ -659,7 +666,7 @@ in the tool itself, since the inline script tags were the HTML
 templates for the single-page application JavaScript code. The
 \texttt{type} attribute of the tags was
 \texttt{text/x-handlebars-template}, which complies with the generic
-extending mechanism as specified in the HTML5 specification draft
+extension mechanism as specified in the HTML5 specification draft
 \cite{HTML5draft}. Thus this was not seen as a problem.
 
 \subsection{Page Speed}
@@ -687,7 +694,7 @@ there are also additional rules.
 The only real problem in the score was the 'Optimize Images' rule. I
 had not optimized the images used in the application, but instead used
 the images provided by the designers. Going further, I could have
-saved a lot or bandwidth by optimizing the images with tools such as
+saved a lot of bandwidth by optimizing the images with tools such as
 Pngcrush\footnote{\url{http://pmt.sourceforge.net/pngcrush/}}.
 
 Of the other notes in the results, 'Defer parsing of JavaScript' could
@@ -724,32 +731,35 @@ defined in HTML5 and related specifications to tackle these practical
 challenges.
 
 First challenge was to handle the varying screens and device
-form-factors. Feature detection with media queries (see
-Section~\ref{section:css}) and the Modernizr library proved to be a
-very practical and working solution for targeting styles for different
-device types. Custom \texttt{meta} tags in the document as well as
-orientation handling events were invaluable in setting the viewport
-dimensions and handling changes in it. However, screen dimension and
-orientation handling have lots of differences between mobile browsers,
-and due to the differing APIs and plain browser bugs, handling varying
-screens and form-factors needed a lot of testing to get the
-application layout work properly.
+form-factors (see requirements 1 and 2 in
+Section~\ref{section:devdays-requirements}). Feature detection with
+media queries (see Section~\ref{section:css}) and the Modernizr
+library proved to be a very practical and working solution for
+targeting styles for different device types. Custom \texttt{meta} tags
+in the document as well as orientation handling events were invaluable
+in setting the viewport dimensions and handling changes in
+it. However, screen dimension and orientation handling have lots of
+differences between mobile browsers, and due to the differing APIs and
+plain browser bugs, handling varying screens and form-factors needed a
+lot of testing to get the application layout work properly.
 
 Handling mobile networks is a huge challenge in building mobile web
-applications. I presented many solutions such as minimizing data
-transfer, caching on different application layers, preloading
-resources, and adding offline support with HTML5 APIs. These
-techniques need a lot of know-how and experience, and might not be
-trivial to implement.
+applications (see requirement 4 in
+Section~\ref{section:devdays-requirements}). I presented many
+solutions such as minimizing data transfer, caching on different
+application layers, preloading resources, and adding offline support
+with HTML5 APIs. These techniques need a lot of know-how and
+experience, and might not be trivial to implement.
 
 The offline capabilities defined in HTML5 specifications were very
 valuable and adding offline support ended up being rather simple for a
 single-page application. However, handling interruptions and
 unreliable networks is more complex, which is why I developed the
 JSONCache utility library for caching and fetching data multiple times
-in unreliable networks. In our testing, the library worked very well,
-and using this approach can have a big effect on the end-user
-experience.
+in unreliable networks (see requirements 7 and 8 in
+Section~\ref{section:jsoncache-requirements}). In my testing, the
+library worked very well, and using this approach can have a big
+effect on the end-user experience.
 
 Defining cross-browser stylesheets for different mobile and tablet
 devices is hard. The CSS support varies between platforms and platform
@@ -759,15 +769,15 @@ animation is very simple using the CSS3 animation rules, but the
 performance in mobile browsers is very poor to say the least. This is
 why I dropped all animations from the page changes in the conference
 application. I hope this is one area where future platform and mobile
-browser updates put focus, since animations are an essential part of
-the user experience of an application.
+browser updates put focus on, since animations are an essential part
+of the user experience of an application.
 
 I provided many techniques for efficient scripting in mobile web
-applications. In our view, the architecture as well and DOM and event
-handling are the most important areas for performance optimization. I
-provided solutions like lazy initialization, document fragments, and
-event delegation as well as introduced the JSLint tool for
-automatically checking code quality.
+applications. In my view, the architecture as well as the DOM and
+event handling are the most important areas for performance
+optimization. I provided solutions like lazy initialization, document
+fragments, and event delegation as well as introduced the JSLint tool
+for automatically checking code quality.
 
 Last, I did a quantitative web performance best practices analysis on
 the conference application. Using the YSlow and Page Speed tools, I
@@ -812,6 +822,3 @@ Section~\ref{section:research-questions}, I sum up as follows:
   application performance.
 
 \end{itemize}
-
-\fixme{add req list analysis? or is it already implied in previous
-  sections?}
